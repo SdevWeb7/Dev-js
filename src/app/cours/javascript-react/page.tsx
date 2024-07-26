@@ -1,9 +1,11 @@
 import Main from "@/components/main";
+import H1 from "@/components/h1";
 
 export default function Page() {
 
     return <Main>
 
-        <h1 className={'text-3xl text-center font-bold'}>Cours Javascript et React.js</h1>
+        <H1>Cours Javascript et React.js</H1>
+
     </Main>
 }

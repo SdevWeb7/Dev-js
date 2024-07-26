@@ -4,12 +4,13 @@ import "./globals.css";
 import Header from "@/components/header/header";
 import {cn} from "@/lib/utils";
 import Footer from "@/components/footer/footer";
+import {SessionProvider} from "next-auth/react";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "WebStanSchool - Learn to code",
-  description: "WebStanSchool is a platform to learn web development.",
+  title: "WebStanSchool - Apprenez le développement web de facon ludique.",
+  description: "WebStanSchool - Apprenez le développement web de facon ludique.",
 };
 
 export default function RootLayout({
@@ -19,13 +20,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr">
-      <body className={cn(inter.className, 'max-w-6xl mx-auto min-h-screen overflow-y-scroll px-4 flex flex-col')}>
+      <body className={cn(inter.className, 'max-w-7xl mx-auto min-h-screen overflow-y-scroll px-4 flex flex-col')}>
 
-        <Header />
+      <SessionProvider>
+            <Header />
 
-        {children}
+            {children}
 
-      <Footer />
+          <Footer />
+      </SessionProvider>
       </body>
     </html>
   );
