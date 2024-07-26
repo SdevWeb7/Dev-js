@@ -12,7 +12,7 @@ export const nextAuthEdgeConfig = {
             const isTryingToAccessProtectedPath = protectedPaths.some(path =>
                 request.nextUrl.pathname.includes(path)
             );
-            const authenticatedPaths = ["progression", "aide"];
+            const authenticatedPaths = ["profil", "aide"];
             const isTryingToAccessAuthenticatedPath = authenticatedPaths.some(path =>
                 request.nextUrl.pathname.includes(path)
             );

@@ -22,16 +22,17 @@ export default function Header() {
                     <NavigationMenuContent className={'flex'}>
 
                         <div className={'w-[170px]'}>
+                            <Link href="/cours/introduction" legacyBehavior passHref>
+                                <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), 'w-full')}>
+                                    Introduction
+                                </NavigationMenuLink>
+                            </Link>
                             <Link href="/cours/html-css" legacyBehavior passHref>
                                 <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), 'w-full')}>
                                     Html / Css
                                 </NavigationMenuLink>
                             </Link>
-                            <Link href="/cours/tools" legacyBehavior passHref>
-                                <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), 'w-full')}>
-                                    Les outils
-                                </NavigationMenuLink>
-                            </Link>
+
                             <Link href="/cours/javascript-react" legacyBehavior passHref>
                                 <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), 'w-full')}>
                                     Javascript / React
@@ -55,14 +56,14 @@ export default function Header() {
                         <p className={"w-[100px] font-bold flex justify-center items-center border-r-2"}>Exercices</p>
 
                         <div className={'w-[170px]'}>
+                            <Link href="/exercices/introduction" legacyBehavior passHref>
+                                <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), 'w-full')}>
+                                    Introduction
+                                </NavigationMenuLink>
+                            </Link>
                             <Link href="/exercices/html-css" legacyBehavior passHref>
                                 <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), 'w-full')}>
                                     Html / Css
-                                </NavigationMenuLink>
-                            </Link>
-                            <Link href="/exercices/tools" legacyBehavior passHref>
-                                <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), 'w-full')}>
-                                    Les outils
                                 </NavigationMenuLink>
                             </Link>
                             <Link href="/exercices/javascript-react" legacyBehavior passHref>
@@ -82,11 +83,11 @@ export default function Header() {
 
 
                 <NavigationMenuItem>
-                    <Link href="/progression" legacyBehavior passHref>
+                    <Link href="/profil" legacyBehavior passHref>
                         <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), buttonVariants({
                             variant: 'outline'
                         }))}>
-                            Ma progression
+                            Profil
                         </NavigationMenuLink>
                     </Link>
                 </NavigationMenuItem>

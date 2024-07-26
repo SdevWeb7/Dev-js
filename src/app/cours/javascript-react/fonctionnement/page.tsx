@@ -5,6 +5,7 @@ export default function Page() {
 
     return <Main>
 
-        <H1>Exercices sur les outils</H1>
+        <H1>Cours - React - Le fonctionnement</H1>
     </Main>
 }
+

@@ -5,6 +5,7 @@ export default function Page() {
 
     return <Main>
 
-        <H1>Cours sur les outils</H1>
+        <H1>Exercices - Next.js - Typescript en React</H1>
     </Main>
 }
+
