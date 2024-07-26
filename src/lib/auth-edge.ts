@@ -8,15 +8,26 @@ export const nextAuthEdgeConfig = {
     callbacks: {
         authorized: ({ auth, request }) => {
             // runs on every request with middleware
-            const isLoggedIn = Boolean(auth?.user);
-            const isTryingToAccessProtectedPath = request.nextUrl.pathname.includes("/protected");
+            const protectedPaths = ["react", "next-js"];
+            const isTryingToAccessProtectedPath = protectedPaths.some(path =>
+                request.nextUrl.pathname.includes(path)
+            );
+            const authenticatedPaths = ["progression", "aide"];
+            const isTryingToAccessAuthenticatedPath = authenticatedPaths.some(path =>
+                request.nextUrl.pathname.includes(path)
+            );
             const isTryingToAccessAuthPath = request.nextUrl.pathname.includes("/auth");
+            const isLoggedIn = Boolean(auth?.user);
+
 
             if ((!isLoggedIn || !auth?.user.hasAccess) && isTryingToAccessProtectedPath) {
                 return false;
             }
             if (isLoggedIn && isTryingToAccessAuthPath) {
                 return Response.redirect(new URL('/', request.nextUrl));
+            }
+            if (!isLoggedIn && isTryingToAccessAuthenticatedPath) {
+                return Response.redirect(new URL('/auth/login', request.nextUrl));
             }
             return true;
         },
