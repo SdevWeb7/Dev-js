@@ -1,5 +1,6 @@
 import prisma from "@/lib/db";
 import CourseCard from "@/components/course-card";
+import H1 from "@/components/h1";
 
 
 type CoursesPageProps = {
@@ -17,10 +18,12 @@ export default async function Page({params} : CoursesPageProps) {
         }
     })
 
-    return <section className={'flex flex-wrap gap-12'}>
+    return <>
+        <H1>{params.type} - {params.category}</H1>
 
+        <section className={'flex flex-wrap justify-center gap-12'}>
         {courses.map(course => {
             return <CourseCard course={course} key={course.id}/>
         })}
-    </section>
+    </section></>;
 }
