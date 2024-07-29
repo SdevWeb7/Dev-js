@@ -17,11 +17,15 @@ export const nextAuthEdgeConfig = {
                 request.nextUrl.pathname.includes(path)
             );
             const isTryingToAccessAuthPath = request.nextUrl.pathname.includes("/auth");
+            const isTryingToAccessAdminPath = request.nextUrl.pathname.includes("/admin");
             const isLoggedIn = Boolean(auth?.user);
+            const isAdmin = auth?.user.isAdmin;
 
-
-            if ((!isLoggedIn || !auth?.user.hasAccess) && isTryingToAccessProtectedPath) {
+            if (!isAdmin && isTryingToAccessAdminPath) {
                 return false;
+            }
+            if ((!isLoggedIn || !auth?.user.hasAccess) && isTryingToAccessProtectedPath) {
+                return Response.redirect(new URL('/paiement', request.nextUrl));
             }
             if (isLoggedIn && isTryingToAccessAuthPath) {
                 return Response.redirect(new URL('/', request.nextUrl));
@@ -37,6 +41,7 @@ export const nextAuthEdgeConfig = {
                 token.userId = user.id as string;
                 token.email = user.email!;
                 token.hasAccess = user.hasAccess;
+                token.isAdmin = user.isAdmin;
             }
 
             if (trigger === "update") {
@@ -56,9 +61,13 @@ export const nextAuthEdgeConfig = {
         session: ({ session, token }) => {
             session.user.id = token.userId;
             session.user.hasAccess = token.hasAccess;
+            session.user.isAdmin = token.isAdmin;
 
             return session;
         },
+        async redirect({ url, baseUrl }) {
+            return process.env.CANONICAL_URL+"/?successLogin=true";
+        }
     },
     providers: [],
 } satisfies NextAuthConfig;

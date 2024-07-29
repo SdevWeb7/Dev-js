@@ -4,6 +4,7 @@ declare module "next-auth" {
     interface User {
         hasAccess: boolean;
         email: string;
+        isAdmin: boolean;
     }
 
     interface Session {
@@ -18,5 +19,6 @@ declare module "@auth/core/jwt" {
         userId: string;
         email: string;
         hasAccess: boolean;
+        isAdmin: boolean;
     }
 }

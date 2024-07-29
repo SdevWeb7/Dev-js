@@ -3,6 +3,7 @@ import Link from "next/link";
 import {buttonVariants} from "@/components/ui/button";
 import {cn} from "@/lib/utils";
 import {NavigationMenu, NavigationMenuList, NavigationMenuLink, NavigationMenuItem, NavigationMenuContent, NavigationMenuTrigger, navigationMenuTriggerStyle} from "@/components/ui/navigation-menu";
+import {auth} from "@/lib/auth-no-edge";
 
 
 const hrefs = [
@@ -24,7 +25,8 @@ const hrefs = [
     }
 
     ]
-export default function Header() {
+export default async function Header() {
+    const session = await auth();
 
     return <header className={'flex items-center justify-between border-b-2'}>
 
@@ -96,6 +98,17 @@ export default function Header() {
                         </NavigationMenuLink>
                     </Link>
                 </NavigationMenuItem>
+
+                {session?.user?.isAdmin && (
+                    <NavigationMenuItem>
+                       <Link href="/admin" legacyBehavior passHref>
+                          <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), buttonVariants({
+                              variant: 'outline'
+                          }))}>
+                             Admin
+                          </NavigationMenuLink>
+                       </Link>
+                </NavigationMenuItem>)}
             </NavigationMenuList>
         </NavigationMenu>
 

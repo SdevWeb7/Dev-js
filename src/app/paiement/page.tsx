@@ -17,7 +17,7 @@ useEffect(() => {
     const updateJWT = async() => {
         if (data?.user.hasAccess || searchParams.success) {
             await update(true);
-            router.push('/');
+            router.push('/?successPaiement=true');
         }
     };
     updateJWT();

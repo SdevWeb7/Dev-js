@@ -5,6 +5,7 @@ import {authSchema} from "@/lib/zod-schemas";
 import bcrypt from "bcryptjs";
 import prisma from "@/lib/db";
 import {redirect} from "next/navigation";
+import {AuthError} from "next-auth";
 
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
@@ -15,6 +16,20 @@ export async function logIn(prevState: unknown, formData: unknown) {
     try {
         await signIn("credentials", formData);
     } catch (error) {
+        if (error instanceof AuthError) {
+            switch (error.type) {
+                case "CredentialsSignin": {
+                    return {
+                        message: "Problème d'authentification.",
+                    };
+                }
+                default: {
+                    return {
+                        message: "Problème d'authentification.",
+                    };
+                }
+            }
+        }
         throw error; // nextjs redirects throws error, so we need to rethrow it
     }
 }
