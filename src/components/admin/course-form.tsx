@@ -1,16 +1,13 @@
 "use client";
 
 import {useForm} from "react-hook-form";
-import {useActionState} from "react";
-import {courseSchema} from "@/lib/zod-schemas";
+import {courseSchema, TCourseForm} from "@/lib/zod-schemas";
 import {zodResolver} from "@hookform/resolvers/zod";
 import {Label} from "@/components/ui/label";
 import {Input} from "@/components/ui/input";
 import {Textarea} from "@/components/ui/textarea";
 import {ScrollArea} from "@/components/ui/scroll-area";
 import {Course} from "@prisma/client";
-import {DialogFooter} from "@/components/ui/dialog";
-import {Button} from "@/components/ui/button";
 import {
     Select,
     SelectContent,
@@ -19,17 +16,17 @@ import {
     SelectTrigger,
     SelectValue
 } from "@/components/ui/select";
-import {addCourse} from "@/actions/course-actions";
-import {useFormState} from "react-dom";
+import {addCourse, editCourse} from "@/actions/course-actions";
 import CourseFormBtn from "@/components/admin/course-form-btn";
+import {toast} from "sonner";
 
 type CourseFormProps = {
     formType: "edit" | "create";
     course?: Course;
+    closeDialog: () => void;
 }
-export default function CourseForm({formType, course} : CourseFormProps) {
-    const [errorAddCourse, dispatchAddCourse]= useFormState(addCourse, undefined);
-    const {register, trigger, formState: {errors}} = useForm({
+export default function CourseForm({formType, course, closeDialog} : CourseFormProps) {
+    const {register, formState: {errors}, trigger, getValues} = useForm<TCourseForm>({
         resolver: zodResolver(courseSchema),
         defaultValues: {
             type: course?.type || "cours",
@@ -37,12 +34,31 @@ export default function CourseForm({formType, course} : CourseFormProps) {
             title: course?.title || "",
             description: course?.description || "",
             content: course?.content || "",
-            duration: course?.duration || "",
+            duration: course?.duration || 1,
             logoImgSrc: course?.logoImgSrc || "",
         }
     })
 
-    return <form action={dispatchAddCourse}>
+        console.log(course);
+    const handleSubmit = async () => {
+        const result = await trigger();
+        if (!result) return;
+        let response;
+        const courseData = getValues();
+
+        if (formType === "create") response = await addCourse(courseData);
+
+        else if (formType === "edit") response = await editCourse(course!.id, courseData);
+
+        if (response?.error) {
+            toast.error(response.error);
+            return;
+        }
+        toast.success(response?.success || "Cours ajouté");
+        closeDialog();
+    };
+
+    return <form action={handleSubmit}>
         <ScrollArea className={"h-[60vh] w-full rounded-md"}>
 
         <div className={'p-3'}>
@@ -61,36 +77,33 @@ export default function CourseForm({formType, course} : CourseFormProps) {
 
 
         <Label className={"mt-4"} htmlFor="category">Category</Label>
-        <Input className={'mb-4'} {...register('category')} id="category"/>
+        <Input {...register('category')} id="category"/>
         {errors.category && <p>{errors.category.message}</p>}
 
         <Label htmlFor="title">Title</Label>
-        <Input className={'mb-4'} {...register('title')} id="title"/>
+        <Input {...register('title')} id="title"/>
         {errors.title && <p>{errors.title.message}</p>}
 
         <Label htmlFor="description">Description</Label>
-        <Input className={'mb-4'} {...register('description')} id="description"/>
+        <Input {...register('description')} id="description"/>
         {errors.description && <p>{errors.description.message}</p>}
 
         <Label htmlFor="content">Content</Label>
-        <Textarea className={'mb-4'} {...register('content')} id="content"/>
+        <Textarea {...register('content')} id="content"/>
         {errors.content && <p>{errors.content.message}</p>}
 
         <Label htmlFor="duration">Duration</Label>
-        <Input className={'mb-4'} {...register('duration')} id="duration"/>
+        <Input {...register('duration')} id="duration"/>
         {errors.duration && <p>{errors.duration.message}</p>}
 
         <Label htmlFor="logoImgSrc">LogoImgSrc</Label>
-        <Input className={'mb-4'} {...register('logoImgSrc')} id="logoImgSrc"/>
+        <Input {...register('logoImgSrc')} id="logoImgSrc"/>
         {errors.logoImgSrc && <p>{errors.logoImgSrc.message}</p>}
 
         </div>
     </ScrollArea>
 
         <CourseFormBtn formType={formType} />
-
-
-        {errorAddCourse && <p>{errorAddCourse.message}</p>}
 
     </form>;
 }

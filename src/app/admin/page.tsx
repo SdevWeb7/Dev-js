@@ -1,10 +1,8 @@
 import Main from "@/components/main";
 import H1 from "@/components/h1";
 import prisma from "@/lib/db";
-import {Button} from "@/components/ui/button";
-import { Dialog, DialogTrigger } from "@/components/ui/dialog";
-import DialogCoursAdmin from "@/components/admin/dialog-cours-admin";
 import TableCoursAdmin from "@/components/admin/table-cours-admin";
+import DialogAddCourse from "@/components/admin/dialog-add-course";
 
 export default async function Page() {
 
@@ -20,12 +18,8 @@ export default async function Page() {
 
         <h2 className={'text-center mt-12 text-xl font-bold text-my-primary'}>Liste de nos petits cours</h2>
 
-        <Dialog>
-            <DialogTrigger asChild>
-                <Button className={'mx-auto my-4 block'}>Motivé(e) ? Ajoute un cours !!!</Button>
-            </DialogTrigger>
-            <DialogCoursAdmin formType={"create"} />
-        </Dialog>
+
+        <DialogAddCourse />
 
 
         <TableCoursAdmin courses={courses} />

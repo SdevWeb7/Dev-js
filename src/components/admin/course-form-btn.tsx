@@ -7,6 +7,7 @@ type CourseFormBtnProps = {
 }
 export default function CourseFormBtn({formType} : CourseFormBtnProps) {
     const {pending} = useFormStatus();
+
     return <>
         <DialogFooter>
             <Button disabled={pending}>{formType === "create" ? "Creation du cours" : "Editer le cours"}</Button>

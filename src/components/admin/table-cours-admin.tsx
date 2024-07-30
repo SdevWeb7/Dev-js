@@ -1,13 +1,19 @@
+"use client";
+
 import {Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow} from "@/components/ui/table";
 import {Button} from "@/components/ui/button";
 import {Course} from "@prisma/client";
-import DialogCoursAdmin from "@/components/admin/dialog-cours-admin";
 import {Dialog, DialogTrigger} from "@/components/ui/dialog";
+import CourseFormDeleteBtn from "@/components/admin/course-form-delete-btn";
+import {useState} from "react";
+import {flushSync} from "react-dom";
+import DialogCoursForm from "@/components/admin/dialog-cours-form";
 
 type TableCoursAdminProps = {
     courses: Course[];
 }
 export default function TableCoursAdmin({courses} : TableCoursAdminProps) {
+    const [isOpenDialog, setIsOpenDialog] = useState(false);
 
     return <Table>
         <TableCaption>Liste de tous les cours</TableCaption>
@@ -28,14 +34,18 @@ export default function TableCoursAdmin({courses} : TableCoursAdminProps) {
                     <TableCell className="text-right space-x-4">
 
 
-                        <Dialog>
+                        <Dialog open={isOpenDialog} onOpenChange={setIsOpenDialog}>
                         <DialogTrigger asChild>
                             <Button variant={'outline'}>Editer</Button>
                         </DialogTrigger>
-                        <DialogCoursAdmin formType={"edit"} course={course}></DialogCoursAdmin>
+                        <DialogCoursForm isOpenDialog={isOpenDialog} formType={"edit"} course={course} closeDialog={() => {
+                            flushSync(() => setIsOpenDialog(false));
+                        }}></DialogCoursForm>
                         </Dialog>
 
-                        <Button variant={'destructive'}>Supprimer</Button>
+
+                        <CourseFormDeleteBtn courseId={course.id} />
+
                     </TableCell>
                 </TableRow>))}
         </TableBody>
