@@ -1,13 +1,13 @@
 import {DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle} from "@/components/ui/dialog";
-import {Label} from "@/components/ui/label";
-import {Input} from "@/components/ui/input";
 import {Button} from "@/components/ui/button";
 import CourseForm from "@/components/admin/course-form";
+import {Course} from "@prisma/client";
 
 type DialogCoursAdminProps = {
     formType: "edit" | "create";
+    course?: Course;
 }
-export default function DialogCoursAdmin({formType} : DialogCoursAdminProps) {
+export default function DialogCoursAdmin({formType, course} : DialogCoursAdminProps) {
 
     return <DialogContent className="sm:max-w-[425px]">
     <DialogHeader>
@@ -18,10 +18,7 @@ export default function DialogCoursAdmin({formType} : DialogCoursAdminProps) {
     </DialogHeader>
 
 
-        <CourseForm formType={formType} />
+        <CourseForm formType={formType} course={course} />
 
-    <DialogFooter>
-        <Button>{formType === "create" ? "Creation du cours" : "Editer le cours"}</Button>
-    </DialogFooter>
 </DialogContent>
 }

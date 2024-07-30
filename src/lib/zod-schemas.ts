@@ -14,7 +14,8 @@ export const courseSchema = z.object({
     category: z.string().trim().min(3, 'Category must be at least 3 characters').max(100, 'Category must be at most 100 characters'),
     title: z.string().trim().min(3, 'Title must be at least 3 characters').max(100, 'Title must be at most 100 characters'),
     description: z.string().trim().min(3, 'Description must be at least 3 characters').max(1000, 'Description must be at most 1000 characters'),
-    content: z.number().int().min(0, 'Price must be at least 0').max(10000, 'Price must be at most 10000'),
+    content: z.string().min(10, 'Le contenu doit avoir au moins 10 caractères must be at least 0').max(200, 'Price must be at most 10000'),
     duration: z.number().int().min(0, 'Duration must be at least 0').max(1000, 'Duration must be at most 1000'),
     logoImgSrc: z.string().trim().min(3, 'Level must be at least 3 characters').max(100, 'Level must be at most 100 characters'),
 });
+

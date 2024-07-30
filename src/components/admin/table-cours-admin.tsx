@@ -10,11 +10,11 @@ type TableCoursAdminProps = {
 export default function TableCoursAdmin({courses} : TableCoursAdminProps) {
 
     return <Table>
-        <TableCaption>A list of your recent invoices.</TableCaption>
+        <TableCaption>Liste de tous les cours</TableCaption>
         <TableHeader className={"font-extrabold text-xl"}>
             <TableRow>
                 <TableHead className="w-[100px]">Type</TableHead>
-                <TableHead>Category</TableHead>
+                <TableHead>Catégorie</TableHead>
                 <TableHead>Titre</TableHead>
                 <TableHead className="text-right">Actions</TableHead>
             </TableRow>
@@ -32,7 +32,7 @@ export default function TableCoursAdmin({courses} : TableCoursAdminProps) {
                         <DialogTrigger asChild>
                             <Button variant={'outline'}>Editer</Button>
                         </DialogTrigger>
-                        <DialogCoursAdmin formType={"edit"}></DialogCoursAdmin>
+                        <DialogCoursAdmin formType={"edit"} course={course}></DialogCoursAdmin>
                         </Dialog>
 
                         <Button variant={'destructive'}>Supprimer</Button>

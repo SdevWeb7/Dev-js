@@ -11,7 +11,7 @@ const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
 
 export async function logIn(prevState: unknown, formData: unknown) {
-    if (!(formData instanceof FormData)) return { message: "Invalid form data." };
+    if (!(formData instanceof FormData)) return { message: "Données invalides" };
 
     try {
         await signIn("credentials", formData);
@@ -35,12 +35,13 @@ export async function logIn(prevState: unknown, formData: unknown) {
 }
 
 export async function signUp(prevState: unknown, formData: unknown) {
-    if (!(formData instanceof FormData)) return { message: "Invalid form data." };
+    if (!(formData instanceof FormData)) return { message: "Données invalides" };
 
     const formDataEntries = Object.fromEntries(formData.entries());
 
     const validatedFormData = authSchema.safeParse(formDataEntries);
-    if (!validatedFormData.success) return { message: "Invalid form data." };
+    if (!validatedFormData.success) return { message: "Erreur server." };
+    if (!validatedFormData.success) return { message: "Erreur server." };
 
     const { email, password } = validatedFormData.data;
     const hashedPassword = await bcrypt.hash(password, 10);
@@ -52,7 +53,7 @@ export async function signUp(prevState: unknown, formData: unknown) {
             },
         });
     } catch (error) {
-        return { message: "Could not create user." };
+        return { message: "Il y a eu un problème dans la création du compte." };
     }
 
     await signIn("credentials", formData);
