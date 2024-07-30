@@ -23,9 +23,9 @@ import {toast} from "sonner";
 type CourseFormProps = {
     formType: "edit" | "create";
     course?: Course;
-    closeDialog: () => void;
+    handleCloseModal: () => void;
 }
-export default function CourseForm({formType, course, closeDialog} : CourseFormProps) {
+export default function CourseForm({formType, course, handleCloseModal} : CourseFormProps) {
     const {register, formState: {errors}, trigger, getValues} = useForm<TCourseForm>({
         resolver: zodResolver(courseSchema),
         defaultValues: {
@@ -55,7 +55,7 @@ export default function CourseForm({formType, course, closeDialog} : CourseFormP
             return;
         }
         toast.success(response?.success || "Cours ajouté");
-        closeDialog();
+        handleCloseModal();
     };
 
     return <form action={handleSubmit}>

@@ -2,7 +2,7 @@ import Main from "@/components/main";
 import H1 from "@/components/h1";
 import prisma from "@/lib/db";
 import TableCoursAdmin from "@/components/admin/table-cours-admin";
-import DialogAddCourse from "@/components/admin/dialog-add-course";
+import DialogCourseAdmin from "@/components/admin/dialog-course-admin";
 
 export default async function Page() {
 
@@ -19,7 +19,7 @@ export default async function Page() {
         <h2 className={'text-center mt-12 text-xl font-bold text-my-primary'}>Liste de nos petits cours</h2>
 
 
-        <DialogAddCourse />
+        <DialogCourseAdmin formType={"create"} />
 
 
         <TableCoursAdmin courses={courses} />
