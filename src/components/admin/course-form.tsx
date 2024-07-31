@@ -1,6 +1,6 @@
 "use client";
 
-import {useForm} from "react-hook-form";
+import {Controller, useForm} from "react-hook-form";
 import {courseSchema, TCourseForm} from "@/lib/zod-schemas";
 import {zodResolver} from "@hookform/resolvers/zod";
 import {Label} from "@/components/ui/label";
@@ -16,9 +16,10 @@ import {
     SelectTrigger,
     SelectValue
 } from "@/components/ui/select";
-import {addCourse, editCourse} from "@/actions/course-actions";
+import {addCourse, editCourse, uploadImage} from "@/actions/course-actions";
 import CourseFormBtn from "@/components/admin/course-form-btn";
 import {toast} from "sonner";
+import {RadioGroup, RadioGroupItem} from "@/components/ui/radio-group";
 
 type CourseFormProps = {
     formType: "edit" | "create";
@@ -26,29 +27,48 @@ type CourseFormProps = {
     handleCloseModal: () => void;
 }
 export default function CourseForm({formType, course, handleCloseModal} : CourseFormProps) {
-    const {register, formState: {errors}, trigger, getValues} = useForm<TCourseForm>({
+    const {register, formState: {errors}, trigger, getValues, control} = useForm<TCourseForm>({
         resolver: zodResolver(courseSchema),
         defaultValues: {
             type: course?.type || "cours",
-            category: course?.category || "",
+            category: course?.category || "introduction",
             title: course?.title || "",
             description: course?.description || "",
             content: course?.content || "",
             duration: course?.duration || 1,
-            logoImgSrc: course?.logoImgSrc || "",
+            logoImg: null,
         }
-    })
+    });
+    const categoryOptions = ["introduction", "html-css", "javascript-react", "next-js"];
 
-        console.log(course);
     const handleSubmit = async () => {
         const result = await trigger();
         if (!result) return;
         let response;
+
         const courseData = getValues();
 
-        if (formType === "create") response = await addCourse(courseData);
+        let logoImgUrl = null;
+        if (courseData.logoImg) {
+            const formData = new FormData();
+            formData.append("logoImg", courseData.logoImg[0]);
+            logoImgUrl = await uploadImage(formData, "logoImg");
+        }
 
-        else if (formType === "edit") response = await editCourse(course!.id, courseData);
+
+        if (formType === "create") response = await addCourse({
+            ...courseData,
+            logoImg: undefined,
+            logoImgSrc: logoImgUrl || 'placeholder-logo-cours',
+            slug: courseData.title.trim().replace(/\s+/g, " ").toLowerCase().replace(/ /g, "-")
+        });
+
+        else if (formType === "edit") response = await editCourse(course!.id, {
+            ...courseData,
+            logoImg: undefined,
+            logoImgSrc: logoImgUrl || 'placeholder-logo-cours',
+            slug: courseData.title.trim().replace(/\s+/g, " ").toLowerCase().replace(/ /g, "-")
+        });
 
         if (response?.error) {
             toast.error(response.error);
@@ -58,52 +78,84 @@ export default function CourseForm({formType, course, handleCloseModal} : Course
         handleCloseModal();
     };
 
+
     return <form action={handleSubmit}>
         <ScrollArea className={"h-[60vh] w-full rounded-md"}>
 
-        <div className={'p-3'}>
+        <div className={'p-3 flex flex-col'}>
 
-            <Select {...register('type')}>
-                <SelectTrigger className="w-full">
-                    <SelectValue placeholder={course?.type || "Cours"} />
-                </SelectTrigger>
-                <SelectContent>
-                    <SelectGroup>
-                        <SelectItem value="cours">Cours</SelectItem>
-                        <SelectItem value="exercice">Exercice</SelectItem>
-                    </SelectGroup>
-                </SelectContent>
-            </Select>
+            <Label className={"mb-2 font-bold"}>Type</Label>
+            <Controller
+                control={control}
+                name="type"
+                render={({ field }) => (
+                    <Select
+                        value={field.value}
+                        onValueChange={field.onChange}
+                        name={"type"}>
+                        <SelectTrigger className="w-full">
+                            <SelectValue placeholder="Select type" />
+                        </SelectTrigger>
+                        <SelectContent>
+                            <SelectGroup>
+                                <SelectItem value="cours">Cours</SelectItem>
+                                <SelectItem value="exercice">Exercice</SelectItem>
+                            </SelectGroup>
+                        </SelectContent>
+                    </Select>
+                )}
+            />
 
 
-        <Label className={"mt-4"} htmlFor="category">Category</Label>
-        <Input {...register('category')} id="category"/>
-        {errors.category && <p>{errors.category.message}</p>}
+        <Label className={"mt-6 mb-2 font-bold"} htmlFor="category">Category</Label>
+            <Controller
+                control={control}
+                name="category"
+                render={({ field }) => (
+                    <RadioGroup
+                        id="category"
+                        value={field.value}
+                        onValueChange={field.onChange}
+                        defaultValue={categoryOptions[0]}
+                    >
+                        {categoryOptions.map((option) => (
+                            <div key={option} className={"flex items-center space-x-2 mt-2"}>
+                                <Label htmlFor={`radio-${option}`} className="min-w-32">{option}</Label>
+                                <RadioGroupItem
+                                    key={option}
+                                    value={option}
+                                    id={`radio-${option}`} />
+                            </div>
+                        ))}
+                    </RadioGroup>
+                )}
+            />
 
-        <Label htmlFor="title">Title</Label>
-        <Input {...register('title')} id="title"/>
-        {errors.title && <p>{errors.title.message}</p>}
+            <Label className={"mt-6 mb-2 font-bold"} htmlFor="title">Title</Label>
+            <Input {...register('title')} id="title"/>
+            {errors.title && <p>{errors.title.message}</p>}
 
-        <Label htmlFor="description">Description</Label>
-        <Input {...register('description')} id="description"/>
-        {errors.description && <p>{errors.description.message}</p>}
+            <Label className={"mt-6 mb-2 font-bold"} htmlFor="description">Description</Label>
+            <Input {...register('description')} id="description"/>
+            {errors.description && <p>{errors.description.message}</p>}
 
-        <Label htmlFor="content">Content</Label>
-        <Textarea {...register('content')} id="content"/>
-        {errors.content && <p>{errors.content.message}</p>}
+            <Label className={"mt-6 mb-2 font-bold"} htmlFor="content">Content</Label>
+            <Textarea {...register('content')} id="content"/>
+            {errors.content && <p>{errors.content.message}</p>}
 
-        <Label htmlFor="duration">Duration</Label>
-        <Input {...register('duration')} id="duration"/>
-        {errors.duration && <p>{errors.duration.message}</p>}
+            <Label className={"mt-6 mb-2 font-bold"} htmlFor="duration">Duration</Label>
+            <Input {...register('duration')} id="duration"/>
+            {errors.duration && <p>{errors.duration.message}</p>}
 
-        <Label htmlFor="logoImgSrc">LogoImgSrc</Label>
-        <Input {...register('logoImgSrc')} id="logoImgSrc"/>
-        {errors.logoImgSrc && <p>{errors.logoImgSrc.message}</p>}
+            <Label className={"mt-6 mb-2 font-bold"} htmlFor="logoImg">Image de présentation</Label>
+            <Input className={"flex justify-between"} type={'file'} {...register('logoImg')} id="logoImg"/>
+            {/*@ts-ignore*/}
+            {errors.logoImg && <p>{errors.logoImg.message}</p>}
 
         </div>
-    </ScrollArea>
+        </ScrollArea>
 
-        <CourseFormBtn formType={formType} />
+        <CourseFormBtn formType={formType}/>
 
     </form>;
 }

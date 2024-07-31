@@ -18,19 +18,27 @@ export const nextAuthEdgeConfig = {
             );
             const isTryingToAccessAuthPath = request.nextUrl.pathname.includes("/auth");
             const isTryingToAccessAdminPath = request.nextUrl.pathname.includes("/admin");
+            const isTryingToAccessPaiementPath = request.nextUrl.pathname.includes("/paiement");
             const isLoggedIn = Boolean(auth?.user);
-            const isAdmin = auth?.user.isAdmin;
+            const userHasAccess = auth?.user?.hasAccess;
+            const isAdmin = auth?.user?.isAdmin;
 
-            if (!isAdmin && isTryingToAccessAdminPath) {
-                return false;
-            }
-            if ((!isLoggedIn || !auth?.user.hasAccess) && isTryingToAccessProtectedPath) {
-                return Response.redirect(new URL('/paiement', request.nextUrl));
-            }
             if (isLoggedIn && isTryingToAccessAuthPath) {
                 return Response.redirect(new URL('/', request.nextUrl));
             }
-            if (!isLoggedIn && isTryingToAccessAuthenticatedPath) {
+            if (!isAdmin && isTryingToAccessAdminPath) {
+                return false;
+            }
+            if (!isLoggedIn && (isTryingToAccessAuthenticatedPath || isTryingToAccessProtectedPath)) {
+                return Response.redirect(new URL('/auth/login', request.nextUrl));
+            }
+            if (isLoggedIn && !userHasAccess && isTryingToAccessProtectedPath) {
+                return Response.redirect(new URL('/paiement', request.nextUrl));
+            }
+            if (isLoggedIn && userHasAccess && isTryingToAccessPaiementPath) {
+                return Response.redirect(new URL('/', request.nextUrl));
+            }
+            if (!isLoggedIn && isTryingToAccessPaiementPath) {
                 return Response.redirect(new URL('/auth/login', request.nextUrl));
             }
             return true;

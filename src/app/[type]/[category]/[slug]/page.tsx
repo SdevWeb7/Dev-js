@@ -5,23 +5,23 @@ type CoursePageProps = {
     params: {
         type: string
         category: string
-        title: string
+        slug: string
     }
 }
 export default async function Page({params} : CoursePageProps) {
 
-    const course = await prisma.course.findFirstOrThrow({
+    const course = await prisma.course.findFirst({
         where: {
             type: params.type,
             category: params.category,
-            title: params.title,
+            slug: params.slug,
         }
     })
 
     return <>
-        {course.type} -
-        {course.category} -
-        {course.title}
+        {course?.type} -
+        {course?.category} -
+        {course?.title}
 
     </>
 }

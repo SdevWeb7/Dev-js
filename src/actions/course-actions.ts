@@ -1,14 +1,15 @@
 "use server";
 
-import {courseSchema, TCourseForm} from "@/lib/zod-schemas";
+import {courseSchemaValidator, TCourseFormValidator} from "@/lib/zod-schemas";
 import {auth} from "@/lib/auth-no-edge";
 import prisma from "@/lib/db";
 import {revalidatePath} from "next/cache";
+import { put } from "@vercel/blob";
 
-export const addCourse = async (formData:  TCourseForm) => {
+export const addCourse = async (formData:  TCourseFormValidator) => {
     await new Promise(resolve => setTimeout(resolve, 3000));
 
-    const safeFormData = courseSchema.safeParse(formData);
+    const safeFormData = courseSchemaValidator.safeParse(formData);
     if (!safeFormData.success) return ({ error: "Données invalides" });
 
     try {
@@ -23,11 +24,11 @@ export const addCourse = async (formData:  TCourseForm) => {
     return {success: "Le cours a bien été ajouté"};
 }
 
-export const editCourse = async (id: string, formData: TCourseForm) => {
+export const editCourse = async (id: string, formData: TCourseFormValidator) => {
     await new Promise(resolve => setTimeout(resolve, 3000));
     if (typeof id !== "string") return ({ error: "Données invalides" });
 
-    const safeFormData = courseSchema.safeParse(formData);
+    const safeFormData = courseSchemaValidator.safeParse(formData);
     if (!safeFormData.success) return ({ error: "Données invalides" });
 
     try {
@@ -61,4 +62,14 @@ export const deleteCourse = async (id: string) => {
 
     revalidatePath("/admin");
     return {success: "Le cours a bien été supprimé"};
+}
+
+export const uploadImage = async (formData: FormData, label: string) => {
+
+    const file = formData.get(label) as File
+    const filename = file.name
+
+    const { url } = await put(filename,file, { access: 'public' });
+
+    return url;
 }
