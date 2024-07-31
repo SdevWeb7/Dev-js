@@ -6,24 +6,24 @@ import nextjsImage from '@/../public/next-js.jpg';
 import {Button} from "@/components/ui/button";
 import Link from "next/link";
 import CustomToaster from "@/components/CustomToaster";
-import {toast} from "sonner";
+import Main from "@/components/main";
 
 export default function Home({searchParams} : {searchParams: { [key: string]: string | string[] | undefined }}) {
 
-  return <main className={'mt-20 mb-12'}>
+  return <Main className={'mt-20 mb-12'}>
 
-      <div className={'flex justify-around items-center gap-4'}>
-          <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">
+      <div className={'flex flex-wrap justify-around items-center gap-12'}>
+          <h1 className="scroll-m-20 text-2xl xs:text-3xl font-extrabold tracking-tight lg:text-5xl">
               <span className={'text-my-primary italic'}>WebStanSchool</span>,<br/> apprenez à maitriser<br/>les <span className={"font-extrabold text-my-primary"}>technologies actuelles</span> <br/> du développement web <br/>en vous amusant
           </h1>
 
 
-          <div className={'max-w-[300px]'}>
+          <div>
               <h2 className={'text-center text-2xl font-extrabold text-my-primary mb-4'}>Que vais-je apprendre?</h2>
-              <Carousel>
+              <Carousel className={'overflow-hidden w-full sm:max-w-[300px] sm:overflow-visible mr-12'}>
                   <CarouselContent>
                       <CarouselItem>
-                          <Image src={htmlImage} alt={'html et css'}></Image>
+                          <Image src={htmlImage} alt={'html et css'} width={300} height={300} className={'w-full'} />
                       </CarouselItem>
                       <CarouselItem>
                           <Image src={jsReactImage} alt={'javascript et react'}></Image>
@@ -46,7 +46,7 @@ export default function Home({searchParams} : {searchParams: { [key: string]: st
               <li>Visio-conférences individuelles et collectives (50h par personne)</li>
           </ul>
 
-          <div className={'flex gap-2'}>
+          <div className={'flex flex-wrap justify-center gap-2'}>
               <Button asChild>
                     <Link href={'/'}>Offre de lancement 89$</Link>
               </Button>
@@ -61,5 +61,5 @@ export default function Home({searchParams} : {searchParams: { [key: string]: st
 
       {searchParams.successPaiement && <CustomToaster message={"Paiement effectué avec succès. Vous pouvez maintenant accéder à tous nos cours."} />}
       {searchParams.successLogin && <CustomToaster message={"Vous êtes bien connecté."} />}
-  </main>;
+  </Main>;
 }
