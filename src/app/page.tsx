@@ -26,10 +26,10 @@ export default function Home({searchParams} : {searchParams: { [key: string]: st
                           <Image src={htmlImage} alt={'html et css'} width={300} height={300} className={'w-full'} />
                       </CarouselItem>
                       <CarouselItem>
-                          <Image src={jsReactImage} alt={'javascript et react'}></Image>
+                          <Image src={jsReactImage} alt={'javascript et react'} width={300} height={300} className={'w-full'} />
                       </CarouselItem>
                       <CarouselItem>
-                          <Image src={nextjsImage} alt={'next js'}></Image>
+                          <Image src={nextjsImage} alt={'next js'} width={300} height={300} className={'w-full'} />
                       </CarouselItem>
                   </CarouselContent>
                   <CarouselPrevious/>
