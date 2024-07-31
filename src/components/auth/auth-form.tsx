@@ -17,7 +17,7 @@ export default function AuthForm({ formType }: AuthFormProps) {
     const [logInError, dispatchLogIn] = useFormState(logIn, undefined);
 
     return (
-        <Card className="w-[350px]">
+        <Card className="max-w-[280px] sm:max-w-[350px] mx-auto">
             <CardHeader>
                 <CardTitle>Veuillez entrer vos identifiants</CardTitle>
                 <CardDescription>{formType === "logIn" ? "Connectez-vous" : 'Inscrivez vous'} afin de profiter des cours React et Next.js</CardDescription>
