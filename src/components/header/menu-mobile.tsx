@@ -8,6 +8,7 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import Link from "next/link";
 
 
 type menuMobileProps = {
@@ -28,10 +29,10 @@ export default function MenuMobile({hrefs} : menuMobileProps) {
                     <DropdownMenuLabel>Cours</DropdownMenuLabel>
                     <DropdownMenuSeparator />
                     <DropdownMenuGroup>
-                        <DropdownMenuItem>Introduction</DropdownMenuItem>
-                        <DropdownMenuItem>Html / Css</DropdownMenuItem>
-                        <DropdownMenuItem>Javascript / React</DropdownMenuItem>
-                        <DropdownMenuItem>Next.js</DropdownMenuItem>
+
+                        {hrefs.map((href) => (
+                            <Link key={href.title} href={`/cours/${href.href}`}><DropdownMenuItem>{href.title}</DropdownMenuItem></Link>
+                        ))}
                     </DropdownMenuGroup>
 
 
@@ -39,18 +40,15 @@ export default function MenuMobile({hrefs} : menuMobileProps) {
                     <DropdownMenuLabel>Exercices</DropdownMenuLabel>
                     <DropdownMenuSeparator />
                     <DropdownMenuGroup>
-                        <DropdownMenuItem>Introduction</DropdownMenuItem>
-                        <DropdownMenuItem>Html / Css</DropdownMenuItem>
-                        <DropdownMenuItem>Javascript / React</DropdownMenuItem>
-                        <DropdownMenuItem>Next.js</DropdownMenuItem>
+                        {hrefs.map((href) => (
+                            <Link key={href.title} href={`/exercice/${href.href}`}><DropdownMenuItem>{href.title}</DropdownMenuItem></Link>
+                        ))}
                     </DropdownMenuGroup>
 
 
                     <DropdownMenuSeparator />
-                    <DropdownMenuItem>Profil</DropdownMenuItem>
-                    <DropdownMenuItem>Demande d&apos;aide</DropdownMenuItem>
-                    <DropdownMenuSeparator />
-                    <DropdownMenuItem>Déconnexion</DropdownMenuItem>
+                    <Link key={"profil"} href={"/profil"}><DropdownMenuItem>Profil</DropdownMenuItem></Link>
+                    <Link key={"aide"} href={"/aide"}><DropdownMenuItem>Demande d&apos;aide</DropdownMenuItem></Link>
                 </DropdownMenuContent>
             </DropdownMenu>
         )
