@@ -1,6 +1,7 @@
 import prisma from "@/lib/db";
 import CourseCard from "@/components/course-card";
 import H1 from "@/components/h1";
+import Main from "@/components/main";
 
 
 type CoursesPageProps = {
@@ -18,12 +19,13 @@ export default async function Page({params} : CoursesPageProps) {
         }
     })
 
-    return <>
-        <H1>{params.type} - {params.category}</H1>
+    return <Main>
+        <H1 className={'capitalize'}>{params.type} - {params.category === "next-js" ? "Next.js" : params.category.replace('-', ' & ')}</H1>
 
-        <section className={'flex flex-wrap justify-center gap-12'}>
-        {courses.map(course => {
-            return <CourseCard course={course} key={course.id}/>
-        })}
-    </section></>;
+        <section className={'flex flex-wrap justify-center gap-16 mt-16'}>
+            {courses.map(course => {
+                return <CourseCard course={course} key={course.id} />
+            })}
+        </section>
+    </Main>;
 }

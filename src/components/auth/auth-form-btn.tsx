@@ -12,7 +12,7 @@ export default function AuthFormBtn({ type }: AuthFormBtnProps) {
     const { pending } = useFormStatus();
 
     return (
-        <Button disabled={pending}>
+        <Button className={'ml-auto block mt-4'} disabled={pending}>
             {type === "logIn" ? "Connexion" : "Inscription"}
         </Button>
     );

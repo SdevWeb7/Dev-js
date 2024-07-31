@@ -7,5 +7,7 @@ export default function Page() {
     return <Main>
 
         <H1>Profil</H1>
+
+        <p className={'text-center mt-12'}>Page Profil</p>
     </Main>
 }

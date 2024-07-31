@@ -10,7 +10,9 @@ export default function CourseFormBtn({formType} : CourseFormBtnProps) {
 
     return <>
         <DialogFooter>
-            <Button disabled={pending}>{formType === "create" ? "Creation du cours" : "Editer le cours"}</Button>
+            <Button
+                className={'mt-6'}
+                disabled={pending}>{formType === "create" ? "Creation du cours" : "Editer le cours"}</Button>
         </DialogFooter>
     </>
 }

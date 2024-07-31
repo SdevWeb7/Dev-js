@@ -28,7 +28,7 @@ export default function DialogCourseAdmin({course, formType} : DialogEditCourseP
         </DialogTrigger>
 
 
-        {isOpenDialog && <DialogContent className="sm:max-w-[425px]">
+        {isOpenDialog && <DialogContent className="sm:max-w-[525px]">
            <DialogHeader>
               <DialogTitle>{formType === "create" ? "Création d'un cours" : "Edition d'un cours"}</DialogTitle>
               <DialogDescription>

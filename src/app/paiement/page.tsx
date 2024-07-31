@@ -6,6 +6,7 @@ import {createCheckoutSession} from "@/actions/auth-actions";
 import {useEffect, useTransition} from "react";
 import {useSession} from "next-auth/react";
 import {useRouter} from "next/navigation";
+import Main from "@/components/main";
 
 type SearchParamsType = { searchParams: { [key: string]: string | string[] | undefined } };
 export default function Page({searchParams} : SearchParamsType) {
@@ -22,8 +23,10 @@ useEffect(() => {
     };
     updateJWT();
 }, [searchParams.success, data]);
-    return <div className={'flex flex-col items-center space-y-10'}>
-        <H1>Un abonnement est nécessaire pour accéder au contenu Javascript, React et Next.js.</H1>
+    return <Main className={'flex flex-col items-center gap-16'}>
+        <H1>Paiement</H1>
+
+        <p>L&apos;acces aux cours React et Next.js sont accessibles après une petite contribution de 89€.</p>
 
         {!searchParams.success && (
             <Button
@@ -39,5 +42,5 @@ useEffect(() => {
 
         {searchParams.cancelled && <p className={'text-sm text-red-700'}>Le paiement a échoué. Vous pouvez retenter ou nous contacter.</p>}
 
-    </div>
+    </Main>;
 }

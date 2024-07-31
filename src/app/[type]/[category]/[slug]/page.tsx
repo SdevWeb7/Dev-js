@@ -1,4 +1,6 @@
 import prisma from "@/lib/db";
+import Main from "@/components/main";
+import H1 from "@/components/h1";
 
 
 type CoursePageProps = {
@@ -18,10 +20,12 @@ export default async function Page({params} : CoursePageProps) {
         }
     })
 
-    return <>
-        {course?.type} -
-        {course?.category} -
-        {course?.title}
+    return <Main>
 
-    </>
+        <H1 className={'capitalize'}>{params.type} - {params.category === "next-js" ? "Next.js" : params.category.replace('-', ' & ')} - {course?.title}</H1>
+
+
+        <p className={'text-center mt-16'}>Ceci est la page d&apos;un {params.type}</p>
+
+    </Main>
 }

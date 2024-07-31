@@ -7,7 +7,10 @@ export default function Page() {
 
     return <Main>
 
-        <p className={'flex items-center justify-center'}>Paragraphe</p>
         <H1>Demande d&apos;aide</H1>
+
+
+        <p className={'text-center mt-12'}>Page Aide</p>
+
     </Main>
 }
