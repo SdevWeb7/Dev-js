@@ -8,14 +8,6 @@ import {Input} from "@/components/ui/input";
 import {Textarea} from "@/components/ui/textarea";
 import {ScrollArea} from "@/components/ui/scroll-area";
 import {Course} from "@prisma/client";
-import {
-    Select,
-    SelectContent,
-    SelectGroup,
-    SelectItem,
-    SelectTrigger,
-    SelectValue
-} from "@/components/ui/select";
 import {addCourse, editCourse, uploadImage} from "@/actions/course-actions";
 import CourseFormBtn from "@/components/admin/course-form-btn";
 import {toast} from "sonner";
@@ -30,11 +22,15 @@ export default function CourseForm({formType, course, handleCloseModal} : Course
     const {register, formState: {errors}, trigger, getValues, control} = useForm<TCourseForm>({
         resolver: zodResolver(courseSchema),
         defaultValues: {
-            type: course?.type || "cours",
             category: course?.category || "introduction",
             title: course?.title || "",
             description: course?.description || "",
-            content: course?.content || "",
+            contentIntro: course?.contentIntro || "",
+            contentCours: course?.contentCours || "",
+            contentExemple: course?.contentExemple || "",
+            contentExercice: course?.contentExercice || "",
+            contentPenseBete: course?.contentPenseBete || "",
+            contentMoreRessources: course?.contentMoreRessources || "",
             duration: course?.duration || 1,
             logoImg: null,
         }
@@ -84,30 +80,7 @@ export default function CourseForm({formType, course, handleCloseModal} : Course
 
         <div className={'p-3 flex flex-col'}>
 
-            <Label className={"mb-2 font-bold"}>Type</Label>
-            <Controller
-                control={control}
-                name="type"
-                render={({ field }) => (
-                    <Select
-                        value={field.value}
-                        onValueChange={field.onChange}
-                        name={"type"}>
-                        <SelectTrigger className="w-full">
-                            <SelectValue placeholder="Select type" />
-                        </SelectTrigger>
-                        <SelectContent>
-                            <SelectGroup>
-                                <SelectItem value="cours">Cours</SelectItem>
-                                <SelectItem value="exercice">Exercice</SelectItem>
-                            </SelectGroup>
-                        </SelectContent>
-                    </Select>
-                )}
-            />
-
-
-        <Label className={"mt-6 mb-2 font-bold"} htmlFor="category">Category</Label>
+        <Label className={"mb-2 font-bold"} htmlFor="category">Category</Label>
             <Controller
                 control={control}
                 name="category"
@@ -131,7 +104,7 @@ export default function CourseForm({formType, course, handleCloseModal} : Course
                 )}
             />
 
-            <Label className={"mt-6 mb-2 font-bold"} htmlFor="title">Title</Label>
+            <Label className={"mt-6 mb-2 font-bold"} htmlFor="title">Titre</Label>
             <Input {...register('title')} id="title"/>
             {errors.title && <p>{errors.title.message}</p>}
 
@@ -139,11 +112,31 @@ export default function CourseForm({formType, course, handleCloseModal} : Course
             <Input {...register('description')} id="description"/>
             {errors.description && <p>{errors.description.message}</p>}
 
-            <Label className={"mt-6 mb-2 font-bold"} htmlFor="content">Content</Label>
-            <Textarea {...register('content')} id="content"/>
-            {errors.content && <p>{errors.content.message}</p>}
+            <Label className={"mt-6 mb-2 font-bold"} htmlFor="contentIntro">ContentIntro</Label>
+            <Textarea {...register('contentIntro')} id="contentIntro"/>
+            {errors.contentIntro && <p>{errors.contentIntro.message}</p>}
 
-            <Label className={"mt-6 mb-2 font-bold"} htmlFor="duration">Duration</Label>
+            <Label className={"mt-6 mb-2 font-bold"} htmlFor="contentCours">ContentCours</Label>
+            <Textarea {...register('contentCours')} id="contentCours"/>
+            {errors.contentCours && <p>{errors.contentCours.message}</p>}
+
+            <Label className={"mt-6 mb-2 font-bold"} htmlFor="contentExemple">ContentExemple</Label>
+            <Textarea {...register('contentExemple')} id="contentExemple"/>
+            {errors.contentExemple && <p>{errors.contentExemple.message}</p>}
+
+            <Label className={"mt-6 mb-2 font-bold"} htmlFor="contentExercice">ContentExercice</Label>
+            <Textarea {...register('contentExercice')} id="contentExercice"/>
+            {errors.contentExercice && <p>{errors.contentExercice.message}</p>}
+
+            <Label className={"mt-6 mb-2 font-bold"} htmlFor="contentPenseBete">ContentPenseBete</Label>
+            <Textarea {...register('contentPenseBete')} id="contentPenseBete"/>
+            {errors.contentPenseBete && <p>{errors.contentPenseBete.message}</p>}
+
+            <Label className={"mt-6 mb-2 font-bold"} htmlFor="contentMoreRessources">ContentMoreRessources</Label>
+            <Textarea {...register('contentMoreRessources')} id="contentMoreRessources"/>
+            {errors.contentMoreRessources && <p>{errors.contentMoreRessources.message}</p>}
+
+            <Label className={"mt-6 mb-2 font-bold"} htmlFor="duration">Durée</Label>
             <Input {...register('duration')} id="duration"/>
             {errors.duration && <p>{errors.duration.message}</p>}
 

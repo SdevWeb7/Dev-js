@@ -72,9 +72,6 @@ export const nextAuthEdgeConfig = {
             session.user.isAdmin = token.isAdmin;
 
             return session;
-        },
-        async redirect({ url, baseUrl }) {
-            return process.env.CANONICAL_URL+"/?successLogin=true";
         }
     },
     providers: [],

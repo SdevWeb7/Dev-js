@@ -6,7 +6,6 @@ import Main from "@/components/main";
 
 type CoursesPageProps = {
     params: {
-        type: string
         category: string
     }
 };
@@ -14,13 +13,12 @@ export default async function Page({params} : CoursesPageProps) {
 
     const courses = await prisma.course.findMany({
         where: {
-            type: params.type,
             category: params.category
         }
     })
 
     return <Main>
-        <H1 className={'capitalize'}>{params.type} - {params.category === "next-js" ? "Next.js" : params.category.replace('-', ' & ')}</H1>
+        <H1 className={'capitalize'}>{params.category === "next-js" ? "Next.js" : params.category.replace('-', ' & ')}</H1>
 
         <section className={'flex flex-wrap justify-center gap-16 mt-16'}>
             {courses.map(course => {

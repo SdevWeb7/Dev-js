@@ -12,7 +12,6 @@ export default function TableCoursAdmin({courses} : TableCoursAdminProps) {
         <TableCaption>Liste de tous les cours</TableCaption>
         <TableHeader className={"font-extrabold text-xl"}>
             <TableRow>
-                <TableHead className="w-[100px]">Type</TableHead>
                 <TableHead>Catégorie</TableHead>
                 <TableHead>Titre</TableHead>
                 <TableHead className="text-right">Actions</TableHead>
@@ -21,7 +20,6 @@ export default function TableCoursAdmin({courses} : TableCoursAdminProps) {
         <TableBody>
             {courses.map(course => (
                 <TableRow key={course.id}>
-                    <TableCell>{course.type}</TableCell>
                     <TableCell>{course.category}</TableCell>
                     <TableCell>{course.title}</TableCell>
                     <TableCell className="text-right space-x-4">

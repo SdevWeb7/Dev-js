@@ -5,12 +5,12 @@ import jsReactImage from '@/../public/js-react.png';
 import nextjsImage from '@/../public/next-js.jpg';
 import {Button} from "@/components/ui/button";
 import Link from "next/link";
-import CustomToaster from "@/components/CustomToaster";
+import CustomToaster from "@/components/custom-toaster";
 import Main from "@/components/main";
 
 export default function Home({searchParams} : {searchParams: { [key: string]: string | string[] | undefined }}) {
 
-  return <Main className={'mt-20 mb-12'}>
+  return <Main className={'mt-20 mb-8'}>
 
       <div className={'flex flex-wrap justify-around items-center gap-12'}>
           <h1 className="scroll-m-20 text-2xl xs:text-3xl font-extrabold tracking-tight lg:text-5xl">
@@ -61,5 +61,6 @@ export default function Home({searchParams} : {searchParams: { [key: string]: st
 
       {searchParams.successPaiement && <CustomToaster message={"Paiement effectué avec succès. Vous pouvez maintenant accéder à tous nos cours."} />}
       {searchParams.successLogin && <CustomToaster message={"Vous êtes bien connecté."} />}
+      {searchParams.successLogout && <CustomToaster message={"Vous êtes bien déconnecté."} />}
   </Main>;
 }

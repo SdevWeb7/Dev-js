@@ -8,7 +8,7 @@ export default async function Page() {
 
     const courses = await prisma.course.findMany({
         orderBy: {
-            type: 'asc'
+            category: 'asc'
         }
     })
 

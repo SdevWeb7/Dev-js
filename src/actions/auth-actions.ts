@@ -14,7 +14,11 @@ export async function logIn(prevState: unknown, formData: unknown) {
     if (!(formData instanceof FormData)) return { message: "Données invalides" };
 
     try {
-        await signIn("credentials", formData);
+        await signIn("credentials", {
+            email: formData.get("email") as string,
+            password: formData.get("password") as string,
+            redirectTo: "/?successLogin=true",
+        });
     } catch (error) {
         if (error instanceof AuthError) {
             switch (error.type) {
@@ -60,7 +64,7 @@ export async function signUp(prevState: unknown, formData: unknown) {
 }
 
 export async function logOut() {
-    await signOut({ redirectTo: "/" });
+    await signOut({ redirectTo: "/?successLogout=true" });
 }
 
 export async function createCheckoutSession() {

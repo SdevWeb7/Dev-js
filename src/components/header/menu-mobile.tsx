@@ -31,19 +31,10 @@ export default function MenuMobile({hrefs} : menuMobileProps) {
                     <DropdownMenuGroup>
 
                         {hrefs.map((href) => (
-                            <Link key={href.title} href={`/cours/${href.href}`}><DropdownMenuItem>{href.title}</DropdownMenuItem></Link>
+                            <Link key={href.title} href={href.href}><DropdownMenuItem>{href.title}</DropdownMenuItem></Link>
                         ))}
                     </DropdownMenuGroup>
 
-
-                    <DropdownMenuSeparator />
-                    <DropdownMenuLabel>Exercices</DropdownMenuLabel>
-                    <DropdownMenuSeparator />
-                    <DropdownMenuGroup>
-                        {hrefs.map((href) => (
-                            <Link key={href.title} href={`/exercice/${href.href}`}><DropdownMenuItem>{href.title}</DropdownMenuItem></Link>
-                        ))}
-                    </DropdownMenuGroup>
 
 
                     <DropdownMenuSeparator />

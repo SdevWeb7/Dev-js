@@ -18,11 +18,15 @@ const ACCEPTED_IMAGE_MIME_TYPES = [
     "image/webp",
 ];
 export const courseSchema = z.object({
-    type: z.string().trim().min(3, 'Type incorrect').max(100, 'Type incorrect'),
     category: z.string().trim().min(3, 'Categorie incorrect').max(100, 'Categorie incorrect'),
     title: z.string().trim().min(3, 'Le titre doit avoir au moins 3 caractères').max(100, 'Le titre doit avoir au maximum 100 caractères'),
     description: z.string().trim().min(3, 'La description doit faire minimum 3 caractères').max(100, 'la description doit faire maximum 100 caractères'),
-    content: z.string().min(10, 'Le contenu doit avoir au moins 10 caractères').max(200, 'Le contenu ne doit pas dépasser 200 caractères'),
+    contentIntro: z.string().min(10, 'Le contenu doit avoir au moins 10 caractères').max(200, 'Le contenu ne doit pas dépasser 200 caractères'),
+    contentCours: z.string().min(10, 'Le contenu doit avoir au moins 10 caractères').max(200, 'Le contenu ne doit pas dépasser 200 caractères'),
+    contentExemple: z.string().min(10, 'Le contenu doit avoir au moins 10 caractères').max(200, 'Le contenu ne doit pas dépasser 200 caractères'),
+    contentExercice: z.string().min(10, 'Le contenu doit avoir au moins 10 caractères').max(200, 'Le contenu ne doit pas dépasser 200 caractères'),
+    contentPenseBete: z.string().min(10, 'Le contenu doit avoir au moins 10 caractères').max(200, 'Le contenu ne doit pas dépasser 200 caractères'),
+    contentMoreRessources: z.string().min(10, 'Le contenu doit avoir au moins 10 caractères').max(200, 'Le contenu ne doit pas dépasser 200 caractères'),
     duration: z.coerce.number().int().min(1, 'La durée doit être au moins 1h').max(100, 'La durée doit être au maximum 100h'),
     logoImg: z
         .any()
@@ -39,11 +43,15 @@ export const courseSchema = z.object({
 export type TCourseForm = z.infer<typeof courseSchema>;
 
 export const courseSchemaValidator = z.object({
-    type: z.string().trim().min(3, 'Type incorrect').max(100, 'Type incorrect'),
     category: z.string().trim().min(3, 'Categorie incorrect').max(100, 'Categorie incorrect'),
     title: z.string().trim().min(3, 'Le titre doit avoir au moins 3 caractères').max(100, 'Le titre doit avoir au maximum 100 caractères'),
     description: z.string().trim().min(3, 'La description doit faire minimum 3 caractères').max(100, 'la description doit faire maximum 100 caractères'),
-    content: z.string().min(10, 'Le contenu doit avoir au moins 10 caractères').max(200, 'Le contenu ne doit pas dépasser 200 caractères'),
+    contentIntro: z.string().min(10, 'Le contenu doit avoir au moins 10 caractères').max(200, 'Le contenu ne doit pas dépasser 200 caractères'),
+    contentCours: z.string().min(10, 'Le contenu doit avoir au moins 10 caractères').max(200, 'Le contenu ne doit pas dépasser 200 caractères'),
+    contentExemple: z.string().min(10, 'Le contenu doit avoir au moins 10 caractères').max(200, 'Le contenu ne doit pas dépasser 200 caractères'),
+    contentExercice: z.string().min(10, 'Le contenu doit avoir au moins 10 caractères').max(200, 'Le contenu ne doit pas dépasser 200 caractères'),
+    contentPenseBete: z.string().min(10, 'Le contenu doit avoir au moins 10 caractères').max(200, 'Le contenu ne doit pas dépasser 200 caractères'),
+    contentMoreRessources: z.string().min(10, 'Le contenu doit avoir au moins 10 caractères').max(200, 'Le contenu ne doit pas dépasser 200 caractères'),
     duration: z.coerce.number().int().min(1, 'La durée doit être au moins 1h').max(100, 'La durée doit être au maximum 100h'),
     logoImgSrc: z.string(),
     logoImg: z.any().nullable(),

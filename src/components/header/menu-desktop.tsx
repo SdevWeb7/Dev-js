@@ -21,79 +21,49 @@ export default async function MenuDesktop({hrefs}: menuDesktopProps) {
 
     return <NavigationMenu className={"hidden  md:block"}>
         <NavigationMenuList>
-            <NavigationMenuItem>
-                <NavigationMenuTrigger className={buttonVariants({
-                    variant: 'outline'
-                })}>Cours</NavigationMenuTrigger>
-                <NavigationMenuContent className={'flex'}>
-
-                    <div className={'w-[170px]'}>
-
-                        {hrefs.map((href) => (
-                            <Link href={`/cours${href.href}`} key={href.title} passHref>
-                                <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), 'w-full')}>
-                                    {href.title}
-                                </NavigationMenuLink>
-                            </Link>
-                        ))}
-
-                    </div>
-                    <p className={"w-[100px] font-bold flex justify-center items-center border-l-2"}>Cours</p>
-                </NavigationMenuContent>
-            </NavigationMenuItem>
 
             <NavigationMenuItem>
-                <NavigationMenuTrigger className={buttonVariants({
-                    variant: 'outline'
-                })}>Exercices</NavigationMenuTrigger>
-                <NavigationMenuContent className={'flex'}>
-                    <p className={"w-[100px] font-bold flex justify-center items-center border-r-2"}>Exercices</p>
+                <NavigationMenuTrigger
+                    className={buttonVariants({
+                        variant: 'outline'
+                    })}>Cours</NavigationMenuTrigger>
 
-                    <div className={'w-[170px]'}>
-
+                <NavigationMenuContent className={'min-w-[170px]'}>
                         {hrefs.map((href) => (
-                            <Link href={`/exercice${href.href}`} key={href.title} passHref>
-                                <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), 'w-full')}>
-                                    {href.title}
-                                </NavigationMenuLink>
-                            </Link>
+                            <NavigationMenuLink
+                                    href={href.href}
+                                    key={href.title}
+                                    className={cn(navigationMenuTriggerStyle(), 'w-full')}>{href.title}</NavigationMenuLink>
                         ))}
-                    </div>
                 </NavigationMenuContent>
             </NavigationMenuItem>
 
 
 
             <NavigationMenuItem>
-                <Link href="/profil" legacyBehavior passHref>
-                    <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), buttonVariants({
-                        variant: 'outline'
-                    }))}>
-                        Profil
-                    </NavigationMenuLink>
-                </Link>
+                <NavigationMenuLink
+                            href={'/profil'}
+                            className={cn(navigationMenuTriggerStyle(), buttonVariants({
+                                    variant: 'outline'
+                            }))}>Profil</NavigationMenuLink>
             </NavigationMenuItem>
 
 
             <NavigationMenuItem>
-                <Link href="/aide" legacyBehavior passHref>
-                    <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), buttonVariants({
-                        variant: 'outline'
-                    }))}>
-                        Demande d&apos;aide
-                    </NavigationMenuLink>
-                </Link>
+                <NavigationMenuLink
+                            href={'/aide'}
+                            className={cn(navigationMenuTriggerStyle(), buttonVariants({
+                                    variant: 'outline'
+                             }))}>Demande d&apos;aide</NavigationMenuLink>
             </NavigationMenuItem>
 
             {session?.user?.isAdmin && (
                 <NavigationMenuItem>
-                    <Link href="/admin" legacyBehavior passHref>
-                        <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), buttonVariants({
-                            variant: 'outline'
-                        }))}>
-                            Admin
-                        </NavigationMenuLink>
-                    </Link>
+                        <NavigationMenuLink
+                                href={'/admin'}
+                                className={cn(navigationMenuTriggerStyle(), buttonVariants({
+                                    variant: 'outline'
+                                }))}>Admin</NavigationMenuLink>
                 </NavigationMenuItem>)}
         </NavigationMenuList>
     </NavigationMenu>

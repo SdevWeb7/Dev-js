@@ -6,19 +6,19 @@ import MenuMobile from "@/components/header/menu-mobile";
 const hrefs = [
     {
         title: 'Introduction',
-        href: '/introduction'
+        href: '/cours/introduction'
     },
     {
         title: 'Html / Css',
-        href: '/html-css'
+        href: '/cours/html-css'
     },
     {
         title: 'Javascript / React',
-        href: '/javascript-react'
+        href: '/cours/javascript-react'
     },
     {
         title: 'Next.js',
-        href: '/next-js'
+        href: '/cours/next-js'
     }
 
     ]
