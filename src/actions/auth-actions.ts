@@ -60,7 +60,11 @@ export async function signUp(prevState: unknown, formData: unknown) {
         return { message: "Il y a eu un problème dans la création du compte." };
     }
 
-    await signIn("credentials", formData);
+    await signIn("credentials", {
+        email,
+        password,
+        redirectTo: "/?successSignUp=true",
+    });
 }
 
 export async function logOut() {
