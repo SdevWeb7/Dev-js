@@ -20,10 +20,7 @@ export default function CoursTabContent({value, content, title, description} : C
 
             <CardContent className="space-y-2">
                 <p>{content}</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam assumenda atque corporis cupiditate dignissimos dolor dolorum eligendi esse illo, iure iusto molestiae nemo, officia qui sequi sint tempora ullam voluptas?</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam assumenda atque corporis cupiditate dignissimos dolor dolorum eligendi esse illo, iure iusto molestiae nemo, officia qui sequi sint tempora ullam voluptas?</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam assumenda atque corporis cupiditate dignissimos dolor dolorum eligendi esse illo, iure iusto molestiae nemo, officia qui sequi sint tempora ullam voluptas?</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam assumenda atque corporis cupiditate dignissimos dolor dolorum eligendi esse illo, iure iusto molestiae nemo, officia qui sequi sint tempora ullam voluptas?</p>
+
             </CardContent>
 
 
