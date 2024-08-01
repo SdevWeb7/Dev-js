@@ -61,7 +61,7 @@ export default async function Page({params} : CoursePageProps) {
         <Breadcrumb className={"flex justify-center"}>
             <BreadcrumbList>
                 <BreadcrumbItem>
-                    <BreadcrumbLink href={`/cours/${params.category}`}>{params.category === "next-js" ? "Next.js" : params.category.replace('-', ' & ')}</BreadcrumbLink>
+                    <BreadcrumbLink href={`/cours/${params.category}`}>{params.category === "next-js" ? "Next.js" : params.category.charAt(0).toUpperCase()+params.category.replace('-', ' & ').slice(1)}</BreadcrumbLink>
                 </BreadcrumbItem>
                 <BreadcrumbSeparator>
                     <Slash />
@@ -76,9 +76,9 @@ export default async function Page({params} : CoursePageProps) {
         <div className={'flex justify-center items-center min-h-[500px] mt-6'}>
 
         {course ? <Tabs defaultValue="contentIntro" className="flex items-center flex-col sm:flex-row w-full justify-center">
-            <TabsList className="flex flex-col">
+            <TabsList className="flex flex-col justify-center">
                 <Card>
-                    <CardContent className="flex flex-col gap-2">
+                    <CardContent className="flex flex-col gap-2 justify-center pt-6">
 
                         {listeCategories.map((categorie, index) => (
                             <TabsTrigger key={index} value={categorie.value} className={'p-2'}>{categorie.label}</TabsTrigger>

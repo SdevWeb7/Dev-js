@@ -21,7 +21,7 @@ export default async function Page({params} : CoursesPageProps) {
         <Breadcrumb className={"flex justify-center"}>
             <BreadcrumbList>
                 <BreadcrumbItem>
-                    <BreadcrumbLink href={`/cours/${params.category}`}>{params.category === "next-js" ? "Next.js" : params.category.replace('-', ' & ')}</BreadcrumbLink>
+                    <BreadcrumbLink href={`/cours/${params.category}`}>{params.category === "next-js" ? "Next.js" : params.category.charAt(0).toUpperCase()+params.category.replace('-', ' & ').slice(1)}</BreadcrumbLink>
                 </BreadcrumbItem>
             </BreadcrumbList>
         </Breadcrumb>
