@@ -4,6 +4,14 @@ import H1 from "@/components/h1";
 import {Tabs, TabsList, TabsTrigger} from "@/components/ui/tabs";
 import {Card, CardContent} from "@/components/ui/card";
 import CoursTabContent from "@/components/cours-tab-content";
+import {
+    Breadcrumb,
+    BreadcrumbItem,
+    BreadcrumbLink,
+    BreadcrumbList,
+    BreadcrumbSeparator
+} from "@/components/ui/breadcrumb";
+import {Slash} from "lucide-react";
 
 
 const listeCategories = [
@@ -50,15 +58,26 @@ export default async function Page({params} : CoursePageProps) {
 
     return <Main>
 
-        <H1 className={'capitalize'}>{params.category === "next-js" ? "Next.js" : params.category.replace('-', ' & ')} - {course?.title}</H1>
-
+        <Breadcrumb className={"flex justify-center"}>
+            <BreadcrumbList>
+                <BreadcrumbItem>
+                    <BreadcrumbLink href={`/cours/${params.category}`}>{params.category === "next-js" ? "Next.js" : params.category.replace('-', ' & ')}</BreadcrumbLink>
+                </BreadcrumbItem>
+                <BreadcrumbSeparator>
+                    <Slash />
+                </BreadcrumbSeparator>
+                <BreadcrumbItem>
+                    <BreadcrumbLink href={`/cours/${params.category}/${params.slug}`}>{course?.title}</BreadcrumbLink>
+                </BreadcrumbItem>
+            </BreadcrumbList>
+        </Breadcrumb>
 
 
         <div className={'flex justify-center items-center min-h-[500px] mt-6'}>
 
-        {course ? <Tabs defaultValue="contentIntro" className="flex items-center flex-col sm:flex-row ">
-            <TabsList className="w-[200px] flex flex-col">
-                <Card className="mb-4">
+        {course ? <Tabs defaultValue="contentIntro" className="flex items-center flex-col sm:flex-row w-full justify-center">
+            <TabsList className="flex flex-col">
+                <Card>
                     <CardContent className="flex flex-col gap-2">
 
                         {listeCategories.map((categorie, index) => (

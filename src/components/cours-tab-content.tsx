@@ -10,15 +10,15 @@ type CoursTabContentProps = {
 }
 export default function CoursTabContent({value, content, title, description} : CoursTabContentProps) {
 
-    return <TabsContent value={value}>
-        <Card>
+    return <TabsContent value={value} className={"sm:w-[70%]"}>
+        <Card className={"min-h-[320px] flex flex-col justify-between"}>
             <CardHeader>
                 <CardTitle className={'text-center text-2xl'}>{title}</CardTitle>
                 <CardDescription className={"text-center text-lg"}>{description}</CardDescription>
             </CardHeader>
 
 
-            <CardContent className="space-y-2">
+            <CardContent>
                 <p>{content}</p>
 
             </CardContent>
