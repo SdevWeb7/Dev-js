@@ -54,9 +54,9 @@ export default async function Page({params} : CoursePageProps) {
 
 
 
-        <div className={'flex justify-center items-center min-h-[500px]'}>
+        <div className={'flex justify-center items-center min-h-[500px] mt-6'}>
 
-        {course ? <Tabs defaultValue="contentIntro" className="flex items-center">
+        {course ? <Tabs defaultValue="contentIntro" className="flex items-center flex-col sm:flex-row ">
             <TabsList className="w-[200px] flex flex-col">
                 <Card className="mb-4">
                     <CardContent className="flex flex-col gap-2">

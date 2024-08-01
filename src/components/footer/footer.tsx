@@ -9,13 +9,10 @@ export default async function Footer() {
 
     return <footer className={'border-t-2 flex justify-between items-center py-2 mt-auto'}>
 
-        <small>Contenu crée par la WebStanSchool</small>
-
-        <small>License MIT - 2024 &copy;</small>
-
+        <small>WebStanSchool</small>
 
         {session?.user ? <>
-            <small>Connecté en tant que {session.user.email}</small><LogOutBtn />
+            <small className={'hidden sm:block'}>Connecté en tant que {session.user.email}</small><LogOutBtn />
         </> : <Link
                 className={buttonVariants({
                     variant: 'outline'
