@@ -1,6 +1,5 @@
 import prisma from "@/lib/db";
 import Main from "@/components/main";
-import H1 from "@/components/h1";
 import {Tabs, TabsList, TabsTrigger} from "@/components/ui/tabs";
 import {Card, CardContent} from "@/components/ui/card";
 import CoursTabContent from "@/components/cours-tab-content";
@@ -94,9 +93,7 @@ export default async function Page({params} : CoursePageProps) {
                         key={index}
                         value={categorie.value}
                         // @ts-ignore
-                        content={course[categorie.value]}
-                        title={categorie.label}
-                        description={course.description} />
+                        mdxPath={course[categorie.value]} />
                 ))}
 
 

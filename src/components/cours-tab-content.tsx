@@ -1,32 +1,31 @@
-import {Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle} from "@/components/ui/card";
-import {Button} from "@/components/ui/button";
+import {Card, CardContent} from "@/components/ui/card";
 import {TabsContent} from "@/components/ui/tabs";
+import {getCourseMdxContent} from "@/actions/mdx-actions";
+import Markdown from "markdown-to-jsx";
+import {ScrollArea} from "@/components/ui/scroll-area";
 
 type CoursTabContentProps = {
     value: string;
-    title: string;
-    description: string;
-    content: string;
+    mdxPath: string;
 }
-export default function CoursTabContent({value, content, title, description} : CoursTabContentProps) {
+export default async function CoursTabContent({value, mdxPath} : CoursTabContentProps) {
+    const contentMdx = await getCourseMdxContent(mdxPath);
 
-    return <TabsContent value={value} className={"sm:w-[70%]"}>
+    return <TabsContent value={value} className={"w-full sm:w-[70%]"}>
         <Card className={"min-h-[320px] flex flex-col justify-between"}>
-            <CardHeader>
-                <CardTitle className={'text-center text-2xl'}>{title}</CardTitle>
-                <CardDescription className={"text-center text-lg"}>{description}</CardDescription>
-            </CardHeader>
-
 
             <CardContent>
-                <p>{content}</p>
+                <ScrollArea className={"sm:h-[400px]"}>
+                <article className={"prose prose-img:rounded-xl w-full"}>
 
+                    <Markdown>
+                        {contentMdx}
+                    </Markdown>
+                </article>
+                </ScrollArea>
             </CardContent>
 
 
-            <CardFooter>
-                <Button className={'block ml-auto'}>Terminer le cours</Button>
-            </CardFooter>
         </Card>
     </TabsContent>
 }
