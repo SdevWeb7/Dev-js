@@ -18,6 +18,10 @@ const config = {
       },
     },
     extend: {
+      screens: {
+        "xs": "375px",
+        "min750": "750px",
+      },
       colors: {
         "my-primary": "hsl(var(--primary))",
         border: "hsl(var(--border))",

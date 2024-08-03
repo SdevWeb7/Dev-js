@@ -10,17 +10,17 @@ import Main from "@/components/main";
 
 export default function Home({searchParams} : {searchParams: { [key: string]: string | string[] | undefined }}) {
 
-  return <Main className={'mt-20 mb-8'}>
+  return <Main className={'flex flex-col items-center justify-center min-h-[80vh]'}>
 
-      <div className={'flex flex-wrap justify-around items-center gap-12'}>
-          <h1 className="scroll-m-20 text-2xl xs:text-3xl font-extrabold tracking-tight lg:text-5xl">
+      <div className={'flex flex-wrap justify-around items-center gap-28 mt-8'}>
+          <h1 className="scroll-m-20 text-3xl font-extrabold tracking-tight min750:text-5xl min750:leading-tight">
               <span className={'text-my-primary italic'}>WebStanSchool</span>,<br/> apprenez à maitriser<br/>les <span className={"font-extrabold text-my-primary"}>technologies actuelles</span> <br/> du développement web <br/>en vous amusant
           </h1>
 
 
           <div>
-              <h2 className={'text-center text-2xl font-extrabold text-my-primary mb-4'}>Que vais-je apprendre?</h2>
-              <Carousel className={'overflow-hidden w-full sm:max-w-[300px] sm:overflow-visible mr-12'}>
+              <h2 className={'text-center text-4xl font-extrabold text-my-primary mb-8 min750:mr-12'}>Que vais-je apprendre?</h2>
+              <Carousel className={'overflow-hidden w-full sm:max-w-[500px] sm:overflow-visible min750:mr-12'}>
                   <CarouselContent>
                       <CarouselItem>
                           <Image src={htmlImage} alt={'html et css'} width={300} height={300} className={'w-full'} />
@@ -47,12 +47,12 @@ export default function Home({searchParams} : {searchParams: { [key: string]: st
           </ul>
 
           <div className={'flex flex-wrap justify-center gap-2'}>
-              <Button asChild>
+              <Button asChild className={'py-6 px-4'}>
                     <Link href={'/'}>Offre de lancement 89$</Link>
               </Button>
 
 
-              <Button asChild>
+              <Button asChild className={'py-6 px-4'}>
                   <Link href={'/'}>En savoir plus (nos promesses)</Link>
               </Button>
           </div>

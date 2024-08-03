@@ -57,16 +57,19 @@ export default async function Page({params} : CoursePageProps) {
 
     return <Main>
 
-        <Breadcrumb className={"flex justify-center"}>
+        <Breadcrumb>
             <BreadcrumbList>
                 <BreadcrumbItem>
-                    <BreadcrumbLink href={`/cours/${params.category}`}>{params.category === "next-js" ? "Next.js" : params.category.charAt(0).toUpperCase()+params.category.replace('-', ' & ').slice(1)}</BreadcrumbLink>
+                    <BreadcrumbLink
+                        href={`/cours/${params.category}`}
+                        className={"text-3xl"}>
+                        {params.category === "next-js" ? "Next.js" : params.category.charAt(0).toUpperCase()+params.category.replace('-', ' & ').slice(1)}</BreadcrumbLink>
                 </BreadcrumbItem>
                 <BreadcrumbSeparator>
                     <Slash />
                 </BreadcrumbSeparator>
                 <BreadcrumbItem>
-                    <BreadcrumbLink href={`/cours/${params.category}/${params.slug}`}>{course?.title}</BreadcrumbLink>
+                    <BreadcrumbLink className={"text-3xl font-bold"} href={`/cours/${params.category}/${params.slug}`}>{course?.title}</BreadcrumbLink>
                 </BreadcrumbItem>
             </BreadcrumbList>
         </Breadcrumb>

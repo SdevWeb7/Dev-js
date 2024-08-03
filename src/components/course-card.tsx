@@ -11,7 +11,7 @@ type CourseCardProps = {
 export default function CourseCard({course}: CourseCardProps) {
 
     return <Link href={`/cours/${course.category}/${course.slug}`}>
-        <Card className={'w-[300px] h-full flex flex-col gap-4'}>
+        <Card className={'w-full min750:w-[350px] h-full flex flex-col gap-8 p-4'}>
             <CardHeader>
                 <CardTitle>{course.title}</CardTitle>
                 <CardDescription>{course.description}</CardDescription>

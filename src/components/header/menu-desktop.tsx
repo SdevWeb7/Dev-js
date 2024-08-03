@@ -6,21 +6,34 @@ import {
     NavigationMenuTrigger, navigationMenuTriggerStyle
 } from "@/components/ui/navigation-menu";
 import {buttonVariants} from "@/components/ui/button";
-import Link from "next/link";
 import {cn} from "@/lib/utils";
+import Link from "next/link";
+import LogOutBtn from "@/components/auth/log-out-btn";
 import {auth} from "@/lib/auth-no-edge";
+import NavbarLinks from "@/components/header/navbar-links";
 
 type menuDesktopProps = {
-    hrefs: {
-        title: string;
-        href: string;
-    }[]
+    hrefs: { title: string; href: string; }[]
 }
 export default async function MenuDesktop({hrefs}: menuDesktopProps) {
     const session = await auth();
 
-    return <NavigationMenu className={"hidden  md:block"}>
-        <NavigationMenuList>
+
+    return <NavigationMenu className={"hidden min750:block"}>
+        <NavigationMenuList className={"space-x-6"}>
+
+
+            <NavigationMenuItem>
+                {!session?.user ?
+                    <NavigationMenuLink asChild><Link className={buttonVariants({
+                        variant: "link"
+                    })} href="/auth/login">Connexion</Link></NavigationMenuLink> :
+                    <LogOutBtn />}
+            </NavigationMenuItem>
+
+
+            <NavbarLinks />
+
 
             <NavigationMenuItem>
                 <NavigationMenuTrigger
@@ -29,42 +42,16 @@ export default async function MenuDesktop({hrefs}: menuDesktopProps) {
                     })}>Cours</NavigationMenuTrigger>
 
                 <NavigationMenuContent className={'min-w-[170px]'}>
-                        {hrefs.map((href) => (
-                            <NavigationMenuLink
-                                    href={href.href}
-                                    key={href.title}
-                                    className={cn(navigationMenuTriggerStyle(), 'w-full')}>{href.title}</NavigationMenuLink>
-                        ))}
+                    {hrefs.map((href) => (
+                        <NavigationMenuLink key={href.href} asChild>
+                            <Link
+                                href={href.href}
+                                key={href.title}
+                                className={cn(navigationMenuTriggerStyle(), 'w-full')}>{href.title}</Link>
+                        </NavigationMenuLink>
+                    ))}
                 </NavigationMenuContent>
             </NavigationMenuItem>
-
-
-
-            <NavigationMenuItem>
-                <NavigationMenuLink
-                            href={'/profil'}
-                            className={cn(navigationMenuTriggerStyle(), buttonVariants({
-                                    variant: 'outline'
-                            }))}>Profil</NavigationMenuLink>
-            </NavigationMenuItem>
-
-
-            <NavigationMenuItem>
-                <NavigationMenuLink
-                            href={'/aide'}
-                            className={cn(navigationMenuTriggerStyle(), buttonVariants({
-                                    variant: 'outline'
-                             }))}>Demande d&apos;aide</NavigationMenuLink>
-            </NavigationMenuItem>
-
-            {session?.user?.isAdmin && (
-                <NavigationMenuItem>
-                        <NavigationMenuLink
-                                href={'/admin'}
-                                className={cn(navigationMenuTriggerStyle(), buttonVariants({
-                                    variant: 'outline'
-                                }))}>Admin</NavigationMenuLink>
-                </NavigationMenuItem>)}
         </NavigationMenuList>
     </NavigationMenu>
 }

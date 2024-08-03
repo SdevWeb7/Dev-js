@@ -1,6 +1,7 @@
 import Logo from "@/components/logo";
 import MenuDesktop from "@/components/header/menu-desktop";
 import MenuMobile from "@/components/header/menu-mobile";
+import Container from "@/components/container";
 
 
 const hrefs = [
@@ -24,14 +25,14 @@ const hrefs = [
     ]
 export default async function Header() {
 
-    return <header className={'flex items-center justify-between border-b-2'}>
+    return <header className={'bg-white py-2 px-8 border-b-2'}>
 
-        <Logo />
+        <Container className={"flex items-center justify-between"}>
+            <Logo />
 
+            <MenuDesktop hrefs={hrefs} />
 
-        <MenuDesktop hrefs={hrefs} />
-
-        <MenuMobile hrefs={hrefs} />
-
+            <MenuMobile hrefs={hrefs} />
+        </Container>
     </header>
 }

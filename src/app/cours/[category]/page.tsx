@@ -18,15 +18,18 @@ export default async function Page({params} : CoursesPageProps) {
     })
 
     return <Main>
-        <Breadcrumb className={"flex justify-center"}>
+        <Breadcrumb>
             <BreadcrumbList>
                 <BreadcrumbItem>
-                    <BreadcrumbLink href={`/cours/${params.category}`}>{params.category === "next-js" ? "Next.js" : params.category.charAt(0).toUpperCase()+params.category.replace('-', ' & ').slice(1)}</BreadcrumbLink>
+                    <BreadcrumbLink
+                        href={`/cours/${params.category}`}
+                        className={"text-3xl font-bold"}>
+                            {params.category === "next-js" ? "Next.js" : params.category.charAt(0).toUpperCase()+params.category.replace('-', ' & ').slice(1)}</BreadcrumbLink>
                 </BreadcrumbItem>
             </BreadcrumbList>
         </Breadcrumb>
 
-        <section className={'flex flex-wrap justify-center gap-16 mt-16'}>
+        <section className={'flex flex-wrap justify-around gap-16 mt-20'}>
             {courses.map(course => {
                 return <CourseCard course={course} key={course.id} />
             })}

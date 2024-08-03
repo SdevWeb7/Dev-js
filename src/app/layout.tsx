@@ -21,7 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr">
-      <body className={cn(inter.className, 'max-w-7xl mx-auto min-h-screen overflow-y-scroll px-4 flex flex-col')}>
+      <body className={cn(inter.className, 'min-h-screen overflow-y-scroll flex flex-col')}>
 
       <SessionProvider>
             <Header />
