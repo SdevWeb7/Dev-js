@@ -7,7 +7,7 @@ export default async function Footer() {
 
     return <footer className={'border-t-2 flex justify-between items-center py-2 mt-auto px-8'}>
 
-        <small>DevWeb</small>
+        <small>Dev.js</small>
 
 
         {session?.user?.isAdmin && <Link href={'/admin'}>Admin</Link>}

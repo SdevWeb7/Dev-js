@@ -12,9 +12,9 @@ export default function Home({searchParams} : {searchParams: { [key: string]: st
 
   return <Main className={'flex flex-col items-center justify-center min-h-[80vh]'}>
 
-      <div className={'flex flex-wrap justify-around items-center gap-28 mt-8'}>
+      <div className={'flex flex-wrap justify-center items-center gap-28 mt-8'}>
           <h1 className="scroll-m-20 text-3xl font-extrabold tracking-tight min750:text-5xl min750:leading-tight">
-              <span className={'text-my-primary italic'}>WebStanSchool</span>,<br/> apprenez à maitriser<br/>les <span className={"font-extrabold text-my-primary"}>technologies actuelles</span> <br/> du développement web <br/>en vous amusant
+              <span className={'text-my-primary italic'}>Dev</span>.js,<br/> apprenez à maitriser<br/>les <span className={"font-extrabold text-my-primary"}>technologies actuelles</span> <br/> du développement web <br/>en vous amusant
           </h1>
 
 

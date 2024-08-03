@@ -10,8 +10,8 @@ import {Toaster} from "sonner";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "WebStanSchool - Apprenez le développement web de facon ludique.",
-  description: "WebStanSchool - Apprenez le développement web de facon ludique.",
+  title: "Dev.js - Apprenez le développement web de facon ludique.",
+  description: "Dev.js - Apprenez le développement web de facon ludique.",
 };
 
 export default function RootLayout({

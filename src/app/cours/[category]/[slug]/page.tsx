@@ -77,7 +77,7 @@ export default async function Page({params} : CoursePageProps) {
 
 
         {course ? <Tabs defaultValue="contentIntro" className="flex flex-col lg:flex-row mt-8 gap-2">
-            <TabsList className="lg:sticky md:top-10">
+            <TabsList className="lg:sticky lg:top-24">
                 <Card className={'border-none shadow-none'}>
                     <CardContent className="flex flex-col gap-2 justify-center pt-6">
 
