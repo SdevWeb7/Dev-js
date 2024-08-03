@@ -19,8 +19,5 @@ Polices intéressantes :
 
 A FAIRE :
 
-card course a retirer
 menu cours en sticky les liens en start + padding pour le lien actif
-file ariane gras selectionner (ou souligné)
-navbar principal retirer les boutons
-toaster pour information les redirection
+toaster pour information sur les redirection

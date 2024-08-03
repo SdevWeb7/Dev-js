@@ -75,11 +75,10 @@ export default async function Page({params} : CoursePageProps) {
         </Breadcrumb>
 
 
-        <div className={'flex justify-center items-center min-h-[500px] mt-6'}>
 
-        {course ? <Tabs defaultValue="contentIntro" className="flex items-center flex-col sm:flex-row w-full justify-center">
-            <TabsList className="flex flex-col justify-center">
-                <Card>
+        {course ? <Tabs defaultValue="contentIntro" className="flex flex-col lg:flex-row mt-8 gap-2">
+            <TabsList className="lg:sticky md:top-10">
+                <Card className={'border-none shadow-none'}>
                     <CardContent className="flex flex-col gap-2 justify-center pt-6">
 
                         {listeCategories.map((categorie, index) => (
@@ -90,7 +89,7 @@ export default async function Page({params} : CoursePageProps) {
                 </Card>
             </TabsList>
 
-
+            <div className={'lg:border-l-2 lg:pl-12 flex justify-center w-full overflow-hidden'}>
                 {listeCategories.map((categorie, index) => (
                     <CoursTabContent
                         key={index}
@@ -98,10 +97,9 @@ export default async function Page({params} : CoursePageProps) {
                         // @ts-ignore
                         mdxPath={course[categorie.value]} />
                 ))}
-
+            </div>
 
 
         </Tabs> : <p className={'text-center mt-12 font-bold'}>Pas de cours trouvé</p>}
-        </div>
     </Main>
 }

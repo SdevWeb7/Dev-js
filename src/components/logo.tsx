@@ -4,6 +4,6 @@ import Image from "next/image";
 
 export default function Logo() {
 
-    return <Link href={'/'} className={'text-my-primary text-2xl font-bold flex items-center gap-2'}>
-        <Image className={'hidden xs:block'} src={logo} alt={"DevWeb logo"} width={60} height={60} />DevWeb</Link>;
+    return <Link href={'/'} className={'text-2xl font-bold flex items-center gap-2'}>
+        <Image className={'hidden xs:block'} src={logo} alt={"Devweb logo"} width={60} height={60} />Devweb</Link>;
 }

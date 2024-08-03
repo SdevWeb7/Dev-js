@@ -1,8 +1,6 @@
-import {Card, CardContent} from "@/components/ui/card";
 import {TabsContent} from "@/components/ui/tabs";
 import {getCourseMdxContent} from "@/actions/mdx-actions";
 import Markdown from "markdown-to-jsx";
-import {ScrollArea} from "@/components/ui/scroll-area";
 
 type CoursTabContentProps = {
     value: string;
@@ -11,21 +9,14 @@ type CoursTabContentProps = {
 export default async function CoursTabContent({value, mdxPath} : CoursTabContentProps) {
     const contentMdx = await getCourseMdxContent(mdxPath);
 
-    return <TabsContent value={value} className={"w-full sm:w-[70%]"}>
-        <Card className={"min-h-[320px] flex flex-col justify-between"}>
+    return <TabsContent value={value} className={'w-full'}>
 
-            <CardContent>
-                <ScrollArea className={"sm:h-[400px]"}>
-                <article className={"prose prose-img:rounded-xl w-full"}>
+                <article className={"prose prose-neutral prose-img:rounded-xl mx-auto"}>
 
                     <Markdown>
                         {contentMdx}
                     </Markdown>
                 </article>
-                </ScrollArea>
-            </CardContent>
 
-
-        </Card>
     </TabsContent>
 }
