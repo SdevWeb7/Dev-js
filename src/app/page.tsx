@@ -7,9 +7,6 @@ import {Button} from "@/components/ui/button";
 import Link from "next/link";
 import CustomToaster from "@/components/custom-toaster";
 import Main from "@/components/main";
-import {Calistoga} from "next/font/google";
-
-const calistoga = Calistoga({ subsets: ["latin"], weight: "400"});
 
 
 export default function Home({searchParams} : {searchParams: { [key: string]: string | string[] | undefined }}) {

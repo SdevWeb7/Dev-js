@@ -30,7 +30,7 @@ export const nextAuthEdgeConfig = {
                 return false;
             }
             if (!isLoggedIn && (isTryingToAccessAuthenticatedPath || isTryingToAccessProtectedPath)) {
-                return Response.redirect(new URL('/auth/login', request.nextUrl));
+                return Response.redirect(new URL('/auth/login?mustConnect=true', request.nextUrl));
             }
             if (isLoggedIn && !userHasAccess && isTryingToAccessProtectedPath) {
                 return Response.redirect(new URL('/paiement', request.nextUrl));
