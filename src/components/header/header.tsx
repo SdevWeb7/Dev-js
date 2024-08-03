@@ -25,7 +25,7 @@ const hrefs = [
     ]
 export default async function Header() {
 
-    return <header className={'bg-white py-2 px-8 border-b-2 sticky top-0'}>
+    return <header className={'bg-white py-2 px-8 border-b-2 sticky top-0 z-30'}>
 
         <Container className={"flex items-center justify-between"}>
             <Logo />

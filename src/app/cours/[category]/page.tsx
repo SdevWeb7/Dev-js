@@ -23,7 +23,7 @@ export default async function Page({params} : CoursesPageProps) {
                 <BreadcrumbItem>
                     <BreadcrumbLink
                         href={`/cours/${params.category}`}
-                        className={"text-3xl font-bold"}>
+                        className={"font-bold"}>
                             {params.category === "next-js" ? "Next.js" : params.category.charAt(0).toUpperCase()+params.category.replace('-', ' & ').slice(1)}</BreadcrumbLink>
                 </BreadcrumbItem>
             </BreadcrumbList>
