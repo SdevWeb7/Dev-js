@@ -22,6 +22,9 @@ const config = {
         "xs": "375px",
         "min750": "750px",
       },
+      fontFamily: {
+        "calistoga": "Calistoga, sans-serif",
+      },
       colors: {
         "my-primary": "hsl(var(--primary))",
         border: "hsl(var(--border))",

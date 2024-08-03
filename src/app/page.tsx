@@ -7,6 +7,10 @@ import {Button} from "@/components/ui/button";
 import Link from "next/link";
 import CustomToaster from "@/components/custom-toaster";
 import Main from "@/components/main";
+import {Calistoga} from "next/font/google";
+
+const calistoga = Calistoga({ subsets: ["latin"], weight: "400"});
+
 
 export default function Home({searchParams} : {searchParams: { [key: string]: string | string[] | undefined }}) {
 
@@ -14,7 +18,7 @@ export default function Home({searchParams} : {searchParams: { [key: string]: st
 
       <div className={'flex flex-wrap justify-center items-center gap-28 mt-8'}>
           <h1 className="scroll-m-20 text-3xl font-extrabold tracking-tight min750:text-5xl min750:leading-tight">
-              <span className={'text-my-primary italic'}>Dev</span>.js,<br/> apprenez à maitriser<br/>les <span className={"font-extrabold text-my-primary"}>technologies actuelles</span> <br/> du développement web <br/>en vous amusant
+              <span className={'text-my-primary'}>Dev</span>.js,<br/> apprenez à maitriser<br/>les <span className={"font-extrabold text-my-primary"}>technologies actuelles</span> <br/> du développement web <br/>en vous amusant
           </h1>
 
 
