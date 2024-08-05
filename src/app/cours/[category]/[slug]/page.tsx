@@ -11,31 +11,32 @@ import {
     BreadcrumbSeparator
 } from "@/components/ui/breadcrumb";
 import {Slash} from "lucide-react";
+import Link from "next/link";
 
 
 const listeCategories = [
     {
-        value: "contentIntro",
+        value: "introduction",
         label: "Introduction"
     },
     {
-        value: "contentCours",
+        value: "cours",
         label: "Cours"
     },
     {
-        value: "contentExemple",
+        value: "exemple",
         label: "Exemples"
     },
     {
-        value: "contentExercice",
+        value: "exercice",
         label: "Exercices"
     },
     {
-        value: "contentPenseBete",
+        value: "pense-bete",
         label: "Pense-Bêtes"
     },
     {
-        value: "contentMoreRessources",
+        value: "more-ressource",
         label: "Ressources utiles"
     }
 ]
@@ -60,22 +61,31 @@ export default async function Page({params} : CoursePageProps) {
         <Breadcrumb>
             <BreadcrumbList>
                 <BreadcrumbItem>
-                    <BreadcrumbLink
-                        href={`/cours/${params.category}`}>
-                        {params.category === "next-js" ? "Next.js" : params.category.charAt(0).toUpperCase()+params.category.replace('-', ' & ').slice(1)}</BreadcrumbLink>
+                    <BreadcrumbLink asChild>
+                        <Link
+                            href={`/cours/${params.category}`}>
+                                {params.category === "next-js" ? "Next.js" : params.category.charAt(0).toUpperCase()+params.category.replace('-', ' & ').slice(1)}
+                        </Link>
+                    </BreadcrumbLink>
                 </BreadcrumbItem>
                 <BreadcrumbSeparator>
                     <Slash />
                 </BreadcrumbSeparator>
                 <BreadcrumbItem>
-                    <BreadcrumbLink className={"font-bold"} href={`/cours/${params.category}/${params.slug}`}>{course?.title}</BreadcrumbLink>
+                    <BreadcrumbLink asChild>
+                        <Link
+                            className={"font-bold"}
+                            href={`/cours/${params.category}/${params.slug}`}>
+                                {course?.title}
+                        </Link>
+                    </BreadcrumbLink>
                 </BreadcrumbItem>
             </BreadcrumbList>
         </Breadcrumb>
 
 
 
-        {course ? <Tabs defaultValue="contentIntro" className="flex flex-col lg:flex-row mt-8 gap-2">
+        {course ? <Tabs defaultValue="introduction" className="flex flex-col lg:flex-row mt-8 gap-2">
             <TabsList className="lg:sticky lg:top-24">
                 <Card className={'border-none shadow-none'}>
                     <CardContent className="flex flex-col gap-2 justify-center pt-6">
@@ -93,9 +103,8 @@ export default async function Page({params} : CoursePageProps) {
                     <CoursTabContent
                         key={index}
                         category={params.category}
-                        value={categorie.value}
-                        // @ts-ignore
-                        fileName={course[categorie.value]} />
+                        slug={params.slug}
+                        value={categorie.value} />
                 ))}
             </div>
 

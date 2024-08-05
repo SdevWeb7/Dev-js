@@ -4,11 +4,11 @@ import Markdown from "markdown-to-jsx";
 
 type CoursTabContentProps = {
     category: string;
+    slug: string;
     value: string;
-    fileName: string;
 }
-export default async function CoursTabContent({value, fileName, category} : CoursTabContentProps) {
-    const contentMdx = await getCourseMdxContent(category+"/"+fileName);
+export default async function CoursTabContent({value, category, slug} : CoursTabContentProps) {
+    const contentMdx = await getCourseMdxContent(category+"/"+slug+"/"+value);
 
     return <TabsContent value={value} className={'w-full'}>
 

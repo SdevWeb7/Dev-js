@@ -24,27 +24,13 @@ model User {
 }
 
 model Course {
-  id                    String              @id @default(cuid())
-  category              String
-  slug                  String
-  title                 String
-  description           String
-  logoImgSrc            String
-  duration              Int
-  createdAt             DateTime            @default(now())
-  updatedAt             DateTime            @updatedAt
-  contentIntro          String
-  contentCours          String
-  contentExemple        String
-  contentExercice       String
-  contentPenseBete      String
-  contentMoreRessources String
-  imagesIllustration    ImagesIlustration[]
-}
-
-model ImagesIlustration {
-  id       String @id @default(cuid())
-  src      String
-  Course   Course @relation(fields: [courseId], references: [id])
-  courseId String
+  id          String   @id @default(cuid())
+  category    String
+  slug        String
+  title       String
+  description String
+  logoImgSrc  String
+  duration    Int
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }

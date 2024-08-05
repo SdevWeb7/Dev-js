@@ -2,6 +2,7 @@ import prisma from "@/lib/db";
 import CourseCard from "@/components/course-card";
 import Main from "@/components/main";
 import {BreadcrumbItem, BreadcrumbList, Breadcrumb, BreadcrumbLink} from "@/components/ui/breadcrumb";
+import Link from "next/link";
 
 
 type CoursesPageProps = {
@@ -21,10 +22,12 @@ export default async function Page({params} : CoursesPageProps) {
         <Breadcrumb>
             <BreadcrumbList>
                 <BreadcrumbItem>
-                    <BreadcrumbLink
-                        href={`/cours/${params.category}`}
-                        className={"font-bold"}>
-                            {params.category === "next-js" ? "Next.js" : params.category.charAt(0).toUpperCase()+params.category.replace('-', ' & ').slice(1)}</BreadcrumbLink>
+                    <BreadcrumbLink asChild>
+                        <Link
+                            href={`/cours/${params.category}`}
+                            className={"font-bold"}>
+                                {params.category === "next-js" ? "Next.js" : params.category.charAt(0).toUpperCase()+params.category.replace('-', ' & ').slice(1)}</Link>
+                        </BreadcrumbLink>
                 </BreadcrumbItem>
             </BreadcrumbList>
         </Breadcrumb>

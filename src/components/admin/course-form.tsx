@@ -25,12 +25,6 @@ export default function CourseForm({formType, course, handleCloseModal} : Course
             category: course?.category || "introduction",
             title: course?.title || "",
             description: course?.description || "",
-            contentIntro: course?.contentIntro || "",
-            contentCours: course?.contentCours || "",
-            contentExemple: course?.contentExemple || "",
-            contentExercice: course?.contentExercice || "",
-            contentPenseBete: course?.contentPenseBete || "",
-            contentMoreRessources: course?.contentMoreRessources || "",
             duration: course?.duration || 1,
             logoImg: null,
         }
@@ -113,29 +107,6 @@ export default function CourseForm({formType, course, handleCloseModal} : Course
             <Input {...register('description')} id="description"/>
             {errors.description && <p>{errors.description.message}</p>}
 
-            <Label className={"mt-6 mb-2 font-bold"} htmlFor="contentIntro">ContentIntro</Label>
-            <Textarea {...register('contentIntro')} id="contentIntro"/>
-            {errors.contentIntro && <p>{errors.contentIntro.message}</p>}
-
-            <Label className={"mt-6 mb-2 font-bold"} htmlFor="contentCours">ContentCours</Label>
-            <Textarea {...register('contentCours')} id="contentCours"/>
-            {errors.contentCours && <p>{errors.contentCours.message}</p>}
-
-            <Label className={"mt-6 mb-2 font-bold"} htmlFor="contentExemple">ContentExemple</Label>
-            <Textarea {...register('contentExemple')} id="contentExemple"/>
-            {errors.contentExemple && <p>{errors.contentExemple.message}</p>}
-
-            <Label className={"mt-6 mb-2 font-bold"} htmlFor="contentExercice">ContentExercice</Label>
-            <Textarea {...register('contentExercice')} id="contentExercice"/>
-            {errors.contentExercice && <p>{errors.contentExercice.message}</p>}
-
-            <Label className={"mt-6 mb-2 font-bold"} htmlFor="contentPenseBete">ContentPenseBete</Label>
-            <Textarea {...register('contentPenseBete')} id="contentPenseBete"/>
-            {errors.contentPenseBete && <p>{errors.contentPenseBete.message}</p>}
-
-            <Label className={"mt-6 mb-2 font-bold"} htmlFor="contentMoreRessources">ContentMoreRessources</Label>
-            <Textarea {...register('contentMoreRessources')} id="contentMoreRessources"/>
-            {errors.contentMoreRessources && <p>{errors.contentMoreRessources.message}</p>}
 
             <Label className={"mt-6 mb-2 font-bold"} htmlFor="duration">Durée</Label>
             <Input {...register('duration')} id="duration"/>
