@@ -17,7 +17,7 @@ export default function CourseCard({course}: CourseCardProps) {
                 <CardDescription>{course.description}</CardDescription>
             </CardHeader>
             <CardContent>
-                <Image src={course.logoImgSrc} alt={course.title} width={256} height={135} className={"mx-auto max-h-[135px] object-cover"} />
+                <Image src={course.logoImgSrc} alt={course.title} width={256} height={135} className={"mx-auto max-h-[135px] object-contain"} />
             </CardContent>
             <CardFooter className={'mt-auto'}>
                 <p>{course.duration} heures</p>
