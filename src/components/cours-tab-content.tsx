@@ -3,11 +3,12 @@ import {getCourseMdxContent} from "@/actions/mdx-actions";
 import Markdown from "markdown-to-jsx";
 
 type CoursTabContentProps = {
+    category: string;
     value: string;
-    mdxPath: string;
+    fileName: string;
 }
-export default async function CoursTabContent({value, mdxPath} : CoursTabContentProps) {
-    const contentMdx = await getCourseMdxContent(mdxPath);
+export default async function CoursTabContent({value, fileName, category} : CoursTabContentProps) {
+    const contentMdx = await getCourseMdxContent(category+"/"+fileName);
 
     return <TabsContent value={value} className={'w-full'}>
 

@@ -92,9 +92,10 @@ export default async function Page({params} : CoursePageProps) {
                 {listeCategories.map((categorie, index) => (
                     <CoursTabContent
                         key={index}
+                        category={params.category}
                         value={categorie.value}
                         // @ts-ignore
-                        mdxPath={course[categorie.value]} />
+                        fileName={course[categorie.value]} />
                 ))}
             </div>
 
