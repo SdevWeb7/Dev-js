@@ -24,7 +24,7 @@ export default async function MenuDesktop({hrefs}: menuDesktopProps) {
 
 
             <NavigationMenuItem>
-                {!session?.user ?
+                {!session?.user?.email ?
                     <NavigationMenuLink asChild><Link className={buttonVariants({
                         variant: "link"
                     })} href="/auth/login">Connexion</Link></NavigationMenuLink> :
