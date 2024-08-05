@@ -10,8 +10,8 @@ import {ScrollArea} from "@/components/ui/scroll-area";
 import {Course} from "@prisma/client";
 import {addCourse, editCourse, uploadImage} from "@/actions/course-actions";
 import CourseFormBtn from "@/components/admin/course-form-btn";
-import {toast} from "sonner";
 import {RadioGroup, RadioGroupItem} from "@/components/ui/radio-group";
+import {useToast} from "@/components/ui/use-toast";
 
 type CourseFormProps = {
     formType: "edit" | "create";
@@ -35,6 +35,7 @@ export default function CourseForm({formType, course, handleCloseModal} : Course
             logoImg: null,
         }
     });
+    const {toast} = useToast();
     const categoryOptions = ["introduction", "html-css", "javascript-react", "next-js"];
 
     const handleSubmit = async () => {
@@ -67,10 +68,10 @@ export default function CourseForm({formType, course, handleCloseModal} : Course
         });
 
         if (response?.error) {
-            toast.error(response.error);
+            toast({ description: response.error });
             return;
         }
-        toast.success(response?.success || "Cours ajouté");
+        toast({ description: response?.success || "Cours ajouté"});
         handleCloseModal();
     };
 

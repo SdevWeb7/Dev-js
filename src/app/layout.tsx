@@ -5,7 +5,8 @@ import Header from "@/components/header/header";
 import {cn} from "@/lib/utils";
 import Footer from "@/components/footer/footer";
 import {SessionProvider} from "next-auth/react";
-import {Toaster} from "sonner";
+import {Toaster} from "@/components/ui/toaster";
+
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -31,7 +32,7 @@ export default function RootLayout({
           <Footer />
       </SessionProvider>
 
-      <Toaster position={'bottom-right'} />
+      <Toaster />
       </body>
     </html>
   );

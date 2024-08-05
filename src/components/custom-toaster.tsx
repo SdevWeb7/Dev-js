@@ -1,13 +1,15 @@
 "use client";
 
-import {toast} from "sonner";
+import {useToast} from "@/components/ui/use-toast";
 
 type CustomToasterProps = {
     message: string;
 }
 export default function CustomToaster({message} : CustomToasterProps) {
-
-    toast.success(message);
+    const { toast } = useToast();
+    toast({
+        description: message,
+    });
 
     return <>
 

@@ -1,3 +1,5 @@
+"use client";
+
 import {Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext} from "@/components/ui/carousel";
 import Image from "next/image";
 import htmlImage from '@/../public/html5-css3.png';
@@ -5,11 +7,32 @@ import jsReactImage from '@/../public/js-react.png';
 import nextjsImage from '@/../public/next-js.jpg';
 import {Button} from "@/components/ui/button";
 import Link from "next/link";
-import CustomToaster from "@/components/custom-toaster";
 import Main from "@/components/main";
+import {useToast} from "@/components/ui/use-toast";
+import {useEffect} from "react";
 
 
 export default function Home({searchParams} : {searchParams: { [key: string]: string | string[] | undefined }}) {
+    const { toast } = useToast();
+
+    useEffect(() => {
+        if (searchParams.successPaiement) {
+            toast({
+                description: "Paiement effectué avec succès. Vous pouvez maintenant accéder à tous nos cours.",
+            });
+        } else if (searchParams.successLogin) {
+            toast({
+                description: "Vous êtes bien connecté.",
+            });
+        } else if (searchParams.successLogout) {
+            toast({
+                description: "Vous êtes bien déconnecté.",
+            });
+        }
+        searchParams.successPaiement = undefined;
+        searchParams.successLogin = undefined;
+        searchParams.successLogout = undefined;
+    }, [searchParams.successPaiement, searchParams.successLogin, searchParams.successLogout]);
 
   return <Main className={'flex flex-col items-center justify-center min-h-[80vh]'}>
 
@@ -58,10 +81,5 @@ export default function Home({searchParams} : {searchParams: { [key: string]: st
               </Button>
           </div>
       </div>
-
-
-      {searchParams.successPaiement && <CustomToaster message={"Paiement effectué avec succès. Vous pouvez maintenant accéder à tous nos cours."} />}
-      {searchParams.successLogin && <CustomToaster message={"Vous êtes bien connecté."} />}
-      {searchParams.successLogout && <CustomToaster message={"Vous êtes bien déconnecté."} />}
   </Main>;
 }
