@@ -29,6 +29,11 @@ export default function Home({searchParams} : {searchParams: { [key: string]: st
                 description: "Vous êtes bien inscrit.",
             });
         }
+        else if (searchParams.successLogout) {
+            toast({
+                description: "Vous êtes bien déconnecté.",
+            });
+        }
         searchParams.successPaiement = undefined;
         searchParams.successLogin = undefined;
         searchParams.successLogout = undefined;
