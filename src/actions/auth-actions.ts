@@ -62,7 +62,8 @@ export async function signUp(prevState: unknown, formData: unknown) {
 
     await signIn("credentials", {
         email,
-        password
+        password,
+        redirectTo: "/?successSignUp=true",
     });
 }
 
