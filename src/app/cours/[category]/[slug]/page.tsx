@@ -24,10 +24,6 @@ const listeCategories = [
         label: "Cours"
     },
     {
-        value: "exemple",
-        label: "Exemples"
-    },
-    {
         value: "exercice",
         label: "Exercices"
     },
