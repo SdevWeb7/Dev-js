@@ -27,10 +27,10 @@ export default async function MenuDesktop({hrefs}: menuDesktopProps) {
                 <LogOutBtn />}
 
 
-            <NavbarLinks />
+        {session?.user?.email && <NavbarLinks />}
 
         <DropdownMenu>
-            <DropdownMenuTrigger asChild  className={"hidden min750:block"}>
+            <DropdownMenuTrigger asChild  className={"hidden min750:block ml-4"}>
                 <Button variant="outline">Cours</Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent className={"hidden min750:block w-56"}>

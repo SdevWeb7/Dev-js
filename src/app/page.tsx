@@ -10,6 +10,7 @@ import Link from "next/link";
 import Main from "@/components/main";
 import {useToast} from "@/components/ui/use-toast";
 import {useEffect} from "react";
+import {Table, TableBody, TableCaption, TableCell, TableFooter, TableRow} from "@/components/ui/table";
 
 
 export default function Home({searchParams} : {searchParams: { [key: string]: string | string[] | undefined }}) {
@@ -68,23 +69,49 @@ export default function Home({searchParams} : {searchParams: { [key: string]: st
       </div>
 
 
-      <div className={"flex flex-col items-center gap-4 mt-12"}>
-          <ul className="text-lg font-semibold my-6 ml-6 list-disc [&>li]:mt-2">
-              <li>50 cours par theme</li>
-              <li>50 exercices par theme</li>
-              <li>Visio-conférences individuelles et collectives (50h par personne)</li>
-          </ul>
-
-          <div className={'flex flex-wrap justify-center gap-2'}>
-              <Button asChild className={'py-6 px-4'}>
-                    <Link href={'/'}>Offre de lancement 89$</Link>
-              </Button>
+      {/*<ul className="text-lg font-semibold my-6 ml-6 list-disc [&>li]:mt-2">*/}
+      {/*    <li>50 cours par theme</li>*/}
+      {/*    <li>50 exercices par theme</li>*/}
+      {/*    <li>Visio-conférences individuelles et collectives (50h par personne)</li>*/}
+      {/*</ul>*/}
 
 
-              <Button asChild className={'py-6 px-4'}>
-                  <Link href={'/'}>En savoir plus (nos promesses)</Link>
-              </Button>
-          </div>
-      </div>
+      <h2 className={'text-3xl mt-16'}>Notre offre</h2>
+      <Table className={'max-w-2xl mx-auto border mt-8'}>
+        <TableBody>
+          <TableRow>
+              <TableCell>4 cours d&apos;introduction</TableCell>
+              <TableCell className="text-right">0€</TableCell>
+          </TableRow>
+            <TableRow>
+                <TableCell>4 cours HTML / CSS</TableCell>
+                <TableCell className="text-right">0€</TableCell>
+            </TableRow>
+            <TableRow>
+                <TableCell>4 cours Javascript / React</TableCell>
+                <TableCell className="text-right">20€</TableCell>
+            </TableRow>
+            <TableRow>
+                <TableCell>4 cours Next.js</TableCell>
+                <TableCell className="text-right">20€</TableCell>
+            </TableRow>
+            <TableRow>
+                <TableCell>5h de visio-coding individuel</TableCell>
+                <TableCell className="text-right">110€</TableCell>
+            </TableRow>
+        </TableBody>
+        <TableFooter>
+            <TableRow>
+                <TableCell>Total</TableCell>
+                <TableCell className="text-right">150€</TableCell>
+            </TableRow>
+        </TableFooter>
+    </Table>
+
+
+
+    <Button asChild className={'py-6 px-4 mt-8'}>
+            <Link href={'/paiement'}>Je suis intéressé</Link>
+      </Button>
   </Main>;
 }
