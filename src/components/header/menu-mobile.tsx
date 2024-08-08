@@ -41,7 +41,7 @@ export default async function MenuMobile({hrefs} : menuMobileProps) {
                     </DropdownMenuGroup>
 
 
-
+                    {session?.user?.email && <>
                     <DropdownMenuSeparator />
                     <Link
                         key={"profil"}
@@ -56,7 +56,7 @@ export default async function MenuMobile({hrefs} : menuMobileProps) {
                         className={buttonVariants({
                             variant: 'link'
                         })}
-                        href={"/aide"}><DropdownMenuItem>Demande d&apos;aide</DropdownMenuItem></Link>
+                        href={"/aide"}><DropdownMenuItem>Demande d&apos;aide</DropdownMenuItem></Link></>}
 
                     <DropdownMenuSeparator />
 
