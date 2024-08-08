@@ -18,7 +18,7 @@ export default withMDX({
             protocol: "https",
          },
          {
-            hostname: "https://dummyimage.com",
+            hostname: "dummyimage.com",
             protocol: "https",
          }
       ]

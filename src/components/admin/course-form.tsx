@@ -5,7 +5,6 @@ import {courseSchema, TCourseForm} from "@/lib/zod-schemas";
 import {zodResolver} from "@hookform/resolvers/zod";
 import {Label} from "@/components/ui/label";
 import {Input} from "@/components/ui/input";
-import {Textarea} from "@/components/ui/textarea";
 import {ScrollArea} from "@/components/ui/scroll-area";
 import {Course} from "@prisma/client";
 import {addCourse, editCourse, uploadImage} from "@/actions/course-actions";
@@ -50,14 +49,14 @@ export default function CourseForm({formType, course, handleCloseModal} : Course
         if (formType === "create") response = await addCourse({
             ...courseData,
             logoImg: undefined,
-            logoImgSrc: logoImgUrl || 'https://dummyimage.com/1280x720/fff/aaa',
+            logoImgSrc: logoImgUrl || course?.logoImgSrc || 'https://dummyimage.com/1280x720/fff/aaa',
             slug: courseData.title.trim().replace(/\s+/g, " ").toLowerCase().replace(/ /g, "-")
         });
 
         else if (formType === "edit") response = await editCourse(course!.id, {
             ...courseData,
             logoImg: undefined,
-            logoImgSrc: logoImgUrl || 'https://dummyimage.com/1280x720/fff/aaa',
+            logoImgSrc: logoImgUrl || course?.logoImgSrc || 'https://dummyimage.com/1280x720/fff/aaa',
             slug: courseData.title.trim().replace(/\s+/g, " ").toLowerCase().replace(/ /g, "-")
         });
 
