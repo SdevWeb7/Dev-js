@@ -23,6 +23,7 @@ export default function CourseForm({formType, course, handleCloseModal} : Course
         defaultValues: {
             category: course?.category || "introduction",
             title: course?.title || "",
+            slug: course?.slug || "",
             description: course?.description || "",
             duration: course?.duration || 1,
             logoImg: null,
@@ -50,14 +51,12 @@ export default function CourseForm({formType, course, handleCloseModal} : Course
             ...courseData,
             logoImg: undefined,
             logoImgSrc: logoImgUrl || course?.logoImgSrc || 'https://dummyimage.com/1280x720/fff/aaa',
-            slug: courseData.title.trim().replace(/\s+/g, " ").toLowerCase().replace(/ /g, "-")
         });
 
         else if (formType === "edit") response = await editCourse(course!.id, {
             ...courseData,
             logoImg: undefined,
             logoImgSrc: logoImgUrl || course?.logoImgSrc || 'https://dummyimage.com/1280x720/fff/aaa',
-            slug: courseData.title.trim().replace(/\s+/g, " ").toLowerCase().replace(/ /g, "-")
         });
 
         if (response?.error) {
@@ -101,6 +100,10 @@ export default function CourseForm({formType, course, handleCloseModal} : Course
             <Label className={"mt-6 mb-2 font-bold"} htmlFor="title">Titre</Label>
             <Input {...register('title')} id="title"/>
             {errors.title && <p>{errors.title.message}</p>}
+
+            <Label className={"mt-6 mb-2 font-bold"} htmlFor="slug">Slug</Label>
+            <Input {...register('slug')} id="slug"/>
+            {errors.slug && <p>{errors.slug.message}</p>}
 
             <Label className={"mt-6 mb-2 font-bold"} htmlFor="description">Description</Label>
             <Input {...register('description')} id="description"/>

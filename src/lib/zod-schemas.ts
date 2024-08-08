@@ -20,6 +20,7 @@ const ACCEPTED_IMAGE_MIME_TYPES = [
 export const courseSchema = z.object({
     category: z.string().trim().min(3, 'Categorie incorrect').max(100, 'Categorie incorrect'),
     title: z.string().trim().min(3, 'Le titre doit avoir au moins 3 caractères').max(100, 'Le titre doit avoir au maximum 100 caractères'),
+    slug: z.string().trim().min(3, 'Le titre doit avoir au moins 3 caractères').max(100, 'Le titre doit avoir au maximum 100 caractères'),
     description: z.string().trim().min(3, 'La description doit faire minimum 3 caractères').max(100, 'la description doit faire maximum 100 caractères'),
     duration: z.coerce.number().int().min(1, 'La durée doit être au moins 1h').max(100, 'La durée doit être au maximum 100h'),
     logoImg: z
