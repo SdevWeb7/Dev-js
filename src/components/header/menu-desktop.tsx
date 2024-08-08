@@ -1,16 +1,14 @@
-import {
-    NavigationMenu,
-    NavigationMenuContent,
-    NavigationMenuItem, NavigationMenuLink,
-    NavigationMenuList,
-    NavigationMenuTrigger, navigationMenuTriggerStyle
-} from "@/components/ui/navigation-menu";
-import {buttonVariants} from "@/components/ui/button";
-import {cn} from "@/lib/utils";
+import {Button, buttonVariants} from "@/components/ui/button";
 import Link from "next/link";
 import LogOutBtn from "@/components/auth/log-out-btn";
 import {auth} from "@/lib/auth-no-edge";
 import NavbarLinks from "@/components/header/navbar-links";
+import {
+    DropdownMenu, DropdownMenuContent,
+    DropdownMenuGroup, DropdownMenuItem,
+    DropdownMenuTrigger
+} from "@/components/ui/dropdown-menu";
+
 
 type menuDesktopProps = {
     hrefs: { title: string; href: string; }[]
@@ -19,39 +17,33 @@ export default async function MenuDesktop({hrefs}: menuDesktopProps) {
     const session = await auth();
 
 
-    return <NavigationMenu className={"hidden min750:block"}>
-        <NavigationMenuList className={"space-x-6"}>
+    return <nav className={"hidden min750:flex"}>
 
 
-            <NavigationMenuItem>
-                {!session?.user?.email ?
-                    <NavigationMenuLink asChild><Link className={buttonVariants({
-                        variant: "link"
-                    })} href="/auth/login">Connexion</Link></NavigationMenuLink> :
-                    <LogOutBtn />}
-            </NavigationMenuItem>
+            {!session?.user?.email ?
+                <Link className={buttonVariants({
+                    variant: "link"
+                })} href="/auth/login">Connexion</Link> :
+                <LogOutBtn />}
 
 
             <NavbarLinks />
 
-
-            <NavigationMenuItem>
-                <NavigationMenuTrigger
-                    className={buttonVariants({
-                        variant: 'outline'
-                    })}>Cours</NavigationMenuTrigger>
-
-                <NavigationMenuContent className={'min-w-[170px]'}>
+        <DropdownMenu>
+            <DropdownMenuTrigger asChild  className={"hidden min750:block"}>
+                <Button variant="outline">Cours</Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent className={"hidden min750:block w-56"}>
+                <DropdownMenuGroup>
                     {hrefs.map((href) => (
-                        <NavigationMenuLink key={href.href} asChild>
-                            <Link
-                                href={href.href}
-                                key={href.title}
-                                className={cn(navigationMenuTriggerStyle(), 'w-full')}>{href.title}</Link>
-                        </NavigationMenuLink>
+                        <Link className={buttonVariants({
+                            variant: 'link'
+                        })} key={href.title} href={href.href}><DropdownMenuItem>{href.title}</DropdownMenuItem></Link>
                     ))}
-                </NavigationMenuContent>
-            </NavigationMenuItem>
-        </NavigationMenuList>
-    </NavigationMenu>
+                </DropdownMenuGroup>
+            </DropdownMenuContent>
+        </DropdownMenu>
+
+
+    </nav>
 }

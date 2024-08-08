@@ -22,18 +22,16 @@ export default function NavbarLinks() {
     return <>
 
     {routes.map((route) => (
-        <NavigationMenuItem className={'relative'} key={route.path}>
-            <NavigationMenuLink asChild>
+        <div key={route.path}>
                 <Link className={buttonVariants({
                     variant: 'link'
                 })} href={route.path}>{route.name}</Link>
-            </NavigationMenuLink>
 
             {pathname === route.path && (
                 <motion.div
                     layoutId={'header-active-link'}
                     className={'bg-my-primary h-2 w-full absolute -bottom-5 rounded-full'}/>)}
-        </NavigationMenuItem>
+        </div>
     ))}
     </>;
 }
