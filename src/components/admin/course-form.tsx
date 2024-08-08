@@ -50,7 +50,7 @@ export default function CourseForm({formType, course, handleCloseModal} : Course
         if (formType === "create") response = await addCourse({
             ...courseData,
             logoImg: undefined,
-            logoImgSrc: logoImgUrl || course?.logoImgSrc || 'https://dummyimage.com/1280x720/fff/aaa',
+            logoImgSrc: logoImgUrl || 'https://dummyimage.com/1280x720/fff/aaa',
         });
 
         else if (formType === "edit") response = await editCourse(course!.id, {
