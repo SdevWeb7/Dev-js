@@ -26,10 +26,10 @@ export const courseSchema = z.object({
         .any()
         .nullable()
         .refine((files) => {
-            return files?.[0]?.size <= MAX_FILE_SIZE;
+            return !files || files?.[0]?.size <= MAX_FILE_SIZE;
         }, `L'image est trop volumineuse.`)
         .refine(
-            (files) => ACCEPTED_IMAGE_MIME_TYPES.includes(files?.[0]?.type),
+            (files) => !files || ACCEPTED_IMAGE_MIME_TYPES.includes(files?.[0]?.type),
             "Format supportés : .jpg, .jpeg, .png et .webp"
         ),
 });

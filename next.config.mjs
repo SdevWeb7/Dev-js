@@ -16,6 +16,10 @@ export default withMDX({
          {
             hostname: "mgg5womv3ce8kqvl.public.blob.vercel-storage.com",
             protocol: "https",
+         },
+         {
+            hostname: "https://dummyimage.com",
+            protocol: "https",
          }
       ]
    }
