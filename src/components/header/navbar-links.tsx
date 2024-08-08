@@ -22,7 +22,7 @@ export default function NavbarLinks() {
     return <>
 
     {routes.map((route) => (
-        <div key={route.path}>
+        <div key={route.path} className={"relative"}>
                 <Link className={buttonVariants({
                     variant: 'link'
                 })} href={route.path}>{route.name}</Link>
