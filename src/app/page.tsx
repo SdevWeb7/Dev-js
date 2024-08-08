@@ -43,8 +43,8 @@ export default function Home({searchParams} : {searchParams: { [key: string]: st
   return <Main className={'flex flex-col items-center justify-center min-h-[80vh]'}>
 
       <div className={'flex flex-wrap justify-center items-center gap-28 mt-8'}>
-          <h1 className="scroll-m-20 text-3xl font-extrabold tracking-tight min750:text-5xl min750:leading-tight">
-              <span className={'text-my-primary'}>Dev</span>.js,<br/> apprenez à maitriser<br/>les <span className={"font-extrabold text-my-primary"}>technologies actuelles</span> <br/> du développement web <br/>en vous amusant
+          <h1 className="scroll-m-20 text-5xl font-extrabold tracking-tight min750:text-7xl min750:leading-tight">
+              <span className={'text-my-primary'}>Dev</span>.js,<br/> apprenez les bases<br/>du <span className={"font-extrabold text-my-primary"}>développement web</span>
           </h1>
 
 
