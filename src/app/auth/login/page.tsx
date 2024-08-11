@@ -15,6 +15,7 @@ export default function Page({searchParams} : {searchParams: { [key: string]: st
                 description: "Veuillez vous connecter pour accéder à cette page."
             });
         }
+        searchParams.mustConnect = undefined;
     }, [searchParams.mustConnect]);
 
 

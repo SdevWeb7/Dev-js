@@ -14,13 +14,22 @@ datasource db {
 }
 
 model User {
-  id             String   @id @default(cuid())
-  email          String   @unique
-  hashedPassword String
-  createdAt      DateTime @default(now())
-  updatedAt      DateTime @updatedAt
-  hasAccess      Boolean  @default(false)
-  isAdmin        Boolean  @default(false)
+  id                       String    @id @default(cuid())
+  email                    String    @unique
+  hashedPassword           String
+  createdAt                DateTime  @default(now())
+  updatedAt                DateTime  @updatedAt
+  hasAccess                Boolean   @default(false)
+  isAdmin                  Boolean   @default(false)
+  firstname                String?
+  lastname                 String?
+  bio                      String?
+  avatarImgSrc             String?
+  urlLinkedIn              String?
+  urlGithub                String?
+  urlPortfolio             String?
+  resetPasswordToken       String?   @unique
+  resetPasswordTokenExpiry DateTime?
 }
 
 model Course {

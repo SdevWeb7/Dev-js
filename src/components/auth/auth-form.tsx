@@ -40,6 +40,8 @@ export default function AuthForm({ formType }: AuthFormProps) {
                         />
                     </div>
 
+                    {formType === "logIn" && <Link href="/auth/reset-password" className="text-sm text-zinc-500">Mot de passe oublié?</Link>}
+
                     <AuthFormBtn type={formType}/>
 
                     {signUpError && (

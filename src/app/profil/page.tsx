@@ -1,5 +1,8 @@
+
 import Main from "@/components/main";
 import H1 from "@/components/h1";
+import ProfilPageWrapper from "@/components/profil/ProfilPageWrapper";
+import ProfilCard from "@/components/profil/profil-card";
 
 
 export default function Page() {
@@ -8,6 +11,9 @@ export default function Page() {
 
         <H1>Profil</H1>
 
-        <p className={'text-center mt-12'}>Page Profil</p>
+        <ProfilPageWrapper>
+            <ProfilCard />
+        </ProfilPageWrapper>
+
     </Main>
 }

@@ -44,8 +44,7 @@ export async function signUp(prevState: unknown, formData: unknown) {
     const formDataEntries = Object.fromEntries(formData.entries());
 
     const validatedFormData = authSchema.safeParse(formDataEntries);
-    if (!validatedFormData.success) return { message: "Erreur server." };
-    if (!validatedFormData.success) return { message: "Erreur server." };
+    if (!validatedFormData.success) return { message: "Erreur serveur." };
 
     const { email, password } = validatedFormData.data;
     const hashedPassword = await bcrypt.hash(password, 10);

@@ -48,3 +48,38 @@ export const courseSchemaValidator = z.object({
 });
 
 export type TCourseFormValidator = z.infer<typeof courseSchemaValidator>;
+
+
+
+export const requestResetPasswordSchema = z.object({
+    email: z.string().trim().email().max(100, "L'email doit faire au maximum 100 caractères"),
+});
+
+export const resetPasswordSchema = z.object({
+    password: z.string().trim().min(8, 'Le mot de passe doit faire au moins 8 caractères').max(100, 'Le mot de passe doit faire au maximum 100 caractères'),
+    passwordConfirmation: z.string().trim().min(8, 'Le mot de passe doit faire au moins 8 caractères').max(100, 'Le mot de passe doit faire au maximum 100 caractères')
+}).refine((data) => data.passwordConfirmation === data.password, 'Les mots de passe ne correspondent pas');
+
+export const tokenSchema = z.object({
+    token: z.string().trim().min(8, 'Token incorrect').max(100, 'Token incorrect')
+});
+
+export const profileSchema = z.object({
+    firstName: z.string().trim().min(3, 'Au moins 3 caractères').max(30, 'Au maximum 30 caractères').nullable(),
+    lastName: z.string().trim().min(3, 'Au moins 3 caractères').max(30, 'Au maximum 30 caractères').nullable(),
+    avatarImg: z.any().nullable()
+        .refine((files) => {
+            return !files || files?.[0]?.size <= MAX_FILE_SIZE;
+        }, `L'image est trop volumineuse.`)
+        .refine(
+            (files) => !files || ACCEPTED_IMAGE_MIME_TYPES.includes(files?.[0]?.type),
+            "Format supportés : .jpg, .jpeg, .png et .webp"
+        ),
+    avatarImgSrc: z.string().nullable(),
+    bio: z.string().trim().max(200, 'La biographie ne doit pas dépasser 200 caractères').nullable(),
+    urlLinkedIn: z.string().trim().url("Veuillez entrer une adresse valide").nullable(),
+    urlGithub: z.string().trim().url("Veuillez entrer une adresse valide").nullable(),
+    urlPortfolio: z.string().trim().url("Veuillez entrer une adresse valide").nullable(),
+});
+
+export type TProfileForm = z.infer<typeof profileSchema>;

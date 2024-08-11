@@ -12,7 +12,7 @@ export const nextAuthEdgeConfig = {
             const isTryingToAccessProtectedPath = protectedPaths.some(path =>
                 request.nextUrl.pathname.includes(path)
             );
-            const authenticatedPaths = ["profil", "aide"];
+            const authenticatedPaths = ["profil"];
             const isTryingToAccessAuthenticatedPath = authenticatedPaths.some(path =>
                 request.nextUrl.pathname.includes(path)
             );
@@ -50,6 +50,13 @@ export const nextAuthEdgeConfig = {
                 token.email = user.email!;
                 token.hasAccess = user.hasAccess;
                 token.isAdmin = user.isAdmin;
+                token.firstname = user.firstname;
+                token.lastname = user.lastname;
+                token.avatarImgSrc = user.avatarImgSrc;
+                token.urlLinkedIn = user.urlLinkedIn;
+                token.urlGithub = user.urlGithub;
+                token.urlPortfolio = user.urlPortfolio;
+                token.bio = user.bio;
             }
 
             if (trigger === "update") {
@@ -70,6 +77,13 @@ export const nextAuthEdgeConfig = {
             session.user.id = token.userId;
             session.user.hasAccess = token.hasAccess;
             session.user.isAdmin = token.isAdmin;
+            session.user.firstname = token.firstname;
+            session.user.lastname = token.lastname;
+            session.user.avatarImgSrc = token.avatarImgSrc;
+            session.user.urlLinkedIn = token.urlLinkedIn;
+            session.user.urlGithub = token.urlGithub;
+            session.user.urlPortfolio = token.urlPortfolio;
+            session.user.bio = token.bio;
 
             return session;
         }
