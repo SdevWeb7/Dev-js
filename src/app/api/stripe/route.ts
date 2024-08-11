@@ -27,6 +27,7 @@ export async function POST(request: Request) {
                 },
                 data: {
                     hasAccess: true,
+                    hoursLeft: 5,
                 },
             });
             break;

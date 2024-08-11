@@ -9,7 +9,7 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function sendEmail() {
     const session = await auth();
-    if (!session?.user?.email) return {error: 'Veuillez vous connecter pour envoyer un email'};
+    if (!session?.user?.email) return {error: 'Veuillez vous connecter pour demander de l\'aide'};
 
 
     const {data, error} = await resend.emails.send({

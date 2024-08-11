@@ -57,6 +57,7 @@ export const nextAuthEdgeConfig = {
                 token.urlGithub = user.urlGithub;
                 token.urlPortfolio = user.urlPortfolio;
                 token.bio = user.bio;
+                token.hoursLeft = user.hoursLeft;
             }
 
             if (trigger === "update") {
@@ -68,6 +69,14 @@ export const nextAuthEdgeConfig = {
                 });
                 if (userFromDb) {
                     token.hasAccess = userFromDb.hasAccess;
+                    token.hoursLeft = userFromDb.hoursLeft;
+                    token.firstname = userFromDb.firstname;
+                    token.lastname = userFromDb.lastname;
+                    token.avatarImgSrc = userFromDb.avatarImgSrc;
+                    token.urlLinkedIn = userFromDb.urlLinkedIn;
+                    token.urlGithub = userFromDb.urlGithub;
+                    token.urlPortfolio = userFromDb.urlPortfolio;
+                    token.bio = userFromDb.bio;
                 }
             }
 
@@ -84,7 +93,8 @@ export const nextAuthEdgeConfig = {
             session.user.urlGithub = token.urlGithub;
             session.user.urlPortfolio = token.urlPortfolio;
             session.user.bio = token.bio;
-
+            session.user.hoursLeft = token.hoursLeft;
+            
             return session;
         }
     },

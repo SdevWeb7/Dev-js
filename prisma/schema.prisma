@@ -30,6 +30,7 @@ model User {
   urlPortfolio             String?
   resetPasswordToken       String?   @unique
   resetPasswordTokenExpiry DateTime?
+  hoursLeft                Int       @default(0)
 }
 
 model Course {

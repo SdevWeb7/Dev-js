@@ -5,8 +5,12 @@ export default async function ProfilCard() {
     const session = await auth();
 
     return <>
-        <p><b>Photo de profil</b> : {session?.user.avatarImgSrc ?? "non renseigné"}</p>
+        <p><b>Type de compte</b> : {session?.user.hasAccess ? "Abonné" : "Gratuit"}</p>
+        <p><b>Heure(s) de cours individuelle restante(s)</b> : {session?.user.hasAccess ? `${session?.user.hoursLeft} heure(s)` : "Non abonné(e)"}</p>
 
+
+
+        <p><b>Photo de profil</b> : {session?.user.avatarImgSrc ?? "non renseigné"}</p>
 
 
         <p><b>Email</b> : {session?.user.email}</p>

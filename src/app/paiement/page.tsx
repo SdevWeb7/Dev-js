@@ -7,6 +7,7 @@ import {useEffect, useTransition} from "react";
 import {useSession} from "next-auth/react";
 import {useRouter} from "next/navigation";
 import Main from "@/components/main";
+import {Table, TableBody, TableCell, TableFooter, TableRow} from "@/components/ui/table";
 
 type SearchParamsType = { searchParams: { [key: string]: string | string[] | undefined } };
 export default function Page({searchParams} : SearchParamsType) {
@@ -16,31 +17,68 @@ export default function Page({searchParams} : SearchParamsType) {
 
 useEffect(() => {
     const updateJWT = async() => {
-        if (data?.user.hasAccess || searchParams.success) {
+        if (searchParams.success) {
             await update(true);
-            router.push('/?successPaiement=true');
         }
     };
     updateJWT();
+    if (data?.user?.hasAccess) {
+        router.push('/?successPaiement=true');
+    }
 }, [searchParams.success, data]);
     return <Main className={'flex flex-col items-center gap-16'}>
         <H1>Paiement</H1>
 
-        <p>L&apos;acces aux cours React et Next.js sont accessibles après une petite contribution de 89€.</p>
+
+        <h2 className={"text-xl mt-4"}>L&apos;accès aux cours <b>React</b> et <b>Next.js</b> sont accessibles après une petite contribution de 150€.</h2>
+        <Table className={'max-w-2xl mx-auto border mt-2'}>
+            <TableBody>
+                <TableRow>
+                    <TableCell>4 cours d&apos;introduction</TableCell>
+                    <TableCell className="text-right">0€</TableCell>
+                </TableRow>
+                <TableRow>
+                    <TableCell>4 cours HTML / CSS</TableCell>
+                    <TableCell className="text-right">0€</TableCell>
+                </TableRow>
+                <TableRow>
+                    <TableCell>4 cours Javascript / React</TableCell>
+                    <TableCell className="text-right">20€</TableCell>
+                </TableRow>
+                <TableRow>
+                    <TableCell>4 cours Next.js</TableCell>
+                    <TableCell className="text-right">20€</TableCell>
+                </TableRow>
+                <TableRow>
+                    <TableCell>5h de visio-coding individuel</TableCell>
+                    <TableCell className="text-right">110€</TableCell>
+                </TableRow>
+            </TableBody>
+            <TableFooter>
+                <TableRow>
+                    <TableCell>Total</TableCell>
+                    <TableCell className="text-right">150€</TableCell>
+                </TableRow>
+            </TableFooter>
+        </Table>
+
+
 
         {!searchParams.success && (
             <Button
                 disabled={isPending}
                 onClick={() => {
-                    startTransition(async() => {
+                    startTransition(async () => {
                         await createCheckoutSession();
                     });
-                }}>Abonnement (89€)</Button>
+                }}>Abonnement (150€)</Button>
         )}
+
 
         {searchParams.success && <p className={'text-sm text-green-700'}>Le paiement a bien été effectué.</p>}
 
-        {searchParams.cancelled && <p className={'text-sm text-red-700'}>Le paiement a échoué. Vous pouvez retenter ou nous contacter.</p>}
+        {searchParams.cancelled &&
+           <p className={'text-sm text-red-700'}>Le paiement a échoué. Vous pouvez retenter ou nous contacter.</p>}
 
     </Main>;
 }

@@ -1,17 +1,20 @@
 import { User } from "next-auth";
 
+type nullableString = string | null;
+
 declare module "next-auth" {
     interface User {
-        hasAccess: boolean;
         email: string;
+        hasAccess: boolean;
         isAdmin: boolean;
-        firstname: string;
-        lastname: string;
-        avatarImgSrc: string;
-        urlLinkedIn: string;
-        urlGithub: string;
-        urlPortfolio: string;
-        bio: string;
+        firstname: nullableString;
+        lastname: nullableString;
+        avatarImgSrc: nullableString;
+        urlLinkedIn: nullableString;
+        urlGithub: nullableString;
+        urlPortfolio: nullableString;
+        bio: nullableString;
+        hoursLeft: number;
     }
 
     interface Session {
@@ -27,12 +30,13 @@ declare module "@auth/core/jwt" {
         email: string;
         hasAccess: boolean;
         isAdmin: boolean;
-        firstname: string;
-        lastname: string;
-        avatarImgSrc: string;
-        urlLinkedIn: string;
-        urlGithub: string;
-        urlPortfolio: string;
-        bio: string;
+        firstname: nullableString;
+        lastname: nullableString;
+        avatarImgSrc: nullableString;
+        urlLinkedIn: nullableString;
+        urlGithub: nullableString;
+        urlPortfolio: nullableString;
+        bio: nullableString;
+        hoursLeft: number;
     }
 }
