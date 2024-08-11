@@ -10,7 +10,7 @@ import Link from "next/link";
 import Main from "@/components/main";
 import {useToast} from "@/components/ui/use-toast";
 import {useEffect} from "react";
-import {Table, TableBody, TableCaption, TableCell, TableFooter, TableRow} from "@/components/ui/table";
+import {Table, TableBody, TableCell, TableFooter, TableRow} from "@/components/ui/table";
 
 
 export default function Home({searchParams} : {searchParams: { [key: string]: string | string[] | undefined }}) {
@@ -38,7 +38,8 @@ export default function Home({searchParams} : {searchParams: { [key: string]: st
         searchParams.successPaiement = undefined;
         searchParams.successLogin = undefined;
         searchParams.successLogout = undefined;
-    }, [searchParams.successPaiement, searchParams.successLogin, searchParams.successLogout]);
+        searchParams.successSignUp = undefined;
+    }, [searchParams.successSignUp, searchParams.successLogin, searchParams.successLogout, searchParams.successPaiement]);
 
   return <Main className={'flex flex-col items-center justify-center min-h-[80vh]'}>
 
@@ -67,13 +68,6 @@ export default function Home({searchParams} : {searchParams: { [key: string]: st
               </Carousel>
           </div>
       </div>
-
-
-      {/*<ul className="text-lg font-semibold my-6 ml-6 list-disc [&>li]:mt-2">*/}
-      {/*    <li>50 cours par theme</li>*/}
-      {/*    <li>50 exercices par theme</li>*/}
-      {/*    <li>Visio-conférences individuelles et collectives (50h par personne)</li>*/}
-      {/*</ul>*/}
 
 
       <h2 className={'text-3xl mt-16'}>Notre offre</h2>

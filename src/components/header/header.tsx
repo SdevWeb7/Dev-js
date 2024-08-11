@@ -10,19 +10,18 @@ const hrefs = [
         href: '/cours/introduction'
     },
     {
-        title: 'Html / Css',
+        title: 'Html & Css',
         href: '/cours/html-css'
     },
     {
-        title: 'Javascript / React',
+        title: 'Javascript & React',
         href: '/cours/javascript-react'
     },
     {
         title: 'Next.js',
         href: '/cours/next-js'
     }
-
-    ]
+]
 export default async function Header() {
 
     return <header className={'bg-white py-2 px-8 border-b-2 sticky top-0 z-30'}>

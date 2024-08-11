@@ -1,33 +1,25 @@
 "use client";
 
-import {NavigationMenuItem, NavigationMenuLink} from "@/components/ui/navigation-menu";
 import Link from "next/link";
 import {motion} from "framer-motion";
 import {usePathname} from "next/navigation";
 import {buttonVariants} from "@/components/ui/button";
 
-const routes = [
-    {
-        name: "Profil",
-        path: "/profil"
-    },
-    {
-        name: "Demande d'aide",
-        path: "/aide"
-    }
-]
-export default function NavbarLinks() {
+type NavbarLinksProps = {
+    hrefs: { title: string; href: string; }[]
+}
+export default function NavbarLinks({hrefs} : NavbarLinksProps) {
     const pathname = usePathname();
 
     return <>
 
-    {routes.map((route) => (
-        <div key={route.path} className={"relative"}>
+    {hrefs.map((route) => (
+        <div key={route.href} className={"relative"}>
                 <Link className={buttonVariants({
                     variant: 'link'
-                })} href={route.path}>{route.name}</Link>
+                })} href={route.href}>{route.title}</Link>
 
-            {pathname === route.path && (
+            {pathname === route.href && (
                 <motion.div
                     layoutId={'header-active-link'}
                     className={'bg-my-primary h-2 w-full absolute -bottom-5 rounded-full'}/>)}

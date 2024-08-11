@@ -11,7 +11,7 @@ import {
 import Link from "next/link";
 import {auth} from "@/lib/auth-no-edge";
 import LogOutBtn from "@/components/auth/log-out-btn";
-import {cn} from "@/lib/utils";
+import HelpDialog from "@/components/aide/help-dialog";
 
 
 type menuMobileProps = {
@@ -25,10 +25,10 @@ export default async function MenuMobile({hrefs} : menuMobileProps) {
 
         return (
             <DropdownMenu>
-                <DropdownMenuTrigger asChild  className={"block min750:hidden"}>
+                <DropdownMenuTrigger asChild  className={"block min800:hidden"}>
                     <Button variant="outline">Menu</Button>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent className={"block min750:hidden w-56"}>
+                <DropdownMenuContent className={"block min800:hidden w-56"}>
                     <DropdownMenuLabel>Cours</DropdownMenuLabel>
                     <DropdownMenuSeparator />
                     <DropdownMenuGroup>
@@ -51,16 +51,11 @@ export default async function MenuMobile({hrefs} : menuMobileProps) {
                         href={"/profil"}><DropdownMenuItem>Profil</DropdownMenuItem></Link>
 
 
-                    <Link
-                        key={"aide"}
-                        className={buttonVariants({
-                            variant: 'link'
-                        })}
-                        href={"/aide"}><DropdownMenuItem>Demande d&apos;aide</DropdownMenuItem></Link></>}
+                    <HelpDialog /></>}
 
                     <DropdownMenuSeparator />
 
-                    {session?.user?.email ? <LogOutBtn className={'ml-2'} /> :
+                    {session?.user?.email ? <DropdownMenuItem><LogOutBtn /></DropdownMenuItem> :
                         <Link
                             className={buttonVariants({
                                 variant: 'link'

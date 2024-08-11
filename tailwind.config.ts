@@ -21,6 +21,7 @@ const config = {
       screens: {
         "xs": "375px",
         "min750": "750px",
+        "min800": "800px",
       },
       fontFamily: {
         "calistoga": "Calistoga, sans-serif",
