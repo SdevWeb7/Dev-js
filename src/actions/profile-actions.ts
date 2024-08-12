@@ -4,6 +4,7 @@ import {profileSchema, TProfileForm} from "@/lib/zod-schemas";
 import prisma from "@/lib/db";
 import {auth} from "@/lib/auth-no-edge";
 import {revalidatePath} from "next/cache";
+import {is} from "unist-util-is";
 
 
 export async function updateProfilUser({data} : {data: TProfileForm}) {
@@ -45,6 +46,7 @@ export const updateIsPublicProfil = async (isPublic: boolean) => {
     } catch (error) {
         return {error: "Une erreur est survenue…"};
     }
+    console.log(isPublic);
 
     return {success: "Le profil a bien été mis à jour"};
 

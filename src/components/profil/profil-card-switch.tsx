@@ -10,12 +10,13 @@ export default function ProfilCardSwitch () {
     const {data, update} = useSession();
     const {toast} = useToast();
 
-    const handleIsPublicChange = async (checked: boolean) => {
-        const {success, error} = await updateIsPublicProfil(checked);
+    const handleIsPublicChange = async () => {
+        if (!data?.user) return;
+        const {success, error} = await updateIsPublicProfil(!data?.user.isProfilPublic);
 
         if (error) toast({description: error});
         else {
-            await update();
+            await update(true);
             toast({description: success});
         }
     }
