@@ -4,8 +4,11 @@ import defaultSmileyAvatar from "../../../public/smiley.webp";
 import Link from "next/link";
 import prisma from "@/lib/db";
 
-export default async function ProfilsCommuContent() {
-
+type ProfilsCommuContentProps = {
+    page: number
+    perPage: number
+}
+export default async function ProfilsCommuContent({page, perPage} : ProfilsCommuContentProps) {
     const usersPublic = await prisma.user.findMany({
         where: { isProfilPublic: true },
         select: {
@@ -18,10 +21,14 @@ export default async function ProfilsCommuContent() {
             urlPortfolio: true,
             createdAt: true
         },
+        skip: (page - 1) * perPage,
+        take: perPage,
         orderBy: { createdAt: 'asc' }
     })
 
-    return <section className={'flex flex-wrap gap-12'}>
+
+    return <>
+        <section className={'flex flex-wrap gap-12'}>
 
         {usersPublic.map(user => (
             <Card
@@ -55,4 +62,5 @@ export default async function ProfilsCommuContent() {
             </Card>))}
 
     </section>
+    </>
 }
