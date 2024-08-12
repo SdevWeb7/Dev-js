@@ -30,9 +30,14 @@ export default async function MenuDesktop({hrefs}: menuDesktopProps) {
                 </DropdownMenuTrigger>
                 <DropdownMenuContent className={"hidden min800:block w-56"}>
                     <DropdownMenuGroup>
-                            <Link className={buttonVariants({
-                                variant: 'link'
-                            })} href={"/profil"}><DropdownMenuItem>Profil</DropdownMenuItem></Link>
+                        <Link className={buttonVariants({
+                            variant: 'link'
+                        })} href={"/profil"}><DropdownMenuItem>Profil</DropdownMenuItem></Link>
+
+
+                        <Link className={buttonVariants({
+                            variant: 'link'
+                        })} href={"/profils-communaute"}><DropdownMenuItem>Profils communauté</DropdownMenuItem></Link>
 
                         <HelpDialog />
 

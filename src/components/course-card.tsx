@@ -10,7 +10,7 @@ type CourseCardProps = {
 }
 export default function CourseCard({course}: CourseCardProps) {
 
-    return <Link href={`/cours/${course.category}/${course.slug}`}>
+    return <Link className={'hover:scale-105 transition'} href={`/cours/${course.category}/${course.slug}`}>
         <Card className={'w-full min750:w-[350px] h-full flex flex-col gap-8 p-4'}>
             <CardHeader>
                 <CardTitle>{course.title}</CardTitle>
