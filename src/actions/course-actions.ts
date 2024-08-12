@@ -52,9 +52,7 @@ export const deleteCourse = async (id: string) => {
 
     try {
         await prisma.course.delete({
-            where: {
-                id: id
-            }
+            where: { id: id }
         });
     } catch (error) {
         return { error: "Il y a eu un problème dans la suppression du cours." };
@@ -62,14 +60,4 @@ export const deleteCourse = async (id: string) => {
 
     revalidatePath("/admin");
     return {success: "Le cours a bien été supprimé"};
-}
-
-export const uploadImage = async (formData: FormData, label: string) => {
-
-    const file = formData.get(label) as File
-    const filename = file.name
-
-    const { url } = await put(filename,file, { access: 'public' });
-
-    return url;
 }

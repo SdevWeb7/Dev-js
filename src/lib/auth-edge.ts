@@ -58,6 +58,7 @@ export const nextAuthEdgeConfig = {
                 token.urlPortfolio = user.urlPortfolio;
                 token.bio = user.bio;
                 token.hoursLeft = user.hoursLeft;
+                token.isProfilPublic = user.isProfilPublic;
             }
 
             if (trigger === "update") {
@@ -77,6 +78,7 @@ export const nextAuthEdgeConfig = {
                     token.urlGithub = userFromDb.urlGithub;
                     token.urlPortfolio = userFromDb.urlPortfolio;
                     token.bio = userFromDb.bio;
+                    token.isProfilPublic = userFromDb.isProfilPublic;
                 }
             }
 
@@ -94,7 +96,8 @@ export const nextAuthEdgeConfig = {
             session.user.urlPortfolio = token.urlPortfolio;
             session.user.bio = token.bio;
             session.user.hoursLeft = token.hoursLeft;
-            
+            session.user.isProfilPublic = token.isProfilPublic;
+
             return session;
         }
     },

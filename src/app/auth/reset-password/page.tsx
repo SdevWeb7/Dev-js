@@ -8,6 +8,7 @@ import {Button} from "@/components/ui/button";
 import {Label} from "@/components/ui/label";
 import {Input} from "@/components/ui/input";
 import {requestResetPassword} from "@/actions/reset-password-actions";
+import ResetPasswordBtn from "@/components/auth/reset-password-btn";
 
 export default function Page() {
     const { toast } = useToast();
@@ -47,10 +48,8 @@ export default function Page() {
                         id="email"
                         name="email" />
 
-                    <Button
-                        type={'submit'}
-                        variant={'default'}
-                        className={'w-full mt-8 py-6'}>Recevoir un email de réinitialisation</Button>
+                    <ResetPasswordBtn />
+
                 </form>
             </CardContent>
         </Card>

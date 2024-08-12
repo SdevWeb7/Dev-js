@@ -65,9 +65,9 @@ export const tokenSchema = z.object({
 });
 
 export const profileSchema = z.object({
-    firstName: z.string().trim().min(3, 'Au moins 3 caractères').max(30, 'Au maximum 30 caractères').nullable(),
-    lastName: z.string().trim().min(3, 'Au moins 3 caractères').max(30, 'Au maximum 30 caractères').nullable(),
-    avatarImg: z.any().nullable()
+    firstname: z.string().trim().min(3, 'Au moins 3 caractères').max(30, 'Au maximum 30 caractères').optional().nullable(),
+    lastname: z.string().trim().min(3, 'Au moins 3 caractères').max(30, 'Au maximum 30 caractères').optional().nullable(),
+    avatarImg: z.any().optional().nullable()
         .refine((files) => {
             return !files || files?.[0]?.size <= MAX_FILE_SIZE;
         }, `L'image est trop volumineuse.`)
@@ -75,11 +75,11 @@ export const profileSchema = z.object({
             (files) => !files || ACCEPTED_IMAGE_MIME_TYPES.includes(files?.[0]?.type),
             "Format supportés : .jpg, .jpeg, .png et .webp"
         ),
-    avatarImgSrc: z.string().nullable(),
-    bio: z.string().trim().max(200, 'La biographie ne doit pas dépasser 200 caractères').nullable(),
-    urlLinkedIn: z.string().trim().url("Veuillez entrer une adresse valide").nullable(),
-    urlGithub: z.string().trim().url("Veuillez entrer une adresse valide").nullable(),
-    urlPortfolio: z.string().trim().url("Veuillez entrer une adresse valide").nullable(),
+    avatarImgSrc: z.string().optional().nullable(),
+    bio: z.string().trim().max(200, 'La biographie ne doit pas dépasser 200 caractères').optional().nullable(),
+    urlLinkedIn: z.string().trim().url("Veuillez entrer une adresse valide").optional().nullable(),
+    urlGithub: z.string().trim().url("Veuillez entrer une adresse valide").optional().nullable(),
+    urlPortfolio: z.string().trim().url("Veuillez entrer une adresse valide").optional().nullable(),
 });
 
 export type TProfileForm = z.infer<typeof profileSchema>;

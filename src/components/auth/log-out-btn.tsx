@@ -7,7 +7,7 @@ import {useTransition} from "react";
 type LogOutBtnProps = {
     className?: string
 }
-export default function LogOutBtn({className = ''}) {
+export default function LogOutBtn({className = ''} : LogOutBtnProps) {
 
     const [isPending, startTransition] = useTransition();
 

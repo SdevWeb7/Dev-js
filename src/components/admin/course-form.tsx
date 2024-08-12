@@ -7,10 +7,11 @@ import {Label} from "@/components/ui/label";
 import {Input} from "@/components/ui/input";
 import {ScrollArea} from "@/components/ui/scroll-area";
 import {Course} from "@prisma/client";
-import {addCourse, editCourse, uploadImage} from "@/actions/course-actions";
+import {addCourse, editCourse} from "@/actions/course-actions";
 import CourseFormBtn from "@/components/admin/course-form-btn";
 import {RadioGroup, RadioGroupItem} from "@/components/ui/radio-group";
 import {useToast} from "@/components/ui/use-toast";
+import {uploadImage} from "@/actions/image-actions";
 
 type CourseFormProps = {
     formType: "edit" | "create";

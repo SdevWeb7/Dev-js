@@ -31,6 +31,7 @@ model User {
   resetPasswordToken       String?   @unique
   resetPasswordTokenExpiry DateTime?
   hoursLeft                Int       @default(0)
+  isProfilPublic           Boolean   @default(false)
 }
 
 model Course {

@@ -15,6 +15,7 @@ declare module "next-auth" {
         urlPortfolio: nullableString;
         bio: nullableString;
         hoursLeft: number;
+        isProfilPublic: boolean;
     }
 
     interface Session {
@@ -38,5 +39,6 @@ declare module "@auth/core/jwt" {
         urlPortfolio: nullableString;
         bio: nullableString;
         hoursLeft: number;
+        isProfilPublic: boolean;
     }
 }

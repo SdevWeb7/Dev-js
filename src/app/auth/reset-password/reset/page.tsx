@@ -8,6 +8,7 @@ import {Button} from "@/components/ui/button";
 import {Label} from "@/components/ui/label";
 import {Input} from "@/components/ui/input";
 import {resetPassword} from "@/actions/reset-password-actions";
+import ChangePasswordBtn from "@/components/auth/change-password-btn";
 
 
 export default function Page({searchParams}: {searchParams: { [key: string]: string | string[] | undefined }}) {
@@ -53,10 +54,7 @@ export default function Page({searchParams}: {searchParams: { [key: string]: str
                         id="passwordConfirmation"
                         name="passwordConfirmation" />
 
-                    <Button
-                        type={'submit'}
-                        variant={'default'}
-                        className={'w-full mt-8 py-6'}>Changer le mot de passe</Button>
+                    <ChangePasswordBtn />
                 </form>
             </CardContent>
         </Card>

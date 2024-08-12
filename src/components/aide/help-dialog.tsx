@@ -10,7 +10,7 @@ import {
     DialogTitle,
     DialogTrigger,
 } from "@/components/ui/dialog"
-import {useState} from "react";
+import {useState, useTransition} from "react";
 import {flushSync} from "react-dom";
 import {sendEmail} from "@/actions/mail-actions";
 import {toast} from "@/components/ui/use-toast";
@@ -18,6 +18,20 @@ import {toast} from "@/components/ui/use-toast";
 
 export default function HelpDialog() {
         const [helpModalIsOpen, setHelpModalIsOpen] = useState(false);
+        const [isPending, startTransition] = useTransition()
+
+
+        const handleSendEmail = () => {
+            startTransition(async() => {
+                const {data, error} = await sendEmail();
+                if (error) {
+                    toast({description: 'Une erreur est survenue, veuillez réessayer plus tard'});
+                    return;
+                }
+                flushSync(() => setHelpModalIsOpen(false))
+                toast({description: 'Votre demande a bien été envoyée, nous vous recontacterons bientôt'});
+            });
+        }
 
         return (
             <Dialog open={helpModalIsOpen} onOpenChange={setHelpModalIsOpen}>
@@ -33,15 +47,9 @@ export default function HelpDialog() {
                     </DialogHeader>
 
                     <DialogFooter>
-                        <Button onClick={async () => {
-                            const {data, error} = await sendEmail();
-                            if (error) {
-                                toast({description: 'Une erreur est survenue, veuillez réessayer plus tard'});
-                                return;
-                            }
-                            flushSync(() => setHelpModalIsOpen(false))
-                            toast({description: 'Votre demande a bien été envoyée, nous vous recontacterons bientôt'});
-                        }}>Demander un rendez-vous</Button>
+                        <Button
+                            disabled={isPending}
+                            onClick={handleSendEmail}>Demander un rendez-vous</Button>
                     </DialogFooter>
                 </DialogContent>
             </Dialog>

@@ -17,10 +17,10 @@ export default function ProfilPageWrapper({children}: PropsWithChildren) {
 
             <Button
                 variant={"secondary"}
-                className={"text-2xl absolute right-4 top-4"}
+                className={"text-2xl absolute right-2 top-0"}
                 onClick={() => setIsEditing(!isEditing)}>{isEditing ? <IoMdClose /> : <FaEdit />}</Button>
         </CardHeader>
 
-        {isEditing ? <ProfilForm /> : children}
+        {isEditing ? <ProfilForm setIsEditing={setIsEditing} /> : children}
     </Card>
 }

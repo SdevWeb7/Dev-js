@@ -5,20 +5,31 @@ import {profileSchema, TProfileForm} from "@/lib/zod-schemas";
 import {zodResolver} from "@hookform/resolvers/zod";
 import {Input} from "@/components/ui/input";
 import {Label} from "@/components/ui/label";
-import {Button} from "@/components/ui/button";
+import {pathRevalidator, updateProfilUser} from "@/actions/profile-actions";
+import {uploadImage} from "@/actions/image-actions";
+import {useSession} from "next-auth/react";
+import {useToast} from "@/components/ui/use-toast";
+import {Dispatch, SetStateAction} from "react";
+import ProfilFormBtn from "@/components/profil/profil-form-btn";
 
 
-export default function ProfilForm() {
+type ProfilFormProps = {
+    setIsEditing: Dispatch<SetStateAction<boolean>>;
+}
+export default function ProfilForm({setIsEditing} : ProfilFormProps) {
+    const {update, data} = useSession();
+    const {toast} = useToast();
+
     const {register, formState: {errors}, getValues, trigger} = useForm<TProfileForm>({
         resolver: zodResolver(profileSchema),
         defaultValues: {
-            firstName: '',
-            lastName: '',
+            firstname: data?.user.firstname ?? null,
+            lastname: data?.user.lastname ?? null,
             avatarImg: null,
-            bio: '',
-            urlLinkedIn: '',
-            urlGithub: '',
-            urlPortfolio: '',
+            bio: data?.user.bio ?? null,
+            urlLinkedIn: data?.user.urlLinkedIn ?? null,
+            urlGithub: data?.user.urlGithub ?? null,
+            urlPortfolio: data?.user.urlPortfolio ?? null,
         }
     })
 
@@ -28,7 +39,29 @@ export default function ProfilForm() {
         if (!result) return;
 
         const profileData = getValues();
-        console.log(profileData);
+
+        if (profileData.avatarImg) {
+            const formData = new FormData();
+            formData.append('avatarImg', profileData.avatarImg[0]);
+            profileData.avatarImgSrc = await uploadImage(formData, 'avatarImg');
+        }
+
+
+        const response = await updateProfilUser({
+            data: {
+                ...profileData,
+                avatarImg: undefined,
+                avatarImgSrc: profileData.avatarImgSrc || data?.user.avatarImgSrc || "/smiley.webp"
+            }});
+        if (response.error) {
+            toast({description: response.error});
+            return;
+        } else {
+            toast({description: response.success});
+            await update(true);
+            await pathRevalidator("/profil");
+            setIsEditing(false);
+        }
     }
 
 
@@ -40,13 +73,13 @@ export default function ProfilForm() {
         {errors.avatarImg && <p>{errors.avatarImg.message}</p>}
 
         <Label htmlFor={"firstname"} className={"mt-8 mb-2 block"}>Prénom</Label>
-        <Input id={"firstname"} {...register('firstName')} />
-        {errors.firstName && <p>{errors.firstName.message}</p>}
+        <Input id={"firstname"} {...register('firstname')} />
+        {errors.firstname && <p>{errors.firstname.message}</p>}
 
 
         <Label htmlFor={"lastname"} className={"mt-8 mb-2 block"}>Nom</Label>
-        <Input id={"lastname"} {...register('lastName')} />
-        {errors.lastName && <p>{errors.lastName.message}</p>}
+        <Input id={"lastname"} {...register('lastname')} />
+        {errors.lastname && <p>{errors.lastname.message}</p>}
 
 
         <Label htmlFor={"bio"} className={"mt-8 mb-2 block"}>Bio</Label>
@@ -69,8 +102,6 @@ export default function ProfilForm() {
         {errors.urlPortfolio && <p>{errors.urlPortfolio.message}</p>}
 
 
-        <Button
-            className={"mt-6 ml-auto block"}
-            variant={"default"}>Enregistrer</Button>
+        <ProfilFormBtn />
     </form>
 }
