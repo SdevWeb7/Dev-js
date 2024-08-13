@@ -2,6 +2,8 @@ import { Pagination, PaginationEllipsis, PaginationItem, PaginationPrevious, Pag
 import prisma from "@/lib/db";
 import Link from "next/link";
 import {buttonVariants} from "@/components/ui/button";
+import {ChevronLeftIcon, ChevronRightIcon} from "@radix-ui/react-icons";
+import * as React from "react";
 
 
 type UsersPaginationProps = {
@@ -32,7 +34,14 @@ export default async function UsersPagination({page, perPage, searchKey} : Users
 
                     {page > 1 && (
                         <PaginationItem>
-                            <PaginationPrevious href={`${baseUrl}${page-1}`} />
+                            <Link
+                                className={buttonVariants({
+                                   variant: "ghost",
+                                })}
+                                href={`${baseUrl}${page-1}`}>
+                                    <ChevronLeftIcon className="h-4 w-4 mr-1" />
+                                    <span>Page précédente</span>
+                            </Link>
                         </PaginationItem>)}
 
                     {page > 2 && (
@@ -89,7 +98,14 @@ export default async function UsersPagination({page, perPage, searchKey} : Users
 
                     {page < (nombrePages) && (
                         <PaginationItem>
-                            <PaginationNext href={`${baseUrl}${page+1}`} />
+                            <Link
+                                className={buttonVariants({
+                                    variant: "ghost",
+                                })}
+                                href={`${baseUrl}${page + 1}`}>
+                                <span>Page suivante</span>
+                                <ChevronRightIcon className="h-4 w-4 ml-1" />
+                            </Link>
                         </PaginationItem>)}
 
                 </PaginationContent>
