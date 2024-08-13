@@ -4,12 +4,12 @@ import defaultSmileyAvatar from "../../../public/smiley.webp";
 import Link from "next/link";
 import prisma from "@/lib/db";
 
-type ProfilsCommuContentProps = {
+type CommunauteContentProps = {
     page: number;
     perPage: number;
     searchKey: string | undefined;
 }
-export default async function ProfilsCommuContent({page, perPage, searchKey} : ProfilsCommuContentProps) {
+export default async function CommunauteContent({page, perPage, searchKey} : CommunauteContentProps) {
     const usersPublic = await prisma.user.findMany({
         where: {
             AND: [

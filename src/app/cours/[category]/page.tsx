@@ -15,6 +15,9 @@ export default async function Page({params} : CoursesPageProps) {
     const courses = await prisma.course.findMany({
         where: {
             category: params.category
+        },
+        orderBy: {
+            createdAt: 'asc'
         }
     })
 

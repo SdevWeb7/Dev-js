@@ -16,6 +16,7 @@ const ACCEPTED_IMAGE_MIME_TYPES = [
     "image/jpg",
     "image/png",
     "image/webp",
+    "image/svg"
 ];
 export const courseSchema = z.object({
     category: z.string().trim().min(3, 'Categorie incorrect').max(100, 'Categorie incorrect'),
@@ -73,7 +74,7 @@ export const profileSchema = z.object({
         }, `L'image est trop volumineuse.`)
         .refine(
             (files) => !files || ACCEPTED_IMAGE_MIME_TYPES.includes(files?.[0]?.type),
-            "Format supportés : .jpg, .jpeg, .png et .webp"
+            "Format supportés : .jpg, .jpeg, .png , .svg et .webp"
         ),
     avatarImgSrc: z.string().optional().nullable(),
     bio: z.string().trim().max(200, 'La biographie ne doit pas dépasser 200 caractères').optional().nullable(),

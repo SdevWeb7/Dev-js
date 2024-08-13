@@ -9,7 +9,7 @@ type ProfilsCommuSearchProps = {
     page: number;
     searchKey: string | undefined;
 }
-export default function ProfilsCommuSearch({page, searchKey} : ProfilsCommuSearchProps) {
+export default function CommunauteSearch({page, searchKey} : ProfilsCommuSearchProps) {
     const [search, setSearch] = useState(searchKey ?? "");
     const router = useRouter();
 

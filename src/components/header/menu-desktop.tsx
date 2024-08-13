@@ -37,7 +37,7 @@ export default async function MenuDesktop({hrefs}: menuDesktopProps) {
 
                         <Link className={buttonVariants({
                             variant: 'link'
-                        })} href={"/profils-communaute"}><DropdownMenuItem>Profils communauté</DropdownMenuItem></Link>
+                        })} href={"/communaute"}><DropdownMenuItem>Communauté</DropdownMenuItem></Link>
 
                         <HelpDialog />
 
