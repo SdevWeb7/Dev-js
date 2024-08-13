@@ -75,10 +75,10 @@ useEffect(() => {
         )}
 
 
-        {searchParams.success && <p className={'text-sm text-green-700'}>Le paiement a bien été effectué.</p>}
+        {searchParams.success && <p className={'text-green-700'}>Le paiement a bien été effectué.</p>}
 
         {searchParams.cancelled &&
-           <p className={'text-sm text-red-700'}>Le paiement a échoué. Vous pouvez retenter ou nous contacter.</p>}
+           <p className={'text-red-700'}>Le paiement a échoué. Vous pouvez retenter ou nous contacter.</p>}
 
     </Main>;
 }

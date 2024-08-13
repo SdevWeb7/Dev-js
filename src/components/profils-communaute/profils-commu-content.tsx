@@ -41,6 +41,9 @@ export default async function ProfilsCommuContent({page, perPage, searchKey} : P
     return <>
         <section className={'flex flex-wrap gap-12'}>
 
+
+            {usersPublic.length === 0 && <p className={'w-full text-center'}>Aucun utilisateur trouvé</p>}
+
         {usersPublic.map(user => (
             <Card
                 key={user.urlGithub}

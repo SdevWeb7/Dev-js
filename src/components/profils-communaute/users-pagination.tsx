@@ -1,4 +1,4 @@
-import { Pagination, PaginationEllipsis, PaginationItem, PaginationPrevious, PaginationNext, PaginationLink, PaginationContent } from "@/components/ui/pagination";
+import { Pagination, PaginationEllipsis, PaginationItem, PaginationContent } from "@/components/ui/pagination";
 import prisma from "@/lib/db";
 import Link from "next/link";
 import {buttonVariants} from "@/components/ui/button";
