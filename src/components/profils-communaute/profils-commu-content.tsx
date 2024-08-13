@@ -5,12 +5,23 @@ import Link from "next/link";
 import prisma from "@/lib/db";
 
 type ProfilsCommuContentProps = {
-    page: number
-    perPage: number
+    page: number;
+    perPage: number;
+    searchKey: string | undefined;
 }
-export default async function ProfilsCommuContent({page, perPage} : ProfilsCommuContentProps) {
+export default async function ProfilsCommuContent({page, perPage, searchKey} : ProfilsCommuContentProps) {
     const usersPublic = await prisma.user.findMany({
-        where: { isProfilPublic: true },
+        where: {
+            AND: [
+                { isProfilPublic: true },
+                ...(searchKey ? [{
+                    OR: [
+                        { firstname: { contains: searchKey ?? "" } },
+                        { lastname: { contains: searchKey ?? "" } },
+                    ]
+                }] : [])
+            ]
+        },
         select: {
             firstname: true,
             lastname: true,

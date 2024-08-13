@@ -7,11 +7,22 @@ import {buttonVariants} from "@/components/ui/button";
 type UsersPaginationProps = {
     page: number;
     perPage: number;
+    searchKey: string | undefined;
 }
-export default async function UsersPagination({page, perPage} : UsersPaginationProps) {
-        const baseUrl = `${process.env.CANONICAL_URL}/profils-communaute?page=`;
+export default async function UsersPagination({page, perPage, searchKey} : UsersPaginationProps) {
+        const baseUrl = searchKey ? `${process.env.CANONICAL_URL}/profils-communaute?searchKey=${searchKey}&page=` : `${process.env.CANONICAL_URL}/profils-communaute?page=`;
         const totalUsersPublic = await prisma.user.count({
-            where: { isProfilPublic: true }
+            where: {
+                AND: [
+                    { isProfilPublic: true },
+                    ...(searchKey ? [{
+                        OR: [
+                            { firstname: { contains: searchKey ?? "" } },
+                            { lastname: { contains: searchKey ?? "" } },
+                        ]
+                    }] : [])
+                ]
+            },
         });
         const nombrePages = Math.ceil(totalUsersPublic / perPage);
 

@@ -15,13 +15,13 @@ export default async function Page({searchParams} : PageProps) {
         <H1 className={"mb-12"}>Profils Communauté</H1>
 
 
-        <ProfilsCommuSearch />
+        <ProfilsCommuSearch searchKey={searchParams?.searchKey} page={parseInt(searchParams?.page || "1")} />
 
 
-        <UsersPagination perPage={PER_PAGE} page={parseInt(searchParams?.page || "1")} />
+        <UsersPagination perPage={PER_PAGE} page={parseInt(searchParams?.page || "1")} searchKey={searchParams?.searchKey} />
 
 
-        <ProfilsCommuContent perPage={PER_PAGE} page={parseInt(searchParams?.page || "1")} />
+        <ProfilsCommuContent perPage={PER_PAGE} page={parseInt(searchParams?.page || "1")} searchKey={searchParams?.searchKey} />
 
     </Main>
 }
