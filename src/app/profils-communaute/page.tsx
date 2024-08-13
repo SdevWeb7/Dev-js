@@ -5,7 +5,7 @@ import ProfilsCommuSearch from "@/components/profils-communaute/profils-commu-se
 import UsersPagination from "@/components/profils-communaute/users-pagination";
 
 
-const PER_PAGE = 1;
+const PER_PAGE = 3;
 
 type PageProps = { searchParams: { [key: string]: string | undefined } }
 export default async function Page({searchParams} : PageProps) {

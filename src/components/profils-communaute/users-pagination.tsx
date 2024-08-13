@@ -1,7 +1,7 @@
 import { Pagination, PaginationEllipsis, PaginationItem, PaginationPrevious, PaginationNext, PaginationLink, PaginationContent } from "@/components/ui/pagination";
 import prisma from "@/lib/db";
 import Link from "next/link";
-import {cn} from "@/lib/utils";
+import {buttonVariants} from "@/components/ui/button";
 
 
 type UsersPaginationProps = {
@@ -13,7 +13,7 @@ export default async function UsersPagination({page, perPage} : UsersPaginationP
         const totalUsersPublic = await prisma.user.count({
             where: { isProfilPublic: true }
         });
-
+        const nombrePages = Math.ceil(totalUsersPublic / perPage);
 
         return (
             <Pagination>
@@ -33,31 +33,50 @@ export default async function UsersPagination({page, perPage} : UsersPaginationP
 
 
 
-                    {page > 1 && (
+
+
+                    {nombrePages > 1 && page > 1 && (
                         <PaginationItem>
-                            <PaginationLink href="#">{page > 1 ? page - 1 : 1}</PaginationLink>
+                            <Link
+                                className={buttonVariants({
+                                    variant: "ghost",
+                                    size: "icon"
+                                })}
+                                href={`${baseUrl}${page === 1 ? 1 : page - 1}`}>{page === 1 ? 1 : page - 1}</Link>
                         </PaginationItem>)}
 
 
-                    <PaginationItem>
-                        <Link href={`${baseUrl}${Math.ceil(totalUsersPublic / perPage)}`}>{page === 1 ? 1 : page}</Link>
-                    </PaginationItem>
 
-                    {page < (totalUsersPublic / perPage - 2) && (
                         <PaginationItem>
-                            <PaginationLink href="#" >{page + 1}</PaginationLink>
+                            <Link
+                                className={buttonVariants({
+                                    variant: "outline",
+                                    size: "icon"
+                                })}
+                                href={`${baseUrl}${page}`}>{page}</Link>
+                        </PaginationItem>
+
+
+                    {page < nombrePages  && nombrePages > 2 && (
+                        <PaginationItem>
+                            <Link
+                                className={buttonVariants({
+                                    variant: "ghost",
+                                    size: "icon"
+                                })}
+                                href={`${baseUrl}${page === nombrePages ? nombrePages : page + 1}`}>{page === nombrePages ? nombrePages : page + 1}</Link>
                         </PaginationItem>)}
 
 
 
-                    {page < (totalUsersPublic / perPage - 2) && (
+                    {page < (totalUsersPublic / perPage - 1) && (
                         <PaginationItem>
-                            <Link href={`${baseUrl}${Math.ceil(totalUsersPublic / perPage)}`}>
+                            <Link href={`${baseUrl}${nombrePages}`}>
                                 <PaginationEllipsis />
                             </Link>
                         </PaginationItem>)}
 
-                    {page < (totalUsersPublic / perPage) && (
+                    {page < (nombrePages) && (
                         <PaginationItem>
                             <PaginationNext href={`${baseUrl}${page+1}`} />
                         </PaginationItem>)}
