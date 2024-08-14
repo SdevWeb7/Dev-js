@@ -31,7 +31,7 @@
 
 <h3>Comprendre le fichier JSON</h3>
 <p>
-  Ci-dessous un exemple de fichier JSON et des exxplications de chaque propriété
+  Ci-dessous un exemple de fichier JSON et des explications de chaque propriété
   qui peut être utilisée.
 </p>
 
@@ -40,11 +40,71 @@
   "editor.defaultFormatter": "esbenp.prettier-vscode",
 ```
 
-<p>
-  Définit `Prettier` comme formateur par défaut pour tous les fichiers.
-  L'identifiant `esbenp.prettier-vscode` correspond à l'xtention `Prettier`
-  installée dans l'<a href="#exercice-1">exercice 1</a>.
-</p>
+<ul>
+  <li>
+    Définit `Prettier` comme formateur par défaut pour tous les fichiers.
+    L'identifiant `esbenp.prettier-vscode` correspond à l'extension `Prettier`
+    installée dans l'
+    <a href="#exercice-1">exercice 1</a>.
+  </li>
+</ul>
+
+```json
+  "editor.fomatOnSave": true,
+```
+
+<ul>
+  <li>
+    Active le formatage automatique du code à chaque fois que le fichier est
+    sauvegardé.
+  </li>
+</ul>
+
+```json
+  "editor.detectIndentation": true,
+```
+
+<ul>
+  <li>
+    Permet à l'éditeur de détecter automatiquement le type d'indentation
+    (espaces ou tabulations).
+  </li>
+</ul>
+
+```json
+  "editor.rulers": [80],
+```
+
+<ul>
+  <li>
+    Affiche une ligne de 80 caractères sur la gauche de l'éditeur afin de
+    respecter les conventions de longueur de ligne dans le code.
+  </li>
+</ul>
+
+```json
+"[javascript]" : {
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.suggestSelection": "recentlyUsed",
+  "editor.suggest.showKeywords": false
+  }
+```
+
+<ul>
+  <li>
+    `editor.defaultFormatter` utilise `Prettier` comme formateur par défault
+    spécifiquement pour les fichiers javascript.
+  </li>
+  <li>
+    `editor.suggestSelection` pré-selectionne les suggestions dans
+    l'auto-complétion (par exemple, lorsque vous tapez `const` dans un fichier
+    javascript).
+  </li>
+  <li>
+    `editor.suggest.showKeywords` désactive la suggestion des mots-clés
+    JavaScript dans les suggestions automatiques.
+  </li>
+</ul>
 
 <h2>Exercice 4</h2>
 <p>
