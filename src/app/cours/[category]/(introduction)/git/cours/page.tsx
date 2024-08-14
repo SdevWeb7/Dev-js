@@ -1,5 +1,4 @@
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { solarizedlight } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import CodeCourse from "@/components/cours/code-course";
 
 
 export default function page() {
@@ -16,21 +15,22 @@ export default function page() {
         <h2>Fonctionnement</h2>
         <p>La première chose à faire est de créer un dépôt. Pour cela, il suffit de se rendre dans le dossier de votre projet et de taper la commande :</p>
 
-        <SyntaxHighlighter language="typescript" style={solarizedlight}>
-            {`git init`}
-        </SyntaxHighlighter>
+        <CodeCourse langage={"bash"}>
+            git init
+        </CodeCourse>
 
         <p>Après cela 2 commandes sont très utiles :</p>
 
         <p>Ajouter un fichier en particulier</p>
-        ```bash
-        git add nom_du_fichier
-        ```
+        <CodeCourse langage={'bash'}>
+            git add nom_du_fichier
+        </CodeCourse>
 
         <p>Ajouter tous les fichiers</p>
-        ```bash
-        git add .
-        ```
+        <CodeCourse langage={"bash"}>
+            git add .
+        </CodeCourse>
+
         <p>Pour finir, valider les modifications avec la commande :</p>
         ```bash
         git commit -m "Message"
