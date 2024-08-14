@@ -1,0 +1,24 @@
+
+<h1>Next.js - Prisma, ORM et BDD - Introduction</h1>
+
+
+<p>Les requêtes vers une base de donnée peuvent être complexe. <b>Prisma</b> est un <b>ORM</b> (Object Relational Mapping) qui nous aide à effectuer nos requêtes <b>SQL</b>, cependant il est important de connaître le fonctionnement d'une base de données ainsi que le langage <b>SQL</b>.</p>
+
+<p>Pour utiliser <b>Prisma</b>, il faut d'abord l'ajouter au projet :</p>
+```bash
+npm install prisma
+npx prisma init --datasource-provider sqlite
+```
+<p>Cela va installer <b>Prisma</b>, créer un fichier <b>.env</b> si celui-ci n'existe pas pour lui ajouter une variable <b>DATABASE_URL</b> et créer un fichier <b>schema.prisma</b> dans un dossier <b>prisma</b> à la racine du projet.</p>
+<p>Pour plus de simplicité, nous ajoutons <b>--datasource-provider sqlite</b> pour préciser que nous voulons utiliser une base de donnée <b>SQLite</b>, mais changer d'SGBD est plutôt simple.</p>
+
+
+
+```prisma
+model Course {
+    id: Int
+    title: String
+    category: String
+    slug: String
+}
+```
