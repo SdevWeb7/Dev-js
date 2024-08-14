@@ -20,7 +20,7 @@ export default async function LayoutCourse({children} : PropsWithChildren) {
 
 
 
-            <div className={'lg:border-l-2 lg:pl-12 flex justify-center w-full overflow-hidden'}>
+            <div className={'lg:border-l-2 lg:pl-12 w-full overflow-hidden'}>
                 {children}
             </div>
 
