@@ -8,5 +8,5 @@ type H2CourseProps = {
 }
 export default function H2Course({className, children}: H2CourseProps) {
 
-    return <h2 className={cn('mb-12', className)}>{children}</h2>
+    return <h2 className={cn('text-green-700 mt-16 mb-6 font-bold text-2xl', className)}>{children}</h2>
 }

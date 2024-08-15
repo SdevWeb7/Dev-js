@@ -8,5 +8,5 @@ type PCourseProps = {
 }
 export default function PCourse({className, children}: PCourseProps) {
 
-    return <p className={cn('mb-12', className)}>{children}</p>
+    return <p className={cn('text-2xl font-lato', className)}>{children}</p>
 }

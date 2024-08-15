@@ -12,9 +12,9 @@ export default function Page() {
 
         <PCourse>Il existe plusieurs types de bases de données, en développement informatique, les plus courantes sont les <b>bases de données relationnelles</b>.</PCourse>
 
-        <PCourse>Cependant, il existe d&apos;autres types de bases de données, comme les bases de données NoSQL, les bases de données orientées graphe, les bases de données en mémoire, les bases de données distribuées, les bases de données temps réel, les bases de données multi-modèles, les bases de données géospatiales, etc.</PCourse>
+        <PCourse className={'mt-12'}>Cependant, il existe d&apos;autres types de bases de données, comme les bases de données NoSQL, les bases de données orientées graphe, les bases de données en mémoire, les bases de données distribuées, les bases de données temps réel, les bases de données multi-modèles, les bases de données géospatiales, etc.</PCourse>
 
-        <PCourse>Ce cours a pour but de comprendre la structure, le stockage et la récupération de données depuis une base de donnée dans le développement web.</PCourse>
+        <PCourse className={'mt-12'}>Ce cours a pour but de comprendre la structure, le stockage et la récupération de données depuis une base de donnée dans le développement web.</PCourse>
 
     </>
 }

@@ -8,5 +8,5 @@ type MultiLignesCodeWrapperProps = PropsWithChildren<{
 
 export default function MultiLignesCodeWrapper({className="", children} : MultiLignesCodeWrapperProps) {
 
-    return <div className={cn('w-fit bg-[#FDF6E3] p-2 rounded-xl', className)}>{children}</div>;
+    return <div className={cn('w-fit p-2 bg-bg-code rounded-xl shadow-md', className)}>{children}</div>;
 }

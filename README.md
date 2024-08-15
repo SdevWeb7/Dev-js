@@ -15,9 +15,3 @@ Polices intéressantes :
 - Montserrat
 - Helvetica
 - Zona (Payant)
-
-
-A FAIRE :
-
-menu cours en sticky les liens en start + padding pour le lien actif
-toaster pour information sur les redirection

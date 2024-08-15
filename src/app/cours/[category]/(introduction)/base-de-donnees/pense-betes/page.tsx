@@ -10,7 +10,7 @@ export default function page() {
 
     return <>
 
-        <H1Course>Base de données - Pense-Bêtes</H1Course>
+        <H1Course>Base de données</H1Course>
 
 
         <H2Course>Structure d&apos;une requête <b>SELECT</b> avec <b>JOINTURE</b></H2Course>
@@ -32,7 +32,8 @@ export default function page() {
                 ORDER BY u.firstname ASC;
             </CodeCourse>
         </MultiLignesCodeWrapper>
-        <PCourse>Cette requête récupère :</PCourse>
+
+        <PCourse className={'mt-4'}>Cette requête récupère :</PCourse>
 
         <UlCourse>
             <LICourse><b>email</b> et <b>firstname</b> de la table <b>user</b> que nous avons renommé <b>u</b></LICourse>

@@ -25,8 +25,11 @@ const config = {
       },
       fontFamily: {
         "calistoga": "Calistoga, sans-serif",
+        "lato": "Lato, sans-serif",
+        "roboto": "Roboto, sans-serif",
       },
       colors: {
+        "bg-code": "#E3EAF2",
         "my-primary": "hsl(var(--primary))",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

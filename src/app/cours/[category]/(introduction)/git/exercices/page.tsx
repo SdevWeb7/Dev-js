@@ -6,7 +6,7 @@ import LICourse from "@/components/cours/li-course";
 export default function Page() {
 
     return <>
-        <H1Course>Git - Exercices</H1Course>
+        <H1Course>Git</H1Course>
 
         <PCourse>1) Pour s&apos;habituer aux manipulations de Git :</PCourse>
 
@@ -19,7 +19,7 @@ export default function Page() {
         </UlCourse>
 
 
-        <PCourse>2) Pour apprendre à gérer les conflits, avec un ou plusieurs collègues, essayez de travailler sur le meme dépôt distant en meme temps. Vous pouvez ensuite vous entrainer au mécanisme des <b>pull requests</b></PCourse>
+        <PCourse className={"mt-16"}>2) Pour apprendre à gérer les conflits, avec un ou plusieurs collègues, essayez de travailler sur le meme dépôt distant en meme temps. Vous pouvez ensuite vous entrainer au mécanisme des <b>pull requests</b></PCourse>
 
     </>
 }
