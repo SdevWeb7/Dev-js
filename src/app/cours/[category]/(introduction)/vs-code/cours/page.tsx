@@ -1,11 +1,13 @@
+import Link from "next/link";
 import PCourse from "@/components/cours/p-course";
 import UlCourse from "@/components/cours/ul-course";
 import LICourse from "@/components/cours/li-course";
-import Link from "next/link";
 import H1Course from "@/components/cours/h1-course";
 import H2Course from "@/components/cours/h2-course";
 
-export default function page() {
+
+
+export default function Page() {
 
     return <>
         <H1Course>Prendre en main VS Code</H1Course>

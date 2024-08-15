@@ -18,7 +18,6 @@ export default function page() {
         <UlCourse>
             <LICourse>
                 <Link href="https://code.visualstudio.com/docs" target="_blank">Documentation officielle</Link>
-                utiliser VS Code.
             </LICourse>
             <LICourse>
                 <Link href="www.youtube.com/@code" target="_blank">Chaîne Youtube officielle</Link>

@@ -1,33 +1,43 @@
+import H1Course from "@/components/cours/h1-course";
+import H2Course from "@/components/cours/h2-course";
+import PCourse from "@/components/cours/p-course";
+import UlCourse from "@/components/cours/ul-course";
+import LICourse from "@/components/cours/li-course";
+
 export default function page() {
 
     return <>
 
-        <h1>Next.js - Les Bases - Pense-Bêtes</h1>
-
-        <h3>Les <b>Client Components</b> sont d'abord rendus une première fois <b>Coté Serveur</b>.</h3>
-
-        <h3>Penser à la propriété <b>CHILDREN</b> afin de pouvoir garder un maximum de <b>Serveur Components</b>.</h3>
+        <H1Course>Next.js - Les Bases - Pense-Bêtes</H1Course>
 
 
-        <h3>Caractéristiques des Server Components</h3>
-        <ul>
-            <li>tout les composants sont <b>Server Component</b> par défaut</li>
-            <li>ils sont <b>ASYNCHRONE</b></li>
-            <li>ne peuvent pas avoir de <b>state</b></li>
-            <li>le code est éxécuté <b>coté serveur</b> (Node.js) pour renvoyer du html au client</li>
-            <li>possibilité de contacter une base de données</li>
-            <li>la variable <b>window</b> est undefined</li>
-        </ul>
 
-        <h3>Caractéristiques des Clients Components</h3>
+        <PCourse>Les <b>Client Components</b> sont d&apos;abord rendus une première fois <b>Coté Serveur</b>.</PCourse>
 
-        <ul>
-            <li>ils sont <b>SYNCHRONE</b></li>
-            <li>peuvent avoir un/des <b>state(s)</b></li>
-            <li>les données sont chargées et éxécutés <b>côté client</b>(navigateur)</li>
-            <li>ne peuvent pas contacter de base de données à moins de <b>fetch</b></li>
-            <li>la variable <b>window</b> est définie</li>
-        </ul>
+        <PCourse>Penser à la propriété <b>CHILDREN</b> afin de pouvoir garder un maximum de <b>Serveur Components</b>.</PCourse>
+
+
+
+        <H2Course>Caractéristiques des Server Components</H2Course>
+        <UlCourse>
+            <LICourse>tout les composants sont <b>Server Component</b> par défaut</LICourse>
+            <LICourse>ils sont <b>ASYNCHRONE</b></LICourse>
+            <LICourse>ne peuvent pas avoir de <b>state</b></LICourse>
+            <LICourse>le code est éxécuté <b>coté serveur</b> (Node.js) pour renvoyer du html au client</LICourse>
+            <LICourse>possibilité de contacter une base de données</LICourse>
+            <LICourse>la variable <b>window</b> est undefined</LICourse>
+        </UlCourse>
+
+
+
+        <H2Course>Caractéristiques des Clients Components</H2Course>
+        <UlCourse>
+            <LICourse>ils sont <b>SYNCHRONE</b></LICourse>
+            <LICourse>peuvent avoir un/des <b>state(s)</b></LICourse>
+            <LICourse>les données sont chargées et éxécutés <b>côté client</b>(navigateur)</LICourse>
+            <LICourse>ne peuvent pas contacter de base de données à moins de <b>fetch</b></LICourse>
+            <LICourse>la variable <b>window</b> est définie</LICourse>
+        </UlCourse>
 
 
     </>

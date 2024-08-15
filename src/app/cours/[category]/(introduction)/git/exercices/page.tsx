@@ -19,8 +19,7 @@ export default function Page() {
         </UlCourse>
 
 
-        <PCourse>2) Pour apprendre à gérer les conflits, avec un ou plusieurs collègues, essayez de travailler sur le meme
-            dépôt distant en meme temps. Vous pouvez ensuite vous entrainer au mécanisme des <b>pull requests</b></PCourse>
+        <PCourse>2) Pour apprendre à gérer les conflits, avec un ou plusieurs collègues, essayez de travailler sur le meme dépôt distant en meme temps. Vous pouvez ensuite vous entrainer au mécanisme des <b>pull requests</b></PCourse>
 
     </>
 }

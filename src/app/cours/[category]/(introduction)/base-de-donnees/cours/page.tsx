@@ -9,6 +9,7 @@ import LICourse from "@/components/cours/li-course";
 import CodeCourse from "@/components/cours/code-course";
 import imgExempleDatabase from "@/../public/bdd/exemple-database.jpg";
 import imgMCD from "@/../public/bdd/MCD.jpg";
+import MultiLignesCodeWrapper from "@/components/cours/multi-lignes-code-wrapper";
 
 
 export default function Page() {
@@ -23,16 +24,19 @@ export default function Page() {
 
         <PCourse>Les plus courantes sont : <b>Mysql</b>, <b>MongoDB</b>, <b>Sqlite</b>, <b>Postgresql</b> mais il en existe d&apos;autres.</PCourse>
 
-        <PCourse>Il faudra de plus ouvrir un serveur afin d&apos;éffectuer nos requêtes SQL pour cela un outil très utilisé est <Link href={"https://wampserver.aviatechno.net/"} target={"_blank"}>WAMP ou ses variants suivant le système d&apos;éxploitation (Windows, Mac, Linux...)</Link>.</PCourse>
+        <PCourse>Il faudra de plus ouvrir un serveur afin d&apos;éffectuer nos requêtes SQL pour cela un outil très utilisé est <Link href={"https://wampserver.aviatechno.net/"} target={"_blank"}>WAMP ou ses variants suivant le système d&apos;exploitation (Windows, Mac, Linux...)</Link>.</PCourse>
 
 
         <H2Course>SQL (Structured Query Language)</H2Course>
 
-        <PCourse>Bien que des nuances peuvent être présente suivant le SGBD utilisé le langage de base pour effectuer nos requêtes est appelé le SQL.</PCourse>
+        <PCourse>Bien que des nuances peuvent être présente suivant le SGBD utilisé, le langage de base pour effectuer nos requêtes est appelé le SQL.</PCourse>
         <PCourse>SQL est un langage de programmation utilisé pour gérer et manipuler des bases de données relationnelles. SQL est un langage standardisé qui permet de communiquer avec les bases de données relationnelles. Il est utilisé pour effectuer des tâches telles que la récupération de données, l&apos;insertion de données, la mise à jour de données et la suppression de données dans une base de données.</PCourse>
-        <CodeCourse langage={'sql'}>
-        SELECT * FROM users;
-        </CodeCourse>
+
+        <MultiLignesCodeWrapper>
+            <CodeCourse langage={'sql'}>
+                SELECT * FROM users;
+            </CodeCourse>
+        </MultiLignesCodeWrapper>
 
         <H2Course>Les types de bases de données</H2Course>
 
