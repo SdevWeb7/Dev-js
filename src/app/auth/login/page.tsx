@@ -16,7 +16,7 @@ export default function Page({searchParams} : {searchParams: { [key: string]: st
             });
         }
         searchParams.mustConnect = undefined;
-    }, [searchParams.mustConnect]);
+    }, [searchParams.mustConnect, searchParams]);
 
 
     return <Main>
