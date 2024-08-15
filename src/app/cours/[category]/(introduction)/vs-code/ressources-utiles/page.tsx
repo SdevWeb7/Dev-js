@@ -10,8 +10,6 @@ export default function page() {
     <>
       <H1Course>Ressources utiles</H1Course>
 
-<<<<<<< HEAD
-    return <>
         <H1Course>Ressources utiles</H1Course>
 
 
@@ -27,13 +25,13 @@ export default function page() {
                 <Link href="www.youtube.com/@code" target="_blank">Chaîne Youtube officielle</Link>
             </LICourse>
         </UlCourse>
-=======
+
       <H2Course>Documentation officielle</H2Course>
       <PCourse>
         Vous y trouverez des tutoriels et des vidéos expliquant comment utiliser
         VS Code.
       </PCourse>
->>>>>>> 7e64a1e17a6ef0b14b31847ffa791019f5b28b21
+
 
       <UlCourse>
         <LICourse>

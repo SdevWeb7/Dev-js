@@ -6,7 +6,7 @@ import Link from "next/link";
 import H3Course from "@/components/cours/h3-course";
 import LICourse from "@/components/cours/li-course";
 import Image from "next/image";
-import imgNextStarting from "@/public/next-js/next-starting.jpg";
+import imgNextStarting from "@/../public/next-js/next-starting.jpg";
 
 
 export default function page() {
