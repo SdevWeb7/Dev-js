@@ -1,13 +1,16 @@
-export default function page() {
+import Link from "next/link";
+import H1Course from "@/components/cours/h1-course";
+
+export default function Page() {
 
     return <>
 
-        <h1>Next.js - Presentation - Ressources utiles</h1>
+        <H1Course>Next.js - Presentation - Ressources utiles</H1Course>
 
 
-        <a href="https://sql.sh/" target="_blank"><b>SQL.sh</b> - Le SQL (Structured Query Language) est un langage permettant de communiquer avec une base de données. SQL.sh permet d'apprendre le langage SQL.</a>
+        <Link href="https://sql.sh/" target="_blank"><b>SQL.sh</b> - Le SQL (Structured Query Language) est un langage permettant de communiquer avec une base de données. SQL.sh permet d&apos;apprendre le langage SQL.</Link>
 
 
-        <a href="https://wampserver.aviatechno.net/" target="_blank"><b>WAMP</b> - Site internet pour télécharger WAMP.</a>
+        <Link href="https://wampserver.aviatechno.net/" target="_blank"><b>WAMP</b> - Site internet pour télécharger WAMP.</Link>
     </>
 }

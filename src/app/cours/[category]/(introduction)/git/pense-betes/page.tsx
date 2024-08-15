@@ -1,102 +1,107 @@
-export default function page() {
+import CodeCourse from "@/components/cours/code-course";
+import H1Course from "@/components/cours/h1-course";
+import H2Course from "@/components/cours/h2-course";
+import H3Course from "@/components/cours/h3-course";
+
+export default function Page() {
 
     return <>
-        <h1>Git - Pense-Bête</h1>
+        <H1Course>Git - Pense-Bête</H1Course>
 
 
-        <h2>Commandes de base</h2>
+        <H2Course>Commandes de base</H2Course>
 
-        <h3>Récupérer un dépôt</h3>
+        <H3Course>Récupérer un dépôt</H3Course>
 
-        ```bash
+        <CodeCourse langage={"bash"}>
         git clone url_du_depot
-        ```
+        </CodeCourse>
 
-        <h3>Créer un dépôt</h3>
+        <H3Course>Créer un dépôt</H3Course>
 
-        ```bash
+        <CodeCourse langage={"bash"}>
         git init
-        ```
+        </CodeCourse>
 
-        <h3>Ajouter un fichier</h3>
+        <H3Course>Ajouter un fichier</H3Course>
 
-        ```bash
+        <CodeCourse langage={"bash"}>
         git add nom_du_fichier
-        ```
+        </CodeCourse>
 
-        <h3>Ajouter tous les fichiers</h3>
+        <H3Course>Ajouter tous les fichiers</H3Course>
 
-        ```bash
+        <CodeCourse langage={"bash"}>
         git add .
-        ```
+        </CodeCourse>
 
 
-        <h3>Valider un fichier</h3>
+        <H3Course>Valider un fichier</H3Course>
 
-        ```bash
-        git commit -m "Message"
-        ```
+        <CodeCourse langage={"bash"}>
+        git commit -m &ldquo;Message&rdquo;
+        </CodeCourse>
 
-        <h3>Envoyer sur un dépôt</h3>
+        <H3Course>Envoyer sur un dépôt</H3Course>
 
-        ```bash
+        <CodeCourse langage={"bash"}>
         git push origin main
-        ```
+        </CodeCourse>
 
-        <h3>Récupérer les modifications</h3>
+        <H3Course>Récupérer les modifications</H3Course>
 
-        ```bash
+        <CodeCourse langage={"bash"}>
         git fetch
         git merge origin/master
-        ```
+        </CodeCourse>
 
-        <h3>Récupérer les modifications (fetch+merge)</h3>
+        <H3Course>Récupérer les modifications (fetch+merge)</H3Course>
 
-        ```bash
+        <CodeCourse langage={"bash"}>
         git pull
-        ```
+        </CodeCourse>
 
-        <h3>Créer une branche</h3>
+        <H3Course>Créer une branche</H3Course>
 
-        ```bash
+        <CodeCourse langage={"bash"}>
         git branch nom_de_la_branche
-        ```
+        </CodeCourse>
 
-        <h3>Changer de branche</h3>
+        <H3Course>Changer de branche</H3Course>
 
-        ```bash
+        <CodeCourse langage={"bash"}>
         git checkout nom_de_la_branche
-        ```
+        </CodeCourse>
 
-        <h3>Fusionner une branche</h3>
+        <H3Course>Fusionner une branche</H3Course>
 
-        ```bash
+        <CodeCourse langage={"bash"}>
         git merge nom_de_la_branche
-        ```
+        </CodeCourse>
 
-        <h3>Supprimer une branche</h3>
+        <H3Course>Supprimer une branche</H3Course>
 
-        ```bash
+        <CodeCourse langage={"bash"}>
         git branch -d nom_de_la_branche
-        ```
+        </CodeCourse>
 
-        <h3>Voir les modifications</h3>
+        <H3Course>Voir les modifications</H3Course>
 
-        ```bash
+        <CodeCourse langage={"bash"}>
         git status
-        ```
+        </CodeCourse>
 
-        <h3>Voir l'historique</h3>
+        <H3Course>Voir l&apos;historique</H3Course>
 
-        ```bash
+        <CodeCourse langage={"bash"}>
         git log
-        ```
+        </CodeCourse>
 
-        <h3>Revenir en arrière</h3>
+        <H3Course>Revenir en arrière</H3Course>
 
-        ```bash
+        <CodeCourse langage={"bash"}>
         git checkout -- nom_du_fichier
-        ```
+        </CodeCourse>
 
     </>
 }

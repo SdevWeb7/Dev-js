@@ -1,19 +1,25 @@
+import H1Course from "@/components/cours/h1-course";
+import H2Course from "@/components/cours/h2-course";
+import UlCourse from "@/components/cours/ul-course";
+import LICourse from "@/components/cours/li-course";
+
+
 export default function page() {
 
     return <>
 
-        <h1>Protocole HTTP - Pense-Bêtes</h1>
+        <H1Course>Protocole HTTP - Pense-Bêtes</H1Course>
 
 
-        <h2>Une requête/réponse HTTP :</h2>
+        <H2Course>Une requête/réponse HTTP :</H2Course>
 
-        <ul>
-            <li>se fait entre deux ordinateurs</li>
-            <li>possède une <b>méthode</b> (GET par défaut)</li>
-            <li>contient des <b>headers</b> (informations sur la requête/réponse)</li>
-            <li>peut contenir un <b>body</b> (des données souvent au format <b>JSON</b>)</li>
-            <li>envoi un <b>cookie</b> pouvant contenir une "clef" d'authentification</li>
-        </ul>
+        <UlCourse>
+            <LICourse>se fait entre deux ordinateurs</LICourse>
+            <LICourse>possède une <b>méthode</b> (GET par défaut)</LICourse>
+            <LICourse>contient des <b>headers</b> (informations sur la requête/réponse)</LICourse>
+            <LICourse>peut contenir un <b>body</b> (des données souvent au format <b>JSON</b>)</LICourse>
+            <LICourse>envoi un <b>cookie</b> pouvant contenir une &ldquo;clef&rdquo; d&pos;authentification</LICourse>
+        </UlCourse>
 
     </>
 }

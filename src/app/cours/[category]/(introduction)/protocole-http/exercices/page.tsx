@@ -1,16 +1,21 @@
+import H1Course from "@/components/cours/h1-course";
+import H2Course from "@/components/cours/h2-course";
+import PCourse from "@/components/cours/p-course";
+import Link from "next/link";
+
 export default function page() {
 
     return <>
 
-        <h1>Protocole HTTP - Exercices</h1>
+        <H1Course>Protocole HTTP - Exercices</H1Course>
 
 
-        <h2>Exercice 1</h2>
+        <H2Course>Exercice 1</H2Course>
 
-        <p>Installez <a href="https://www.postman.com/" target="_blank"><b>Postman</b></a></p>
+        <PCourse>Installez <Link href="https://www.postman.com/" target="_blank"><b>Postman</b></Link></PCourse>
 
-        <p>Entrainez vous aux différentes <b>méthodes de requête HTTP</b> grâce à l'API gratuite <a href="https://jsonplaceholder.typicode.com/" target="_blank"><b>JsonPlaceholder</b></a></p>
+        <PCourse>Entrainez vous aux différentes <b>méthodes de requête HTTP</b> grâce à l&apos;API gratuite <Link href="https://jsonplaceholder.typicode.com/" target="_blank"><b>JsonPlaceholder</b></Link></PCourse>
 
-        <p>Familiarisez vous avec le format <b>JSON</b> (JavaScript Object Notation) car nous l'utiliserons très souvent plus tard.</p>
+        <PCourse>Familiarisez vous avec le format <b>JSON</b> (JavaScript Object Notation) car nous l&apos;utiliserons très souvent plus tard.</PCourse>
     </>
 }

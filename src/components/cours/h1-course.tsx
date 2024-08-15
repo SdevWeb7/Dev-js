@@ -6,7 +6,7 @@ type H1CourseProps = {
     className?: string;
     children: ReactNode;
 }
-export default function H1Course({className, children}: H1CourseProps) {
+export default function H1Course({className="", children}: H1CourseProps) {
 
-    return <h1 className={cn('mb-12', className)}>{children}</h1>
+    return <h1 className={cn('text-2xl font-bold', className)}>{children}</h1>
 }

@@ -1,19 +1,26 @@
-export default function page() {
+import H1Course from "@/components/cours/h1-course";
+import PCourse from "@/components/cours/p-course";
+import UlCourse from "@/components/cours/ul-course";
+import LICourse from "@/components/cours/li-course";
+
+export default function Page() {
 
     return <>
-        <h1>Git - Exercices</h1>
+        <H1Course>Git - Exercices</H1Course>
 
-        <p>1) Pour s'habituer aux manipulations de Git :</p>
-        <ul>
-            <li>Créer un dépôt localement</li>
-            <li>Créer un dépôt sur une plateforme de gestion (Github par exemple)</li>
-            <li>Les lier</li>
-            <li>Faire des modifications et push</li>
-        </ul>
+        <PCourse>1) Pour s&apos;habituer aux manipulations de Git :</PCourse>
 
 
-        <p>2) Pour apprendre à gérer les conflits, avec un ou plusieurs collègues, essayez de travailler sur le meme
-            dépôt distant en meme temps. Vous pouvez ensuite essayer le mécanisme des "pull requests"</p>
+        <UlCourse>
+            <LICourse>Créer un dépôt localement</LICourse>
+            <LICourse>Créer un dépôt sur une plateforme de gestion (Github par exemple)</LICourse>
+            <LICourse>Les lier</LICourse>
+            <LICourse>Faire des modifications et push</LICourse>
+        </UlCourse>
+
+
+        <PCourse>2) Pour apprendre à gérer les conflits, avec un ou plusieurs collègues, essayez de travailler sur le meme
+            dépôt distant en meme temps. Vous pouvez ensuite vous entrainer au mécanisme des <b>pull requests</b></PCourse>
 
     </>
 }

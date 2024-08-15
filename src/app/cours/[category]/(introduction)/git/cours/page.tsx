@@ -1,105 +1,119 @@
 import CodeCourse from "@/components/cours/code-course";
+import H1Course from "@/components/cours/h1-course";
+import PCourse from "@/components/cours/p-course";
+import H2Course from "@/components/cours/h2-course";
+import LICourse from "@/components/cours/li-course";
+import ULCourse from "@/components/cours/ul-course";
+import Link from "next/link";
 
 
-export default function page() {
+export default function Page() {
 
     return <>
-        <h1>Git - Cours</h1>
-
-        <h2>Débuter</h2>
-        <p>Pour utiliser Git, il faut d&apos;abord l&apos;installer. Pour cela, rendez-vous sur le <a href="https://git-scm.com/downloads" target="_blank">site officiel de Git</a> et téléchargez la version correspondant à votre système d'exploitation.</p>
-        <p>Après avoir installé Git, vous pouvez commencer à utiliser les commandes de base depuis votre terminal (il faut ajouter le chemin de Git dans les variables d'environnement pour que les commandes soient reconnues).</p>
-        <p>Il existe des outils intégrés dans les <b>IDE</b> (Integrated Development Environment) ou <b>Github Desktop</b> qui permettent de gérer les dépôts Git de manière plus visuelle, cependant il est important de connaître les commandes de bases.</p>
+        <H1Course>Git - Cours</H1Course>
 
 
-        <h2>Fonctionnement</h2>
-        <p>La première chose à faire est de créer un dépôt. Pour cela, il suffit de se rendre dans le dossier de votre projet et de taper la commande :</p>
+        <H2Course>Débuter</H2Course>
+        <PCourse>Pour utiliser Git, il faut d&apos;abord l&apos;installer. Pour cela, rendez-vous sur le <Link href="https://git-scm.com/downloads" target="_blank">site officiel de Git</Link> et téléchargez la version correspondant à votre système d&apos;exploitation.</PCourse>
+        <PCourse>Après avoir installé Git, vous pouvez commencer à utiliser les commandes de base depuis votre terminal (il faut ajouter le chemin de Git dans les variables d&apos;environnement pour que les commandes soient reconnues).</PCourse>
+        <PCourse>Il existe des outils intégrés dans les <b>IDE</b> (Integrated Development Environment) ou <b>Github Desktop</b> qui permettent de gérer les dépôts Git de manière plus visuelle, cependant il est important de connaître les commandes de bases.</PCourse>
+
+
+
+        <H2Course>Fonctionnement</H2Course>
+        <PCourse>La première chose à faire est de créer un dépôt. Pour cela, il suffit de se rendre dans le dossier de votre projet et de taper la commande :</PCourse>
 
         <CodeCourse langage={"bash"}>
             git init
         </CodeCourse>
 
-        <p>Après cela 2 commandes sont très utiles :</p>
+        <PCourse>Après cela 2 commandes sont très utiles :</PCourse>
 
-        <p>Ajouter un fichier en particulier</p>
+        <PCourse>Ajouter un fichier en particulier</PCourse>
         <CodeCourse langage={'bash'}>
             git add nom_du_fichier
         </CodeCourse>
 
-        <p>Ajouter tous les fichiers</p>
+        <PCourse>Ajouter tous les fichiers</PCourse>
         <CodeCourse langage={"bash"}>
             git add .
         </CodeCourse>
 
-        <p>Pour finir, valider les modifications avec la commande :</p>
-        ```bash
-        git commit -m "Message"
-        ```
-        <p>Le message doit être le plus descriptif possible.</p>
+        <PCourse>Pour finir, valider les modifications avec la commande :</PCourse>
+
+        <CodeCourse langage={"bash"}>
+        git commit -m &ldquo;Message&rdquo;
+        </CodeCourse>
+
+        <PCourse>Le message doit être le plus descriptif possible.</PCourse>
 
 
-        <h2>Poster son dépôt sur une plateforme</h2>
-        <p><a href={"https://github.com/"} target={'_blank'}>Github</a> est une des plateformes de gestion de dépôts les plus utilisées. Elle facilite le travail d'équipe grâce à de nombreuses fonctionnalités et son interface user-friendly.</p>
-        <p>Après avoir créé un compte, vous pouvez naviguer section repositories et chercher le bouton `Create new repository`.</p>
-        <p>Github vous redirige et vous explique la marche à suivre.</p>
-        <p>Il faut créer un dépôt ou en lier un.</p>
-        <p>Pour lier le dépôt local au dépôt distant, il faut faire la commande :</p>
-        ```bash
+        <H2Course>Poster son dépôt sur une plateforme</H2Course>
+        <PCourse><Link href={"https://github.com/"} target={'_blank'}>Github</Link> est une des plateformes de gestion de dépôts les plus utilisées. Elle facilite le travail d&apos;équipe grâce à de nombreuses fonctionnalités et son interface user-friendly.</PCourse>
+        <PCourse>Après avoir créé un compte, vous pouvez naviguer section repositories et chercher le bouton <b>Create new repository</b>.</PCourse>
+        <PCourse>Github vous redirige et vous explique la marche à suivre.</PCourse>
+        <PCourse>Il faut <b>créer ou lier un dépôt</b>.</PCourse>
+        <PCourse>Pour lier le dépôt local au dépôt distant, il faut faire la commande :</PCourse>
+
+        <CodeCourse langage={"bash"}>
         git remote add origin lien_du_depôt_Github
-        ```
-        <p>Cela va enregistrer sous le label "origin" le dépôt distant. Le label est très important, car vous pouvez lier plusieurs dépôts distants.</p>
+        </CodeCourse>
+
+        <PCourse>Cela va enregistrer sous le label &ldquo;origin&rdquo; le dépôt distant. Le label est très important, car vous pouvez lier plusieurs dépôts distants.</PCourse>
 
 
-        <p>Il ne reste plus qu'à s'assurer d'être sur la bonne branche (nous parlerons des branches un peu plus tard) en effectuant la commande : </p>
-        ```bash
+        <PCourse>Il ne reste plus qu&apos;à s&apos;assurer d&apos;être sur la bonne branche (nous parlerons des branches un peu plus tard) en effectuant la commande : </PCourse>
+        <CodeCourse langage={"bash"}>
         git branch -M main
-        ```
+        </CodeCourse>
 
 
-        <p>Nous sommes prêt, nous pouvons "push" sur Github notre dépôt local avec la commande :</p>
-        ```bash
+        <PCourse>Nous sommes prêt, nous pouvons <b>push</b> sur Github notre dépôt local avec la commande :</PCourse>
+
+        <CodeCourse langage={"bash"}>
         git push origin main
-        ```
-        <p>Cela va "merger" la branche "main" locale sur le dépôt distant.</p>
+        </CodeCourse>
 
-        <p>En équipe, avant de push, il faut toujours s'assurer d'être à jour avec le dépôt distant avec la commande : </p>
-        ```bash
+        <PCourse>Cela va <b>merger</b> la branche <b>main</b> locale sur le dépôt distant.</PCourse>
+
+        <PCourse>En équipe, avant de push, il faut toujours s&apos;assurer d&apos;être à jour avec le dépôt distant avec la commande : </PCourse>
+        <CodeCourse langage={"bash"}>
         git pull origin main
-        ```
+        </CodeCourse>
 
-        <h2>Cloner un dépôt</h2>
-        <p>Il est possible de cloner un dépôt distant sur votre machine avec la commande : </p>
-        ```bash
+        <H2Course>Cloner un dépôt</H2Course>
+        <PCourse>Il est possible de cloner un dépôt distant sur votre machine avec la commande : </PCourse>
+        <CodeCourse langage={"bash"}>
         git clone lienDuDepôtGithub
-        ```
-        <p>Cela va créer un dossier avec le nom du dépôt et récupérer tout le code.</p>
+        </CodeCourse>
+        <PCourse>Cela va créer un dossier avec le nom du dépôt et récupérer tout le code.</PCourse>
 
 
-        <h2>Authentification</h2>
-        <p>Afin de push sur un dépôt distant, il est nécessaire de s'authentifier. En général, vous êtes redirigé vers le site Github pour vous connecter.</p>
-        <p>Cependant si vous avez plusieurs comptes voici quelques commandes qui peuvent vous être utile :</p>
-        ```bash
-        git config --global user.name "PseudoGithub"
-        git config --global user.email "EmailGithub"
-        git config --global credential.username "new_username"
-        ```
-        <p>Enlevez "--global" si vous ne voulez changer que le projet dans lequel vous faites la commande.</p>
-        <p>Il est possible de vérifier les informations avec la commande : </p>
-        ```bash
+        <H2Course>Authentification</H2Course>
+        <PCourse>Afin de push sur un dépôt distant, il est nécessaire de s&apos;authentifier. En général, vous êtes redirigé vers le site Github pour vous connecter.</PCourse>
+        <PCourse>Cependant si vous avez plusieurs comptes voici quelques commandes qui peuvent vous être utile :</PCourse>
+        <CodeCourse langage={"bash"}>
+        git config --global user.name &ldquo;PseudoGithub&rdquo;
+        git config --global user.email &ldquo;EmailGithub&rdquo;
+        git config --global credential.username &ldquo;new_username&rdquo;
+        </CodeCourse>
+        <PCourse>Enlevez <b>--global</b> si vous ne voulez changer que le projet dans lequel vous faites la commande.</PCourse>
+        <PCourse>Il est possible de vérifier les informations avec la commande : </PCourse>
+        <CodeCourse langage={"bash"}>
         git config --list
-        ```
+        </CodeCourse>
 
-        <h2>Concepts avancées</h2>
-        <p>Git est un outil très puissant et il est possible de faire beaucoup de choses avec. Voici quelques concepts avancées :</p>
-        <ul>
-            <li>Les branches</li>
-            <li>Les conflits</li>
-            <li>Les tags</li>
-            <li>Les pull requests</li>
-        </ul>
-        <p>Les branches permettent de travailler sur des fonctionnalités sans impacter le code principal. Cela permet de travailler en parallèle sur plusieurs fonctionnalités.</p>
-        <p>Les conflits surviennent lorsqu'il y a des modifications sur la même ligne de code. Git ne sait pas quelle modification garder, il faut donc résoudre le conflit manuellement.</p>
-        <p>Les tags permettent de marquer un commit. Cela peut être utile pour marquer une version stable par exemple.</p>
-        <p>Les Pull Request sont des demandes de fusion de code. Cela permet de vérifier le code avant de le fusionner avec la branche principale.</p>
+        <H2Course>Concepts avancées</H2Course>
+        <PCourse>Git est un outil très puissant et il est possible de faire beaucoup de choses avec. Voici quelques concepts avancés :</PCourse>
+        <ULCourse>
+            <LICourse>Les branches</LICourse>
+            <LICourse>Les conflits</LICourse>
+            <LICourse>Les tags</LICourse>
+            <LICourse>Les pull requests</LICourse>
+        </ULCourse>
+        <PCourse>Les branches permettent de travailler sur des fonctionnalités sans impacter le code principal. Cela permet de travailler en parallèle sur plusieurs fonctionnalités.</PCourse>
+        <PCourse>Les conflits surviennent lorsqu&apos;il y a des modifications sur la même ligne de code. Git ne sait pas quelle modification garder, il faut donc résoudre le conflit manuellement.</PCourse>
+        <PCourse>Les tags permettent de marquer un commit. Cela peut être utile pour marquer une version stable par exemple.</PCourse>
+        <PCourse>Les Pull Request sont des demandes de fusion de code. Cela permet de vérifier le code avant de le fusionner avec la branche principale.</PCourse>
     </>
 }

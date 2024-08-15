@@ -13,18 +13,18 @@ export default async function LayoutCourse({children} : PropsWithChildren) {
 
 
 
-        <div defaultValue="introduction" className="flex flex-col lg:flex-row mt-8 gap-2">
+        <section className="flex flex-col lg:flex-row mt-8 gap-2">
 
 
             <CourseSectionNavigation />
 
 
 
-            <div className={'lg:border-l-2 lg:pl-12 w-full overflow-hidden'}>
+            <article className={'lg:border-l-2 lg:pl-12 w-full overflow-hidden'}>
                 {children}
-            </div>
+            </article>
 
 
-        </div>
+        </section>
     </Main>;
 }

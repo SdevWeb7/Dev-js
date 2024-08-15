@@ -8,5 +8,5 @@ type ULCourseProps = {
 }
 export default function UlCourse({className, children}: ULCourseProps) {
 
-    return <h1 className={cn('mb-12', className)}>{children}</h1>
+    return <ul className={cn('mb-12', className)}>{children}</ul>
 }

@@ -6,7 +6,7 @@ type H2CourseProps = {
     className?: string;
     children: ReactNode;
 }
-export default function H2ourse({className, children}: H2CourseProps) {
+export default function H2Course({className, children}: H2CourseProps) {
 
-    return <h1 className={cn('mb-12', className)}>{children}</h1>
+    return <h2 className={cn('mb-12', className)}>{children}</h2>
 }

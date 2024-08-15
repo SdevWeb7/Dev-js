@@ -1,27 +1,32 @@
+import H1Course from "@/components/cours/h1-course";
+import PCourse from "@/components/cours/p-course";
+import UlCourse from "@/components/cours/ul-course";
+import LICourse from "@/components/cours/li-course";
 
 
 export default function Page() {
 
     return <>
 
-        <h1>Protocole HTTP - Cours</h1>
+        <H1Course>Protocole HTTP - Cours</H1Course>
 
-        <p>Le protocole HTTP (HyperText Transfer Protocol) est un protocole de communication client-serveur.</p>
+        <PCourse>Le protocole HTTP (HyperText Transfer Protocol) est un protocole de communication client-serveur.</PCourse>
 
-        <p>Il permet de transférer des données sur le web basé sur une architecture client-serveur et sur le protocole TCP/IP.</p>
+        <PCourse>Il permet de transférer des données sur le web basé sur une architecture client-serveur et sur le protocole TCP/IP.</PCourse>
 
-        <p>Le client envoie une requête au serveur et le serveur renvoie une réponse au client.</p>
+        <PCourse>Le client envoie une requête au serveur et le serveur renvoie une réponse au client.</PCourse>
 
 
-        <p><b>Le protocol HTTP est un protocole :</b></p>
+        <PCourse><b>Le protocol HTTP est un protocole :</b></PCourse>
 
-        <ul>
-            <li><b>Texte</b> : les requêtes et les réponses sont des messages textuels. Les messages HTTP sont composés d'une ligne de requête ou de statut, d'en-têtes et d'un corps.</li>
+        <UlCourse>
+            <LICourse><b>Texte</b> : les requêtes et les réponses sont des messages textuels. Les messages HTTP sont composés d&apos;une ligne de requête ou de statut, d&apos;en-têtes et d&apos;un corps.</LICourse>
 
-            <li><b>Sans état</b> (Stateless) : Cela signifie que le serveur ne conserve pas d'informations sur les requêtes précédentes du client. Chaque requête est traitée indépendamment des autres.</li>
+            <LICourse><b>Sans état</b> (Stateless) : Cela signifie que le serveur ne conserve pas d&apos;informations sur les requêtes précédentes du client. Chaque requête est traitée indépendamment des autres.</LICourse>
 
-            <li><b>Extensible</b> : Il est possible d'ajouter de nouveaux en-têtes et méthodes HTTP.</li>
+            <LICourse><b>Extensible</b> : Il est possible d&apos;ajouter de nouveaux en-têtes et méthodes HTTP.</LICourse>
 
-            <li>De la <b>couche application du modèle OSI</b>. Il est utilisé pour transférer des ressources (texte, images, vidéos, etc.) entre un client et un serveur.</li>
-        </ul>    </>
+            <LICourse>De la <b>couche application du modèle OSI</b>. Il est utilisé pour transférer des ressources (texte, images, vidéos, etc.) entre un client et un serveur.</LICourse>
+        </UlCourse>
+    </>
 }
