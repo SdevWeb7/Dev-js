@@ -8,5 +8,5 @@ type LiCourseProps = {
 }
 export default function LICourse({className, children}: LiCourseProps) {
 
-    return <li className={cn('text-xl ml-16 list-disc', className)}>{children}</li>
+    return <li className={cn('text-xl ml-16 mb-2 list-disc', className)}>{children}</li>
 }

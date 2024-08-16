@@ -2,20 +2,27 @@ import H1Course from "@/components/cours/h1-course";
 import H2Course from "@/components/cours/h2-course";
 import PCourse from "@/components/cours/p-course";
 import Link from "next/link";
+import {cn} from "@/lib/utils";
+import {buttonVariants} from "@/components/ui/button";
+import SpanCourse from "@/components/cours/span-course";
 
 export default function page() {
 
     return <>
 
-        <H1Course>Protocole HTTP - Exercices</H1Course>
+        <H1Course>Protocole HTTP</H1Course>
 
 
         <H2Course>Exercice 1</H2Course>
 
-        <PCourse>Installez <Link href="https://www.postman.com/" target="_blank"><b>Postman</b></Link></PCourse>
+        <PCourse>Installez <Link className={cn(buttonVariants({
+            variant: "link"
+        }), "p-0 text-2xl")} href="https://www.postman.com/" target="_blank"><SpanCourse>Postman</SpanCourse></Link></PCourse>
 
-        <PCourse>Entrainez vous aux différentes <b>méthodes de requête HTTP</b> grâce à l&apos;API gratuite <Link href="https://jsonplaceholder.typicode.com/" target="_blank"><b>JsonPlaceholder</b></Link></PCourse>
+        <PCourse className={"my-4"}>Entrainez vous aux différentes <SpanCourse>méthodes de requête HTTP</SpanCourse> grâce à l&apos;API gratuite <Link className={cn(buttonVariants({
+            variant: "link"
+        }), "p-0 text-2xl")} href="https://jsonplaceholder.typicode.com/" target="_blank"><SpanCourse>JsonPlaceholder</SpanCourse></Link></PCourse>
 
-        <PCourse>Familiarisez vous avec le format <b>JSON</b> (JavaScript Object Notation) car nous l&apos;utiliserons très souvent plus tard.</PCourse>
+        <PCourse>Familiarisez vous avec le format <SpanCourse>JSON</SpanCourse> (JavaScript Object Notation) car nous l&apos;utiliserons très souvent plus tard.</PCourse>
     </>
 }

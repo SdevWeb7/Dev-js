@@ -8,7 +8,7 @@ import React from "react";
 export default function Page() {
 
     return <>
-        <H1Course>Git - Pense-Bête</H1Course>
+        <H1Course>Git</H1Course>
 
 
         <H2Course>Commandes de base</H2Course>

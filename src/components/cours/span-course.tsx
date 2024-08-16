@@ -8,5 +8,5 @@ type SpanCourseProps = {
 }
 export default function SpanCourse({className, children}: SpanCourseProps) {
 
-    return <span className={cn('text-black/80 text-my-primary font-bold', className)}>{children}</span>
+    return <span className={cn('text-black/80 text-accent font-bold', className)}>{children}</span>
 }

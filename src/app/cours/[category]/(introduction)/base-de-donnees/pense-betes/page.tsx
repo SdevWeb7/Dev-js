@@ -5,6 +5,8 @@ import CodeCourse from "@/components/cours/code-course";
 import UlCourse from "@/components/cours/ul-course";
 import LICourse from "@/components/cours/li-course";
 import MultiLignesCodeWrapper from "@/components/cours/multi-lignes-code-wrapper";
+import SpanCourse from "@/components/cours/span-course";
+
 
 export default function page() {
 
@@ -14,8 +16,7 @@ export default function page() {
 
 
         <H2Course>Structure d&apos;une requête <b>SELECT</b> avec <b>JOINTURE</b></H2Course>
-
-        <MultiLignesCodeWrapper>
+        <MultiLignesCodeWrapper className={"mt-8"}>
             <CodeCourse langage={'sql'}>
                 SELECT u.email, u.firstname, r.name as role_name
             </CodeCourse>
@@ -33,21 +34,20 @@ export default function page() {
             </CodeCourse>
         </MultiLignesCodeWrapper>
 
-        <PCourse className={'mt-4'}>Cette requête récupère :</PCourse>
 
+        <PCourse className={'mt-8 mb-2'}>Cette requête récupère :</PCourse>
         <UlCourse>
-            <LICourse><b>email</b> et <b>firstname</b> de la table <b>user</b> que nous avons renommé <b>u</b></LICourse>
-            <LICourse><b>name</b> que nous avons renommé <b>role_name</b> de la table <b>role</b> que nous avons renommé <b>r</b>.</LICourse>
-            <LICourse>Où <b>id</b> est égal a <b>1</b></LICourse>
+            <LICourse><SpanCourse>email</SpanCourse> et <SpanCourse>firstname</SpanCourse> de la table <SpanCourse>user</SpanCourse> que nous avons renommé <SpanCourse>u</SpanCourse></LICourse>
+            <LICourse><SpanCourse>name</SpanCourse> que nous avons renommé <SpanCourse>role_name</SpanCourse> de la table <SpanCourse>role</SpanCourse> que nous avons renommé <SpanCourse>r</SpanCourse>.</LICourse>
+            <LICourse>Où <SpanCourse>id</SpanCourse> est égal a <SpanCourse>1</SpanCourse></LICourse>
         </UlCourse>
-        <PCourse>Nous les trions ensuite par <b>u.firstname</b> (user.firstname).</PCourse>
-        <PCourse>Cela est rendu possible grâce à une <b>jointure</b>.</PCourse>
+        <PCourse className={'mt-4'}>Nous les trions ensuite par <SpanCourse>u.firstname</SpanCourse> (user.firstname).</PCourse>
+        <PCourse className={'mt-4'}>Cela est rendu possible grâce à une <SpanCourse>jointure</SpanCourse>.</PCourse>
+
 
 
         <H2Course>Structure d&apos;une requête <b>INSERT</b></H2Course>
-
-
-        <MultiLignesCodeWrapper>
+        <MultiLignesCodeWrapper className={"my-8"}>
             <CodeCourse langage={"sql"}>
                 INSERT INTO user (email, firstname, role_id)
             </CodeCourse>
@@ -55,15 +55,14 @@ export default function page() {
                 VALUES (&ldquo;test@test.fr&rdquo;, &ldquo;John&rdquo;, 1), (&ldquo;test2@.test.fr&rdquo;, &ldquo;Doe&rdquo;, 2)
             </CodeCourse>
         </MultiLignesCodeWrapper>
-        <PCourse>Cette requête insère deux utilisateurs dans la table <b>user</b>.</PCourse>
+        <PCourse className={'mb-4'}>Cette requête insère deux utilisateurs dans la table <SpanCourse>user</SpanCourse>.</PCourse>
         <PCourse>Les champs doivent être remplis dans le bon ordre.</PCourse>
 
 
 
 
         <H2Course>Structure d&apos;une requête <b>UPDATE</b></H2Course>
-
-        <MultiLignesCodeWrapper>
+        <MultiLignesCodeWrapper className={"my-8"}>
             <CodeCourse langage={"sql"}>
                 UPDATE user
             </CodeCourse>
@@ -75,15 +74,14 @@ export default function page() {
             </CodeCourse>
         </MultiLignesCodeWrapper>
 
-        <PCourse>Cette requête met à jour l&apos;utilisateur ayant un <b>id</b> égal à <b>1</b>.</PCourse>
-        <PCourse>Seuls les champs <b>email</b> et <b>firstname</b> sont mis à jour.</PCourse>
+        <PCourse className={"mb-4"}>Cette requête met à jour l&apos;utilisateur ayant un <SpanCourse>id</SpanCourse> égal à <SpanCourse>1</SpanCourse>.</PCourse>
+        <PCourse>Seuls les champs <SpanCourse>email</SpanCourse> et <SpanCourse>firstname</SpanCourse> sont mis à jour.</PCourse>
 
 
 
 
         <H2Course>Structure d&apos;une requête <b>DELETE</b></H2Course>
-
-        <MultiLignesCodeWrapper>
+        <MultiLignesCodeWrapper className={"my-8"}>
             <CodeCourse langage={"sql"}>
                 DELETE FROM user
             </CodeCourse>
@@ -92,6 +90,6 @@ export default function page() {
             </CodeCourse>
         </MultiLignesCodeWrapper>
 
-        <PCourse>Cette requête supprime l&apos;utilisateur ayant un <b>id</b> égal à <b>1</b>.</PCourse>
+        <PCourse>Cette requête supprime l&apos;utilisateur ayant un <SpanCourse>id</SpanCourse> égal à <SpanCourse>1</SpanCourse>.</PCourse>
     </>
 }

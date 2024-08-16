@@ -40,14 +40,14 @@ export default function Page() {
         <PCourse className={'mt-4'}>Il est utilisé pour effectuer des tâches telles que la récupération de données, l&apos;insertion de données, la mise à jour de données et la suppression de données dans une base de données.</PCourse>
 
 
-        <MultiLignesCodeWrapper>
+        <MultiLignesCodeWrapper className={'mt-8'}>
             <CodeCourse langage={'sql'}>
                 SELECT * FROM users;
             </CodeCourse>
         </MultiLignesCodeWrapper>
 
 
-        <H2Course>Les types de bases de données</H2Course>
+        <H2Course>Les types de données</H2Course>
         <UlCourse>
             <LICourse><SpanCourse>Texte</SpanCourse> : Chaine de caractères</LICourse>
             <LICourse><SpanCourse>Nombre</SpanCourse> : Un chiffre</LICourse>
@@ -107,7 +107,7 @@ export default function Page() {
         
         <PCourse className={'mt-4'}>Le <SpanCourse>Modèle Physique de Données</SpanCourse> (MPD) est un schéma physique qui représente la structure de stockage des données dans une base de données.</PCourse>
 
-        <Link className={""} href="/bdd/MCD.jpg" target="_blank">
+        <Link href="/bdd/MCD.jpg" target="_blank">
             <Image
                 className={'rounded-3xl shadow-lg mt-8'}
                 src={imgMCD} alt="MCD, MLD et MPD" />

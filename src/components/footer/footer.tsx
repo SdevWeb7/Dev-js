@@ -12,8 +12,6 @@ export default async function Footer() {
 
         <p><span className={'text-my-primary'}>Dev</span>.js</p>
 
-        <p className={'text-sm font-normal'}>MAJ 07/08/2024</p>
-
         {session?.user?.isAdmin && <Link href={'/admin'}>Admin</Link>}
 
     </footer>

@@ -32,9 +32,8 @@ export default function CourseSectionNavigation() {
   const params = pathname.split("/").filter(Boolean);
 
   return (
-    <div className="lg:sticky lg:top-24">
       <Card className={"border-none shadow-none"}>
-        <CardContent className="flex flex-col gap-2 justify-center pt-6">
+        <CardContent className="flex flex-col gap-2 justify-center pt-6 lg:sticky lg:top-24">
           {listeCategories.map((categorie, index) => (
             <Link
               key={index}
@@ -49,6 +48,5 @@ export default function CourseSectionNavigation() {
           ))}
         </CardContent>
       </Card>
-    </div>
   );
 }
