@@ -9,14 +9,12 @@ import MultiLignesCodeWrapper from "@/components/cours/multi-lignes-code-wrapper
 import {cn} from "@/lib/utils";
 import {buttonVariants} from "@/components/ui/button";
 import SpanCourse from "@/components/cours/span-course";
-import {Span} from "next/dist/server/lib/trace/tracer";
 
 
 export default function Page() {
 
     return <>
         <H1Course>Git</H1Course>
-
 
 
         <H2Course>Débuter</H2Course>

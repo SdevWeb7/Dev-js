@@ -9,7 +9,7 @@ export default function page() {
 
     return <>
 
-        <H1Course>Protocole HTTP - Pense-Bêtes</H1Course>
+        <H1Course>Protocole HTTP</H1Course>
 
 
         <H2Course>Une requête/réponse HTTP :</H2Course>

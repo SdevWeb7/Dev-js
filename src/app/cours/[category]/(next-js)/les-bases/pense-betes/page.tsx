@@ -3,40 +3,41 @@ import H2Course from "@/components/cours/h2-course";
 import PCourse from "@/components/cours/p-course";
 import UlCourse from "@/components/cours/ul-course";
 import LICourse from "@/components/cours/li-course";
+import SpanCourse from "@/components/cours/span-course";
 
 export default function page() {
 
     return <>
 
-        <H1Course>Next.js - Les Bases - Pense-Bêtes</H1Course>
+        <H1Course>Next.js</H1Course>
 
 
 
-        <PCourse>Les <b>Client Components</b> sont d&apos;abord rendus une première fois <b>Coté Serveur</b>.</PCourse>
+        <PCourse>Les <SpanCourse>Client Components</SpanCourse> sont d&apos;abord rendus une première fois <SpanCourse>Coté Serveur</SpanCourse>.</PCourse>
 
-        <PCourse>Penser à la propriété <b>CHILDREN</b> afin de pouvoir garder un maximum de <b>Serveur Components</b>.</PCourse>
+        <PCourse>Penser à la propriété <SpanCourse>CHILDREN</SpanCourse> afin de pouvoir garder un maximum de <SpanCourse>Serveur Components</SpanCourse>.</PCourse>
 
 
 
         <H2Course>Caractéristiques des Server Components</H2Course>
         <UlCourse>
-            <LICourse>tout les composants sont <b>Server Component</b> par défaut</LICourse>
-            <LICourse>ils sont <b>ASYNCHRONE</b></LICourse>
-            <LICourse>ne peuvent pas avoir de <b>state</b></LICourse>
-            <LICourse>le code est éxécuté <b>coté serveur</b> (Node.js) pour renvoyer du html au client</LICourse>
+            <LICourse>tout les composants sont <SpanCourse>Server Component</SpanCourse> par défaut</LICourse>
+            <LICourse>ils sont <SpanCourse>ASYNCHRONE</SpanCourse></LICourse>
+            <LICourse>ne peuvent pas avoir de <SpanCourse>state</SpanCourse></LICourse>
+            <LICourse>le code est éxécuté <SpanCourse>coté serveur</SpanCourse> (Node.js) pour renvoyer du html au client</LICourse>
             <LICourse>possibilité de contacter une base de données</LICourse>
-            <LICourse>la variable <b>window</b> est undefined</LICourse>
+            <LICourse>la variable <SpanCourse>window</SpanCourse> est undefined</LICourse>
         </UlCourse>
 
 
 
         <H2Course>Caractéristiques des Clients Components</H2Course>
         <UlCourse>
-            <LICourse>ils sont <b>SYNCHRONE</b></LICourse>
-            <LICourse>peuvent avoir un/des <b>state(s)</b></LICourse>
-            <LICourse>les données sont chargées et éxécutés <b>côté client</b>(navigateur)</LICourse>
-            <LICourse>ne peuvent pas contacter de base de données à moins de <b>fetch</b></LICourse>
-            <LICourse>la variable <b>window</b> est définie</LICourse>
+            <LICourse>ils sont <SpanCourse>SYNCHRONE</SpanCourse></LICourse>
+            <LICourse>peuvent avoir un/des <SpanCourse>state(s)</SpanCourse></LICourse>
+            <LICourse>les données sont chargées et éxécutés <SpanCourse>côté client</SpanCourse> (navigateur)</LICourse>
+            <LICourse>ne peuvent pas contacter de base de données à moins de <SpanCourse>fetch</SpanCourse></LICourse>
+            <LICourse>la variable <SpanCourse>window</SpanCourse> est définie</LICourse>
         </UlCourse>
 
 
