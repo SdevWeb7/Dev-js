@@ -5,10 +5,11 @@ import Link from "next/link";
 import {cn} from "@/lib/utils";
 import {buttonVariants} from "@/components/ui/button";
 import SpanCourse from "@/components/cours/span-course";
+import LayoutCourseCustom from "@/components/cours/layout-course-custom";
 
 export default function page() {
 
-    return <>
+    return <LayoutCourseCustom>
 
         <H1Course>Protocole HTTP</H1Course>
 
@@ -24,5 +25,5 @@ export default function page() {
         }), "p-0 text-2xl")} href="https://jsonplaceholder.typicode.com/" target="_blank"><SpanCourse>JsonPlaceholder</SpanCourse></Link></PCourse>
 
         <PCourse>Familiarisez vous avec le format <SpanCourse>JSON</SpanCourse> (JavaScript Object Notation) car nous l&apos;utiliserons très souvent plus tard.</PCourse>
-    </>
+    </LayoutCourseCustom>
 }

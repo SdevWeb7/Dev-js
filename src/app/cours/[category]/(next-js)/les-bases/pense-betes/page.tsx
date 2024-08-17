@@ -4,10 +4,11 @@ import PCourse from "@/components/cours/p-course";
 import UlCourse from "@/components/cours/ul-course";
 import LICourse from "@/components/cours/li-course";
 import SpanCourse from "@/components/cours/span-course";
+import LayoutCourseCustom from "@/components/cours/layout-course-custom";
 
 export default function page() {
 
-    return <>
+    return <LayoutCourseCustom>
 
         <H1Course>Next.js</H1Course>
 
@@ -41,5 +42,5 @@ export default function page() {
         </UlCourse>
 
 
-    </>
+    </LayoutCourseCustom>
 }

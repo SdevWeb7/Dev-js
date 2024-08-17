@@ -3,10 +3,11 @@ import PCourse from "@/components/cours/p-course";
 import H2Course from "@/components/cours/h2-course";
 import UlCourse from "@/components/cours/ul-course";
 import LICourse from "@/components/cours/li-course";
+import LayoutCourseCustom from "@/components/cours/layout-course-custom";
 
 export default function page() {
 
-    return <>
+    return <LayoutCourseCustom>
         <H1Course>VS-Code - Cheat Sheet</H1Course>
 
         <PCourse>Maitriser sont IDE est un art. Commencez par quelques raccourcis clés et intégrez en des nouveaux progressivement. La liste suivante représente les commandes par défaults, il en existe beaucoup d&apos;autres, n&apos;hésitez pas à changer l&apos;attribution des raccourcis en fonction de vos préférences.</PCourse>
@@ -48,5 +49,5 @@ export default function page() {
             <LICourse>Ctrl + C : terminer une tâche en cours.</LICourse>
         </UlCourse>
 
-    </>
+    </LayoutCourseCustom>
 }

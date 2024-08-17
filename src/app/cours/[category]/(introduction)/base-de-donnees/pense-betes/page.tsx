@@ -6,11 +6,12 @@ import UlCourse from "@/components/cours/ul-course";
 import LICourse from "@/components/cours/li-course";
 import MultiLignesCodeWrapper from "@/components/cours/multi-lignes-code-wrapper";
 import SpanCourse from "@/components/cours/span-course";
+import LayoutCourseCustom from "@/components/cours/layout-course-custom";
 
 
 export default function page() {
 
-    return <>
+    return <LayoutCourseCustom>
 
         <H1Course>Base de données</H1Course>
 
@@ -91,5 +92,5 @@ export default function page() {
         </MultiLignesCodeWrapper>
 
         <PCourse>Cette requête supprime l&apos;utilisateur ayant un <SpanCourse>id</SpanCourse> égal à <SpanCourse>1</SpanCourse>.</PCourse>
-    </>
+    </LayoutCourseCustom>
 }

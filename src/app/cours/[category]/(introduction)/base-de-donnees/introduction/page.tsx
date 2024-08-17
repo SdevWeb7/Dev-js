@@ -1,11 +1,12 @@
 import H1Course from "@/components/cours/h1-course";
 import PCourse from "@/components/cours/p-course";
 import SpanCourse from "@/components/cours/span-course";
+import LayoutCourseCustom from "@/components/cours/layout-course-custom";
 
 
 export default function Page() {
 
-    return <>
+    return <LayoutCourseCustom>
 
         <H1Course>Base de données</H1Course>
 
@@ -18,5 +19,5 @@ export default function Page() {
 
         <PCourse className={'mt-8'}>Ce cours a pour but de comprendre la structure, le stockage et la récupération de données depuis une base de donnée dans le développement web.</PCourse>
 
-    </>
+    </LayoutCourseCustom>
 }

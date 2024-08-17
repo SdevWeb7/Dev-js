@@ -12,11 +12,12 @@ import MultiLignesCodeWrapper from "@/components/cours/multi-lignes-code-wrapper
 import CodeCourse from "@/components/cours/code-course";
 import imgExempleSrc from "@/../public/next-js/exemple-src.png";
 import imgExempleNoSrc from "@/../public/next-js/exemple-no-src.png";
+import LayoutCourseCustom from "@/components/cours/layout-course-custom";
 
 
 export default function page() {
 
-    return <>
+    return <LayoutCourseCustom>
 
         <H1Course>Next.js</H1Course>
 
@@ -171,5 +172,5 @@ export default function page() {
             <LICourse>les images ne se font pas avec des balises <SpanCourse>img</SpanCourse> mais des balises <SpanCourse>Image</SpanCourse></LICourse>
         </UlCourse>
 
-    </>
+    </LayoutCourseCustom>
 }

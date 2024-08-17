@@ -1,11 +1,12 @@
 import H1Course from "@/components/cours/h1-course";
 import SpanCourse from "@/components/cours/span-course";
 import LinkRessourcesUtiles from "@/components/cours/link-ressources-utiles";
+import LayoutCourseCustom from "@/components/cours/layout-course-custom";
 
 
 export default function page() {
 
-    return <>
+    return <LayoutCourseCustom>
 
         <H1Course>Next.js</H1Course>
 
@@ -21,5 +22,5 @@ export default function page() {
         <LinkRessourcesUtiles href={"https://tailwindcss.com/"}><SpanCourse>Tailwind CSS</SpanCourse> - Le site officiel.</LinkRessourcesUtiles>
 
 
-    </>
+    </LayoutCourseCustom>
 }

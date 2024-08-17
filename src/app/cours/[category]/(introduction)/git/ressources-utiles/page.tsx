@@ -1,12 +1,13 @@
 import H1Course from "@/components/cours/h1-course";
 import SpanCourse from "@/components/cours/span-course";
 import LinkRessourcesUtiles from "@/components/cours/link-ressources-utiles";
+import LayoutCourseCustom from "@/components/cours/layout-course-custom";
 
 
 
 export default function Page() {
 
-    return <>
+    return <LayoutCourseCustom>
         <H1Course>Git</H1Course>
 
 
@@ -27,5 +28,5 @@ export default function Page() {
             La playlist de <SpanCourse>Grafikart</SpanCourse> sur Git.
         </LinkRessourcesUtiles>
 
-    </>
+    </LayoutCourseCustom>
 }

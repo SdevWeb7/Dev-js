@@ -11,11 +11,12 @@ import imgExempleDatabase from "@/../public/bdd/exemple-database.jpg";
 import imgMCD from "@/../public/bdd/MCD.jpg";
 import MultiLignesCodeWrapper from "@/components/cours/multi-lignes-code-wrapper";
 import SpanCourse from "@/components/cours/span-course";
+import LayoutCourseCustom from "@/components/cours/layout-course-custom";
 
 
 export default function Page() {
 
-    return <>
+    return <LayoutCourseCustom>
 
         <H1Course>Base de données</H1Course>
 
@@ -123,5 +124,5 @@ export default function Page() {
         </Link>
 
         <H3Course className={'mt-16'}>Rendez vous partie exercice pour la pratique!</H3Course>
-    </>
+    </LayoutCourseCustom>
 }

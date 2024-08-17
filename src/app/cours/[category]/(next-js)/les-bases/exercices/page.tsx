@@ -6,10 +6,11 @@ import CodeCourse from "@/components/cours/code-course";
 import Link from "next/link";
 import {cn} from "@/lib/utils";
 import {buttonVariants} from "@/components/ui/button";
+import LayoutCourseCustom from "@/components/cours/layout-course-custom";
 
 export default function page() {
 
-    return <>
+    return <LayoutCourseCustom>
 
         <H1Course>Next.js</H1Course>
 
@@ -37,5 +38,5 @@ export default function page() {
         }), "p-0 text-2xl")} href="github" target="_blank">Dépot Github</Link>.</PCourse>
 
         <PCourse className={"mt-6"}>Le processus de déploiement d&apos;une application sans fonctionnalité avancé est plutôt simple. Je vous laisse découvrir <Link href="https://vercel.com/" target="_blank">Vercel</Link> par vous-même.</PCourse>
-    </>
+    </LayoutCourseCustom>
 }

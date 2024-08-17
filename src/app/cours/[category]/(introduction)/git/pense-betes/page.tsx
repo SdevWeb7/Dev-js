@@ -4,10 +4,11 @@ import H2Course from "@/components/cours/h2-course";
 import H3Course from "@/components/cours/h3-course";
 import MultiLignesCodeWrapper from "@/components/cours/multi-lignes-code-wrapper";
 import React from "react";
+import LayoutCourseCustom from "@/components/cours/layout-course-custom";
 
 export default function Page() {
 
-    return <>
+    return <LayoutCourseCustom>
         <H1Course>Git</H1Course>
 
 
@@ -169,5 +170,5 @@ export default function Page() {
                 git config --global credential.username &ldquo;new_username&rdquo;
             </CodeCourse>
         </MultiLignesCodeWrapper>
-    </>
+    </LayoutCourseCustom>
 }

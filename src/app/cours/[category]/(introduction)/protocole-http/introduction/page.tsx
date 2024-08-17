@@ -3,11 +3,12 @@ import PCourse from "@/components/cours/p-course";
 import UlCourse from "@/components/cours/ul-course";
 import LICourse from "@/components/cours/li-course";
 import SpanCourse from "@/components/cours/span-course";
+import LayoutCourseCustom from "@/components/cours/layout-course-custom";
 
 
 export default function Page() {
 
-    return <>
+    return <LayoutCourseCustom>
 
         <H1Course>Protocole HTTP</H1Course>
 
@@ -29,5 +30,5 @@ export default function Page() {
 
             <LICourse className={'mt-2'}>De la <SpanCourse>couche application du modèle OSI</SpanCourse>. Il est utilisé pour transférer des ressources (texte, images, vidéos, etc.) entre un client et un serveur.</LICourse>
         </UlCourse>
-    </>
+    </LayoutCourseCustom>
 }

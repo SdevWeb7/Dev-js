@@ -3,10 +3,11 @@ import PCourse from "@/components/cours/p-course";
 import UlCourse from "@/components/cours/ul-course";
 import LICourse from "@/components/cours/li-course";
 import SpanCourse from "@/components/cours/span-course";
+import LayoutCourseCustom from "@/components/cours/layout-course-custom";
 
 export default function Page() {
 
-    return <>
+    return <LayoutCourseCustom>
         <H1Course>Git</H1Course>
 
 
@@ -21,5 +22,5 @@ export default function Page() {
 
         <PCourse className={"mt-16"}>2) Pour apprendre à gérer les conflits, avec un ou plusieurs collègues, essayez de travailler sur le meme dépôt distant en meme temps. Vous pouvez ensuite vous entrainer au mécanisme des <SpanCourse>pull requests</SpanCourse></PCourse>
 
-    </>
+    </LayoutCourseCustom>
 }

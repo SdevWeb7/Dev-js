@@ -4,10 +4,11 @@ import PCourse from "@/components/cours/p-course";
 import UlCourse from "@/components/cours/ul-course";
 import LICourse from "@/components/cours/li-course";
 import Link from "next/link";
+import LayoutCourseCustom from "@/components/cours/layout-course-custom";
 
 export default function page() {
   return (
-    <>
+    <LayoutCourseCustom>
       <H1Course>Ressources utiles</H1Course>
 
         <H1Course>Ressources utiles</H1Course>
@@ -46,6 +47,6 @@ export default function page() {
           </Link>
         </LICourse>
       </UlCourse>
-    </>
+    </LayoutCourseCustom>
   );
 }

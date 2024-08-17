@@ -3,11 +3,12 @@ import H2Course from "@/components/cours/h2-course";
 import UlCourse from "@/components/cours/ul-course";
 import LICourse from "@/components/cours/li-course";
 import SpanCourse from "@/components/cours/span-course";
+import LayoutCourseCustom from "@/components/cours/layout-course-custom";
 
 
 export default function page() {
 
-    return <>
+    return <LayoutCourseCustom>
 
         <H1Course>Protocole HTTP</H1Course>
 
@@ -22,5 +23,5 @@ export default function page() {
             <LICourse>envoi un <SpanCourse>cookie</SpanCourse> pouvant contenir une clé d&apos;authentification</LICourse>
         </UlCourse>
 
-    </>
+    </LayoutCourseCustom>
 }

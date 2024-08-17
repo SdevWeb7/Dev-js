@@ -4,12 +4,13 @@ import UlCourse from "@/components/cours/ul-course";
 import LICourse from "@/components/cours/li-course";
 import H1Course from "@/components/cours/h1-course";
 import H2Course from "@/components/cours/h2-course";
+import LayoutCourseCustom from "@/components/cours/layout-course-custom";
 
 
 
 export default function Page() {
 
-    return <>
+    return <LayoutCourseCustom>
         <H1Course>Prendre en main VS Code</H1Course>
 
 
@@ -36,5 +37,5 @@ export default function Page() {
 
         <PCourse>Dans la barre latérale, vous trouverez les icônes de vos extensions, vous pouvez aussi customiser ceci.</PCourse>
 
-    </>
+    </LayoutCourseCustom>
 }

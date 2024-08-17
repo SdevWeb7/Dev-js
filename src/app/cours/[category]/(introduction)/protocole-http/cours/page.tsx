@@ -7,11 +7,12 @@ import Link from "next/link";
 import Image from "next/image";
 import imgUrlDetails from "@/../public/http/url-details.jpg";
 import SpanCourse from "@/components/cours/span-course";
+import LayoutCourseCustom from "@/components/cours/layout-course-custom";
 
 
 export default function page() {
 
-    return <>
+    return <LayoutCourseCustom>
 
         <H1Course>Protocole HTTP</H1Course>
 
@@ -170,5 +171,5 @@ export default function page() {
         <PCourse>Le <SpanCourse>DNS</SpanCourse> est un <SpanCourse>service</SpanCourse> qui permet de <SpanCourse>traduire</SpanCourse> un <SpanCourse>nom de domaine</SpanCourse> en une <SpanCourse>adresse IP</SpanCourse>.</PCourse>
         <PCourse className={"mt-4"}>Il est plus facile pour un humain de retenir une adresse web (URL) qu&apos;une adresse IP.</PCourse>
 
-        </>
+        </LayoutCourseCustom>
 }

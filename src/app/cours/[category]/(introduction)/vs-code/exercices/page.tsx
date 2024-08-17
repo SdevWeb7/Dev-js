@@ -6,11 +6,12 @@ import UlCourse from "@/components/cours/ul-course";
 import LICourse from "@/components/cours/li-course";
 import CodeCourse from "@/components/cours/code-course";
 import MultiLignesCodeWrapper from "@/components/cours/multi-lignes-code-wrapper";
+import LayoutCourseCustom from "@/components/cours/layout-course-custom";
 
 
 export default function page() {
 
-    return <>
+    return <LayoutCourseCustom>
         <H1Course>VS-Code - Exercices</H1Course>
 
 
@@ -133,5 +134,5 @@ export default function page() {
         <H2Course>Exercice 4</H2Course>
         <PCourse><em>voir le cours sur GIT et GitHub</em></PCourse>
 
-    </>
+    </LayoutCourseCustom>
 }

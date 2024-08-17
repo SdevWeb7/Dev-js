@@ -4,11 +4,12 @@ import PCourse from "@/components/cours/p-course";
 import Image from "next/image";
 import imgGitBranches from "@/../public/git/branche_git.png";
 import SpanCourse from "@/components/cours/span-course";
+import LayoutCourseCustom from "@/components/cours/layout-course-custom";
 
 
 export default function Page() {
 
-    return <>
+    return <LayoutCourseCustom>
         <H1Course>Git</H1Course>
 
         <PCourse>Git est un logiciel de <SpanCourse>gestion de versions décentralisé</SpanCourse>. </PCourse>
@@ -20,5 +21,5 @@ export default function Page() {
         <Link href="/git/branche_git.png" target="_blank"><Image className={"shadow-md rounded-3xl my-12"} src={imgGitBranches} alt="Git Branches" /></Link>
 
         <PCourse>Utiliser Git est une compétence essentielle pour tout développeur cependant il peut être difficile à prendre en main. C&apos;est pourquoi nous allons voir dans ce cours les bases de Git et comment l&apos;utiliser au quotidien.</PCourse>
-    </>
+    </LayoutCourseCustom>
 }

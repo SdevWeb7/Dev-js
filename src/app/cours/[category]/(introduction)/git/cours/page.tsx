@@ -9,11 +9,12 @@ import MultiLignesCodeWrapper from "@/components/cours/multi-lignes-code-wrapper
 import {cn} from "@/lib/utils";
 import {buttonVariants} from "@/components/ui/button";
 import SpanCourse from "@/components/cours/span-course";
+import LayoutCourseCustom from "@/components/cours/layout-course-custom";
 
 
 export default function Page() {
 
-    return <>
+    return <LayoutCourseCustom>
         <H1Course>Git</H1Course>
 
 
@@ -189,5 +190,5 @@ export default function Page() {
         <PCourse>Git ne sait pas quelle modification garder, il faut donc résoudre le conflit manuellement.</PCourse>
         <PCourse className={"my-4"}>Les tags permettent de marquer un commit. Cela peut être utile pour marquer une version stable par exemple.</PCourse>
         <PCourse>Les Pull Request sont des demandes de fusion de code. Cela permet de vérifier le code avant de le fusionner avec la branche principale.</PCourse>
-    </>
+    </LayoutCourseCustom>
 }

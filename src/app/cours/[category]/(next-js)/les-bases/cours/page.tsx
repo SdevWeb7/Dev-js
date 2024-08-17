@@ -12,11 +12,12 @@ import UlCourse from "@/components/cours/ul-course";
 import LICourse from "@/components/cours/li-course";
 import {cn} from "@/lib/utils";
 import {buttonVariants} from "@/components/ui/button";
+import LayoutCourseCustom from "@/components/cours/layout-course-custom";
 
 
 export default function Page() {
 
-    return <>
+    return <LayoutCourseCustom>
 
     <H1Course>Next.js</H1Course>
 
@@ -562,5 +563,5 @@ export default function Page() {
 
     <PCourse>Les attributs <SpanCourse>width</SpanCourse> et <SpanCourse>height</SpanCourse> ne sont alors pas obligatoire.</PCourse>
 
-    </>
+    </LayoutCourseCustom>
 }

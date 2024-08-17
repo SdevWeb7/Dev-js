@@ -4,10 +4,11 @@ import PCourse from "@/components/cours/p-course";
 import MultiLignesCodeWrapper from "@/components/cours/multi-lignes-code-wrapper";
 import CodeCourse from "@/components/cours/code-course";
 import SpanCourse from "@/components/cours/span-course";
+import LayoutCourseCustom from "@/components/cours/layout-course-custom";
 
 export default function page() {
 
-    return <>
+    return <LayoutCourseCustom>
 
         <H1Course>Next.js</H1Course>
 
@@ -51,5 +52,5 @@ export default function page() {
 
         <PCourse>Entrainez vous un petit peu au style avec <SpanCourse>TailwindCSS</SpanCourse> dont la documentation officielle est sublime.</PCourse>
         <PCourse className={'mt-6'}>Commencez éventuellement à coder un compteur et à vous confronter à certains bugs.</PCourse>
-    </>
+    </LayoutCourseCustom>
 }

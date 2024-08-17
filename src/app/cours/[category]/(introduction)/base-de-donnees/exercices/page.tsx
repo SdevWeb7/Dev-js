@@ -6,10 +6,11 @@ import LICourse from "@/components/cours/li-course";
 import Link from "next/link";
 import {buttonVariants} from "@/components/ui/button";
 import {cn} from "@/lib/utils";
+import LayoutCourseCustom from "@/components/cours/layout-course-custom";
 
 export default function Page() {
 
-    return <>
+    return <LayoutCourseCustom>
 
         <H1Course>Base de données</H1Course>
 
@@ -29,5 +30,5 @@ export default function Page() {
 
         <PCourse className={'mt-12'}>N&apos;hésitez pas à vous documenter sur internet (voir ressources utiles).</PCourse>
 
-    </>
+    </LayoutCourseCustom>
 }
