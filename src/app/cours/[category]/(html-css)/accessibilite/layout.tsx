@@ -1,30 +1,10 @@
-import Main from "@/components/main";
 import {PropsWithChildren} from "react";
-import MyCustomBreadcrumb from "@/components/my-custom-breadcrumb";
-import CourseSectionNavigation from "@/components/course-section-navigation";
+import LayoutCourseCustom from "@/components/cours/layout-course-custom";
 
 
 
 export default async function LayoutCourse({children} : PropsWithChildren) {
 
-    return <Main>
+    return <LayoutCourseCustom>{children}</LayoutCourseCustom>;
 
-        <MyCustomBreadcrumb />
-
-
-
-        <div defaultValue="introduction" className="flex flex-col lg:flex-row mt-8 gap-2">
-
-
-            <CourseSectionNavigation />
-
-
-
-            <div className={'lg:border-l-2 lg:pl-12 flex justify-center w-full overflow-hidden'}>
-                {children}
-            </div>
-
-
-        </div>
-    </Main>;
 }

@@ -1,8 +1,6 @@
 import H1Course from "@/components/cours/h1-course";
-import Link from "next/link";
 import SpanCourse from "@/components/cours/span-course";
-import {cn} from "@/lib/utils";
-import {buttonVariants} from "@/components/ui/button";
+import LinkRessourcesUtiles from "@/components/cours/link-ressources-utiles";
 
 export default function page() {
 
@@ -11,19 +9,19 @@ export default function page() {
         <H1Course>Protocole HTTP</H1Course>
 
 
-        <Link className={cn(buttonVariants({
-            variant: "link"
-        }), "text-2xl p-0 block")} href="https://www.postman.com/" target="_blank"><SpanCourse>Postman</SpanCourse> - Postman simplifie chaque étape du cycle de vie des API et rationalise la collaboration afin que vous puissiez créer des API plus rapidement.</Link>
+        <LinkRessourcesUtiles href={"https://www.postman.com/"}>
+            <SpanCourse>Postman</SpanCourse> - Postman simplifie chaque étape du cycle de vie des API et rationalise la collaboration afin que vous puissiez créer des API plus rapidement.
+        </LinkRessourcesUtiles>
 
 
-        <Link className={cn(buttonVariants({
-            variant: "link"
-        }), "text-2xl p-0 block my-4")} href="https://jsonplaceholder.typicode.com/" target="_blank"><SpanCourse>JsonPlaceholder</SpanCourse> - Une API gratuite pour s&apos;entrainer à faire des requêtes HTTP.</Link>
+        <LinkRessourcesUtiles href={"https://jsonplaceholder.typicode.com/"}>
+            <SpanCourse>JsonPlaceholder</SpanCourse> - Une API gratuite pour s&apos;entrainer à faire des requêtes HTTP.
+        </LinkRessourcesUtiles>
 
 
-        <Link className={cn(buttonVariants({
-            variant: "link"
-        }), "text-2xl p-0 block")} href="https://www.cloudflare.com/fr-fr/learning/dns/what-is-dns/" target="_blank"><SpanCourse>Cloudflare</SpanCourse> - Les DNS.</Link>
+        <LinkRessourcesUtiles href={"https://www.cloudflare.com/fr-fr/learning/dns/what-is-dns/"}>
+            <SpanCourse>Cloudflare</SpanCourse> - Les DNS.
+        </LinkRessourcesUtiles>
 
     </>
 }

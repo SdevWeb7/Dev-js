@@ -1,8 +1,6 @@
-import Link from "next/link";
 import H1Course from "@/components/cours/h1-course";
 import SpanCourse from "@/components/cours/span-course";
-import {cn} from "@/lib/utils";
-import {buttonVariants} from "@/components/ui/button";
+import LinkRessourcesUtiles from "@/components/cours/link-ressources-utiles";
 
 export default function Page() {
 
@@ -11,13 +9,9 @@ export default function Page() {
         <H1Course>Base de données</H1Course>
 
 
-        <Link className={cn(buttonVariants({
-            variant: "link"
-        }), "block text-2xl")} href="https://sql.sh/" target="_blank"><SpanCourse>SQL.sh</SpanCourse> - SQL.sh permet d&apos;apprendre le langage SQL.</Link>
+        <LinkRessourcesUtiles href={"https://sql.sh/"}><SpanCourse>SQL.sh</SpanCourse> - SQL.sh permet d&apos;apprendre le langage SQL.</LinkRessourcesUtiles>
 
 
-        <Link className={cn(buttonVariants({
-            variant: "link"
-        }), "block text-2xl mt-4")} href="https://wampserver.aviatechno.net/" target="_blank"><SpanCourse>WAMP</SpanCourse> - Site internet pour télécharger WAMP.</Link>
+        <LinkRessourcesUtiles href={"https://wampserver.aviatechno.net/"}><SpanCourse>WAMP</SpanCourse> - Site internet pour télécharger WAMP.</LinkRessourcesUtiles>
     </>
 }
