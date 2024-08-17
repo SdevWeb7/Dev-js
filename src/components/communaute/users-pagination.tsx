@@ -4,6 +4,7 @@ import Link from "next/link";
 import {buttonVariants} from "@/components/ui/button";
 import {ChevronLeftIcon, ChevronRightIcon} from "@radix-ui/react-icons";
 import * as React from "react";
+import {cn} from "@/lib/utils";
 
 
 type UsersPaginationProps = {
@@ -12,7 +13,7 @@ type UsersPaginationProps = {
     searchKey: string | undefined;
 }
 export default async function UsersPagination({page, perPage, searchKey} : UsersPaginationProps) {
-        const baseUrl = searchKey ? `${process.env.CANONICAL_URL}/profils-communaute?searchKey=${searchKey}&page=` : `${process.env.CANONICAL_URL}/profils-communaute?page=`;
+        const baseUrl = searchKey ? `${process.env.CANONICAL_URL}/communaute?searchKey=${searchKey}&page=` : `${process.env.CANONICAL_URL}/communaute?page=`;
         const totalUsersPublic = await prisma.user.count({
             where: {
                 AND: [

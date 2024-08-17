@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 * {
-  scrollbar-color: #59047b #fafafa;
+  scrollbar-color: hsl(155 58% 29%) #fafafa;
 }
 @layer base {
   :root {

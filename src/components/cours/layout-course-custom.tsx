@@ -18,7 +18,7 @@ export default function LayoutCourseCustom({children} : { children: ReactNode })
 
 
 
-            <article className={'lg:border-l-2 lg:pl-12 w-full overflow-hidden'}>
+            <article className={'lg:border-l-2 lg:pl-12 w-full overflow-hidden mt-8 lg:mt-0'}>
                 {children}
             </article>
 

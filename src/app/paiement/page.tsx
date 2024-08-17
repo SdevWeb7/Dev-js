@@ -49,15 +49,11 @@ useEffect(() => {
                     <TableCell>4 cours Next.js</TableCell>
                     <TableCell className="text-right">20€</TableCell>
                 </TableRow>
-                <TableRow>
-                    <TableCell>5h de visio-coding individuel</TableCell>
-                    <TableCell className="text-right">110€</TableCell>
-                </TableRow>
             </TableBody>
             <TableFooter>
                 <TableRow>
                     <TableCell>Total</TableCell>
-                    <TableCell className="text-right">150€</TableCell>
+                    <TableCell className="text-right">40€</TableCell>
                 </TableRow>
             </TableFooter>
         </Table>

@@ -39,8 +39,7 @@ export default function CourseSectionNavigation() {
               key={index}
               href={`/cours/${params[1]}/${params[2]}/${categorie.value}`}
               className={cn("rounded-md text-center p-2", {
-                "bg-accent": params[3] === categorie.value,
-                "text-white": params[3] === categorie.value,
+                "bg-primary text-white": params[3] === categorie.value,
               })}
             >
               {categorie.label}
