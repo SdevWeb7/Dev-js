@@ -23,6 +23,7 @@ import {
   TableFooter,
   TableRow,
 } from "@/components/ui/table";
+import SpanCourse from "@/components/cours/span-course";
 
 export default function Home({
   searchParams,
@@ -63,30 +64,23 @@ export default function Home({
 
   return (
     <Main className={"flex flex-col items-center justify-center min-h-[80vh]"}>
+
+
       <div className={"flex flex-wrap justify-center items-center gap-28 mt-8"}>
-        <h1 className="scroll-m-20 text-5xl font-extrabold tracking-tight min750:text-7xl min750:leading-tight">
-          <span className={"text-my-primary"}>Dev</span>.js,
-          <br /> apprenez les bases
-          <br />
-          du{" "}
-          <span className={"font-extrabold text-my-primary"}>
+        <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight sm:text-7xl min750:leading-tight">
+          <span className={"text-my-primary"}>Dev</span>.js,<br/>
+            les bases du<br/><SpanCourse>
             développement web
-          </span>
+          </SpanCourse>
         </h1>
 
         <div>
-          <h2
-            className={
-              "text-center text-4xl font-extrabold text-my-primary mb-8 min750:mr-12"
-            }
-          >
-            Que vais-je apprendre?
+          <h2 className={"text-center text-4xl font-extrabold text-my-primary mb-8 min750:mr-12"}>
+                Que vais-je apprendre?
           </h2>
-          <Carousel
-            className={
-              "overflow-hidden w-full sm:max-w-[500px] sm:overflow-visible min750:mr-12"
-            }
-          >
+
+
+          <Carousel className={"overflow-hidden w-full sm:max-w-[500px] sm:overflow-visible min750:mr-12"}>
             <CarouselContent>
               <CarouselItem>
                 <Image
