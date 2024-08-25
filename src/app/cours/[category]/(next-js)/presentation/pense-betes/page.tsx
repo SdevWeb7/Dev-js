@@ -18,7 +18,7 @@ export default function page() {
 
 
         <PCourse>Créer un projet Next.js :</PCourse>
-        <MultiLignesCodeWrapper className={'my-6'}>
+        <MultiLignesCodeWrapper className={'simple-my'}>
             <CodeCourse langage={"bash"}>
                 npx create-next-app nomduprojet
             </CodeCourse>
@@ -27,7 +27,7 @@ export default function page() {
 
 
         <PCourse>Ouvrir le dossier dans un IDE et taper :</PCourse>
-        <MultiLignesCodeWrapper className={"mt-6"}>
+        <MultiLignesCodeWrapper className={"simple-mt"}>
             <CodeCourse langage={"bash"}>
                 npm install
             </CodeCourse>

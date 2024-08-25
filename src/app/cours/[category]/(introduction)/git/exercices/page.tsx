@@ -11,7 +11,7 @@ export default function Page() {
         <H1Course>Git</H1Course>
 
 
-        <PCourse className={"mb-4"}>1) Pour s&apos;habituer aux manipulations de Git :</PCourse>
+        <PCourse className={"mb-3"}>1) Pour s&apos;habituer aux manipulations de Git :</PCourse>
         <UlCourse>
             <LICourse>Créer un dépôt localement</LICourse>
             <LICourse>Créer un dépôt sur une plateforme de gestion (Github par exemple)</LICourse>
@@ -20,7 +20,7 @@ export default function Page() {
         </UlCourse>
 
 
-        <PCourse className={"mt-16"}>2) Pour apprendre à gérer les conflits, avec un ou plusieurs collègues, essayez de travailler sur le meme dépôt distant en meme temps. Vous pouvez ensuite vous entrainer au mécanisme des <SpanCourse>pull requests</SpanCourse></PCourse>
+        <PCourse className={"double-mt"}>2) Pour apprendre à gérer les conflits, avec un ou plusieurs collègues, essayez de travailler sur le meme dépôt distant en meme temps. Vous pouvez ensuite vous entrainer au mécanisme des <SpanCourse>pull requests</SpanCourse></PCourse>
 
     </LayoutCourseCustom>
 }

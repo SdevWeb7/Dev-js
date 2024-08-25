@@ -59,4 +59,22 @@
   body {
     @apply bg-background text-foreground;
   }
+  .simple-my {
+    @apply my-6;
+  }
+  .double-my {
+    @apply my-12;
+  }
+  .simple-mt {
+    @apply mt-6;
+  }
+  .double-mt {
+    @apply mt-12;
+  }
+  .simple-mb {
+    @apply mb-6;
+  }
+  .double-mb {
+    @apply mb-12;
+  }
 }

@@ -16,7 +16,7 @@ export default function page() {
 
         <PCourse>Les <SpanCourse>Client Components</SpanCourse> sont d&apos;abord rendus une première fois <SpanCourse>Coté Serveur</SpanCourse>.</PCourse>
 
-        <PCourse>Penser à la propriété <SpanCourse>CHILDREN</SpanCourse> afin de pouvoir garder un maximum de <SpanCourse>Serveur Components</SpanCourse>.</PCourse>
+        <PCourse className={'simple-mt'}>Penser à la propriété <SpanCourse>CHILDREN</SpanCourse> afin de pouvoir garder un maximum de <SpanCourse>Serveur Components</SpanCourse>.</PCourse>
 
 
 

@@ -1,10 +1,10 @@
-import Link from "next/link";
 import PCourse from "@/components/cours/p-course";
 import UlCourse from "@/components/cours/ul-course";
 import LICourse from "@/components/cours/li-course";
 import H1Course from "@/components/cours/h1-course";
 import H2Course from "@/components/cours/h2-course";
 import LayoutCourseCustom from "@/components/cours/layout-course-custom";
+import LinkCustom from "@/components/cours/link-custom";
 
 
 
@@ -19,7 +19,7 @@ export default function Page() {
 
 
         <UlCourse>
-            <LICourse>Cliquez sur <b>Download for Windows</b> après vous être rendu à l&apos;adresse :<Link href="https://code.visualstudio.com/" target="_blank">site officiel VS Code</Link></LICourse>
+            <LICourse>Cliquez sur <b>Download for Windows</b> après vous être rendu à l&apos;adresse :<LinkCustom href="https://code.visualstudio.com/">site officiel VS Code</LinkCustom></LICourse>
         </UlCourse>
 
         <PCourse>Une fois installé et lancé, vous pouvez configurer VS Code pour qu&apos;il s&apos;adapte à vos préférences. Voici quelques éléments à configurer :</PCourse>

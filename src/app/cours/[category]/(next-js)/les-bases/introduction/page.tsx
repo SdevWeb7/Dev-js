@@ -15,9 +15,9 @@ export default function Page() {
 
         <PCourse>Dans le chapitre précédent nous avons survolé les concepts de bases de <SpanCourse>Next.js</SpanCourse>.</PCourse>
 
-        <PCourse>Il est temps de rentrer dans le vif du sujet et de voir comment créer une application <SpanCourse>Next.js</SpanCourse> de A à Z.</PCourse>
+        <PCourse className={"simple-my"}>Il est temps de rentrer dans le vif du sujet et de voir comment créer une application <SpanCourse>Next.js</SpanCourse> de A à Z.</PCourse>
 
-        <PCourse className={"mt-6 mb-2"}>Liste non exhaustive de ce que nous allons approfondir :</PCourse>
+        <PCourse className={"mb-3"}>Liste non exhaustive de ce que nous allons approfondir :</PCourse>
 
 
         <UlCourse>

@@ -3,10 +3,9 @@ import H2Course from "@/components/cours/h2-course";
 import H1Course from "@/components/cours/h1-course";
 import PCourse from "@/components/cours/p-course";
 import LICourse from "@/components/cours/li-course";
-import Link from "next/link";
-import {buttonVariants} from "@/components/ui/button";
-import {cn} from "@/lib/utils";
 import LayoutCourseCustom from "@/components/cours/layout-course-custom";
+import SpanCourse from "@/components/cours/span-course";
+import LinkCustom from "@/components/cours/link-custom";
 
 export default function Page() {
 
@@ -18,17 +17,14 @@ export default function Page() {
         <H2Course>Exercice 1</H2Course>
 
         <UlCourse>
-            <LICourse>Installer WAMP. <Link className={cn(buttonVariants({
-                variant: "link"
-            }), "text-xl")} href="https://wampserver.aviatechno.net/" target="_blank">Télécharger WAMP</Link> ou <Link className={cn(buttonVariants({
-                variant: "link"
-            }), "text-xl")} href="https://www.clubic.com/telecharger-fiche27009-wampserver.html" target="_blank">Clubic.com</Link> </LICourse>
-            <LICourse>Créer une base de donnée avec phpmyadmin</LICourse>
-            <LICourse>Créer 2 table avec une relation entre elles</LICourse>
-            <LICourse>Se familiariser avec les 4 types de requêtes SQL à l&apos;aide de phpmyadmin</LICourse>
+            <LICourse><SpanCourse>Installer WAMP</SpanCourse>. <LinkCustom href="https://wampserver.aviatechno.net/">Télécharger WAMP</LinkCustom> ou <LinkCustom href="https://www.clubic.com/telecharger-fiche27009-wampserver.html">Clubic.com</LinkCustom> </LICourse>
+            <LICourse><SpanCourse>Créer une base de donnée</SpanCourse> avec <SpanCourse>phpmyadmin</SpanCourse></LICourse>
+            <LICourse><SpanCourse>Créer 2 table avec une relation entre elles</SpanCourse> (il faudra aller dans l&apos;onglet <SpanCourse>Vue relationnel</SpanCourse>)</LICourse>
+            <LICourse><SpanCourse>Insérer des données dans ces tables</SpanCourse></LICourse>
+            <LICourse>Se familiariser avec les <SpanCourse>4 types de requêtes SQL</SpanCourse> (Select, Insert, Update, Delete) en effectuant des requêtes à l&apos;aide de <SpanCourse>phpmyadmin</SpanCourse></LICourse>
         </UlCourse>
 
-        <PCourse className={'mt-12'}>N&apos;hésitez pas à vous documenter sur internet (voir ressources utiles).</PCourse>
+        <PCourse className={'double-mt'}>N&apos;hésitez pas à vous documenter sur internet (voir ressources utiles).</PCourse>
 
     </LayoutCourseCustom>
 }

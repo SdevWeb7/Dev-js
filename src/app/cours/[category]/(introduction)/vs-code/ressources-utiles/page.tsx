@@ -5,6 +5,7 @@ import UlCourse from "@/components/cours/ul-course";
 import LICourse from "@/components/cours/li-course";
 import Link from "next/link";
 import LayoutCourseCustom from "@/components/cours/layout-course-custom";
+import LinkCustom from "@/components/cours/link-custom";
 
 export default function page() {
   return (
@@ -20,10 +21,10 @@ export default function page() {
 
         <UlCourse>
             <LICourse>
-                <Link href="https://code.visualstudio.com/docs" target="_blank">Documentation officielle</Link>
+                <LinkCustom href="https://code.visualstudio.com/docs">Documentation officielle</LinkCustom>
             </LICourse>
             <LICourse>
-                <Link href="www.youtube.com/@code" target="_blank">Chaîne Youtube officielle</Link>
+                <LinkCustom href="www.youtube.com/@code">Chaîne Youtube officielle</LinkCustom>
             </LICourse>
         </UlCourse>
 
@@ -36,15 +37,15 @@ export default function page() {
 
       <UlCourse>
         <LICourse>
-          <Link href="https://code.visualstudio.com/docs" target="_blank">
+          <LinkCustom href="https://code.visualstudio.com/docs">
             Documentation officielle
-          </Link>
+          </LinkCustom>
           utiliser VS Code.
         </LICourse>
         <LICourse>
-          <Link href="https://www.youtube.com/@code" target="_blank">
+          <LinkCustom href="https://www.youtube.com/@code">
             Chaîne Youtube officielle
-          </Link>
+          </LinkCustom>
         </LICourse>
       </UlCourse>
     </LayoutCourseCustom>

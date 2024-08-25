@@ -17,7 +17,8 @@ export default function page() {
         </LinkRessourcesUtiles>
 
 
-        <LinkRessourcesUtiles href={"https://jsonplaceholder.typicode.com/"}>
+
+        <LinkRessourcesUtiles className={"simple-mt"} href={"https://jsonplaceholder.typicode.com/"}>
             <SpanCourse>JsonPlaceholder</SpanCourse> - Une API gratuite pour s&apos;entrainer à faire des requêtes HTTP.
         </LinkRessourcesUtiles>
 

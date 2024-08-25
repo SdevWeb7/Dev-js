@@ -8,5 +8,5 @@ type H1CourseProps = {
 }
 export default function H1Course({className="", children}: H1CourseProps) {
 
-    return <h1 className={cn('text-center text-4xl font-bold mb-20', className)}>{children}</h1>
+    return <h1 className={cn('text-center text-4xl font-bold mb-12', className)}>{children}</h1>
 }

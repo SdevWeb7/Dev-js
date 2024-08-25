@@ -18,7 +18,7 @@ export default function page() {
 
 
         <PCourse>Créer un projet Next.js :</PCourse>
-        <MultiLignesCodeWrapper className={'my-6'}>
+        <MultiLignesCodeWrapper className={'simple-my'}>
             <CodeCourse langage={"bash"}>
                 npx create-next-app nomduprojet
             </CodeCourse>
@@ -27,7 +27,7 @@ export default function page() {
 
 
         <PCourse>Ouvrir le dossier dans un IDE et taper :</PCourse>
-        <MultiLignesCodeWrapper className={'my-6'}>
+        <MultiLignesCodeWrapper className={'simple-my'}>
             <CodeCourse langage={"bash"}>
                 npm install
             </CodeCourse>
@@ -41,16 +41,16 @@ export default function page() {
 
         <PCourse>Ouvrir un navigateur et aller à l&apos;adresse &ldquo;http://localhost:3000&rdquo;</PCourse>
 
-        <PCourse className={"my-6"}>Nettoyer &ldquo;page.tsx&rdquo; et &ldquo;style.css&rdquo; et mettre une balise <SpanCourse>h1</SpanCourse> &ldquo;Hello World!&rdquo;</PCourse>
+        <PCourse className={"simple-my"}>Nettoyer &ldquo;page.tsx&rdquo; et &ldquo;style.css&rdquo; et mettre une balise <SpanCourse>h1</SpanCourse> &ldquo;Hello World!&rdquo;</PCourse>
 
         <PCourse>Créer un dossier &ldquo;contact&rdquo; dans le dossier &ldquo;app&rdquo; et créer un fichier &ldquo;page.tsx&rdquo; avec un <SpanCourse>h1</SpanCourse> &ldquo;Contact&rdquo;</PCourse>
 
-        <PCourse className={"my-6"}>Créer un fichier &ldquo;header.tsx&rdquo; dans le dossier component et l&apos;appeler dans le fichier &ldquo;layout.tsx&rdquo;</PCourse>
+        <PCourse className={"simple-my"}>Créer un fichier &ldquo;header.tsx&rdquo; dans le dossier component et l&apos;appeler dans le fichier &ldquo;layout.tsx&rdquo;</PCourse>
         <PCourse>Dans ce &ldquo;header.tsx&rdquo;, créer 2 balises <SpanCourse>Link</SpanCourse> qui pointent vers &ldquo;/&rdquo; et &ldquo;/contact&rdquo;</PCourse>
 
-        <PCourse className={"my-6"}>Votre &ldquo;header&rdquo; s&apos;affiche sur toutes les pages et que le routing est bien effectué juste en créant 2 fichiers.</PCourse>
+        <PCourse className={"simple-my"}>Votre &ldquo;header&rdquo; s&apos;affiche sur toutes les pages et que le routing est bien effectué juste en créant 2 fichiers.</PCourse>
 
         <PCourse>Entrainez vous un petit peu au style avec <SpanCourse>TailwindCSS</SpanCourse> dont la documentation officielle est sublime.</PCourse>
-        <PCourse className={'mt-6'}>Commencez éventuellement à coder un compteur et à vous confronter à certains bugs.</PCourse>
+        <PCourse className={'simple-my'}>Commencez éventuellement à coder un compteur et à vous confronter à certains bugs.</PCourse>
     </LayoutCourseCustom>
 }

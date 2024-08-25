@@ -11,5 +11,5 @@ export default function LinkRessourcesUtiles({children, className="", href}: Lin
 
     return <Link className={cn(buttonVariants({
         variant: "link"
-    }), "text-2xl p-0 block whitespace-normal inline-block", className)} href={href} target="_blank">{children}</Link>
+    }), "text-xl p-0 whitespace-normal inline-block simple-my w-full", className)} href={href} target="_blank">{children}</Link>
 }

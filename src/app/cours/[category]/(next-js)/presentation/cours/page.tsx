@@ -28,20 +28,20 @@ export default function page() {
 
 
         <H2Course>Les Servers/Clients components</H2Course>
-        <PCourse className={"mb-2"}>Comme vu dans le cours précédent <SpanCourse>Javascript / React</SpanCourse> :</PCourse>
-
+        <PCourse className={"mb-3"}>Comme vu dans le cours précédent <SpanCourse>Javascript / React</SpanCourse> :</PCourse>
         <UlCourse>
             <LICourse>nous ne pouvions pas contacter de base de données donc les données étaient non persistantes (à moins d&apos;utiliser le LocalStorage)</LICourse>
             <LICourse>nous envoyions un gros bundle javascript et le code était éxécuté coté client (dans le navigateur)</LICourse>
             <LICourse>nous devions donc créer une API séparée (serveur) ou un service tiers afin de persister des données</LICourse>
         </UlCourse>
 
-        <PCourse className={"my-6"}>Next.js a révolutionné une première fois le monde du développement web en introduisant les <SpanCourse>Server Components</SpanCourse> et les <SpanCourse>Client Components</SpanCourse> (qui est en train d&apos;être intégré nativement dans <SpanCourse>React.js</SpanCourse>).</PCourse>
+
+        <PCourse className={"simple-my"}>Next.js a révolutionné une première fois le monde du développement web en introduisant les <SpanCourse>Server Components</SpanCourse> et les <SpanCourse>Client Components</SpanCourse> (qui est en train d&apos;être intégré nativement dans <SpanCourse>React.js</SpanCourse>).</PCourse>
         <PCourse>Je dis première fois, car nous verrons par la suite les <SpanCourse>Servers Actions</SpanCourse> qui vont révolutionner une seconde fois le monde du développement web.</PCourse>
 
-        <PCourse className={"my-6"}>Les <SpanCourse>Server Components</SpanCourse> sont des composants qui sont éxécutés <SpanCourse>côté serveur</SpanCourse> (<SpanCourse>Node.js)</SpanCourse> alors que les <SpanCourse>Client Components</SpanCourse> sont des composants qui sont éxécutés <SpanCourse>côté client</SpanCourse> (<SpanCourse>navigateur</SpanCourse>).</PCourse>
+        <PCourse className={"simple-my"}>Les <SpanCourse>Server Components</SpanCourse> sont des composants qui sont éxécutés <SpanCourse>côté serveur</SpanCourse> (<SpanCourse>Node.js)</SpanCourse> alors que les <SpanCourse>Client Components</SpanCourse> sont des composants qui sont éxécutés <SpanCourse>côté client</SpanCourse> (<SpanCourse>navigateur</SpanCourse>).</PCourse>
 
-        <PCourse className={"mb-2"}>Les avantages sont nombreux, mais voici quelques exemples :</PCourse>
+        <PCourse className={"mb-3"}>Les avantages sont nombreux, mais voici quelques exemples :</PCourse>
         <UlCourse>
             <LICourse>le javascript envoyé au client est beaucoup moins lours, donc bon pour les performances et la sécurité</LICourse>
             <LICourse>les données sont persistantes, donc plus besoin de créer une API séparée</LICourse>
@@ -74,9 +74,9 @@ export default function page() {
 
         <H3Course>Hiérarchie des composants dans Next.js</H3Course>
         <PCourse>Première chose importante tout est par défaut <SpanCourse>Server Component</SpanCourse>.</PCourse>
-        <PCourse className={"my-6"}>Pour rendre un composant <SpanCourse>Client Component</SpanCourse> il suffit d&apos;ajouter <SpanCourse>&ldquo;use client&rdquo;;</SpanCourse> tout en haut d&apos;un composant.</PCourse>
+        <PCourse className={"simple-my"}>Pour rendre un composant <SpanCourse>Client Component</SpanCourse> il suffit d&apos;ajouter <SpanCourse>&ldquo;use client&rdquo;;</SpanCourse> tout en haut d&apos;un composant.</PCourse>
         <PCourse>Tout les composants <SpanCourse>ENFANTS</SpanCourse> d&apos;un <SpanCourse>Client Component</SpanCourse> est par défaut un <SpanCourse>Client Component</SpanCourse>.</PCourse>
-        <PCourse className={"my-6"}>Il est possible d&apos;avoir un <SpanCourse>Server Component</SpanCourse> <b>ENFANT</b> d&apos;un <SpanCourse>Client Component</SpanCourse> en le passant par la <SpanCourse>props children</SpanCourse> cela est appelé la composition et peut-être très utile afin d&apos;éviter de rendre toute notre application <SpanCourse>Client Component</SpanCourse> si par exemple, nous devons l&apos;entourer d&apos;un <SpanCourse>Provider</SpanCourse>.</PCourse>
+        <PCourse className={"simple-my"}>Il est possible d&apos;avoir un <SpanCourse>Server Component</SpanCourse> <b>ENFANT</b> d&apos;un <SpanCourse>Client Component</SpanCourse> en le passant par la <SpanCourse>prop children</SpanCourse> cela est appelé la composition et peut-être très utile afin d&apos;éviter de rendre toute notre application <SpanCourse>Client Component</SpanCourse> si par exemple, nous devons l&apos;entourer d&apos;un <SpanCourse>Provider</SpanCourse>.</PCourse>
         <PCourse>La directive <SpanCourse>&ldquo;use server&rdquo;;</SpanCourse> est utilisée seulement pour les <SpanCourse>Server Actions</SpanCourse> que nous verrons très vite.</PCourse>
 
 
@@ -87,7 +87,7 @@ export default function page() {
         <H2Course>Routing</H2Course>
         <PCourse>Une autre fonctionnalité très pratique de Next.js est la gestion simple et efficace du routing en fonction de la structure des dossiers.</PCourse>
 
-        <PCourse className={"mt-6 mb-2"}>Avantages :</PCourse>
+        <PCourse className={"simple-mt mb-3"}>Avantages :</PCourse>
         <UlCourse>
             <LICourse>Next.js facilite la gestion des <SpanCourse>Params</SpanCourse> et <SpanCourse>SearchParams</SpanCourse> de l&apos;URL ainsi que d&apos;autres fonctionnalités</LICourse>
             <LICourse>Moins de fichiers ce qui diminue la possibilité d&apos;erreurs</LICourse>
@@ -101,16 +101,18 @@ export default function page() {
 
         <H2Course>Créer une application</H2Course>
         <PCourse>Pour créer une application Next.js vous met à disposition une commande très pratique :</PCourse>
-        <MultiLignesCodeWrapper className={"my-4"}>
+        <MultiLignesCodeWrapper className={"simple-my"}>
             <CodeCourse langage={"bash"}>
                 npx create-next-app@latest
             </CodeCourse>
         </MultiLignesCodeWrapper>
-        <PCourse className={"mb-6"}>Si vous tapez cette commande dans votre terminal, Next.js vous posera quelques questions.</PCourse>
+        <PCourse>Si vous tapez cette commande dans votre terminal, Next.js vous posera quelques questions.</PCourse>
 
-        <Link href="/next-js/next-starting.jpg" target="_blank"><Image src={imgNextStarting} alt="next-starting" /></Link>
+        <Link href="/next-js/next-starting.jpg" target="_blank" className={'block simple-my'}>
+            <Image src={imgNextStarting} alt="next-starting" />
+        </Link>
 
-        <PCourse className={'mt-6 mb-2'}>Next.js vous propose :</PCourse>
+        <PCourse className={'mb-3'}>Next.js vous propose :</PCourse>
         <UlCourse>
             <LICourse>De choisir le nom de votre projet (doit être en minuscule sans caractères spéciaux)</LICourse>
             <LICourse>d&apos;utiliser <SpanCourse>Typescript</SpanCourse> ou non mais il est fortement recommandé de l&apos;utiliser</LICourse>
@@ -125,16 +127,20 @@ export default function page() {
 
         <H2Course>Structure des dossiers</H2Course>
         <PCourse>Après avoir répondu à toutes les questions Next.js créer un nouveau projet.</PCourse>
-        <PCourse className={"my-6"}>Il faudra ensuite ouvrir le dossier dans votre éditeur de code préféré et taper <SpanCourse>npm install</SpanCourse> dans le terminal.</PCourse>
+        <PCourse className={"simple-my"}>Il faudra ensuite ouvrir le dossier dans votre éditeur de code préféré et taper <SpanCourse>npm install</SpanCourse> dans le terminal.</PCourse>
         <PCourse>Ensuite, en fonction du choix ou non d&apos;utiliser le dossier src, vous verrez une ou l&apos;autre structure de dossier comme celle-ci :</PCourse>
 
 
         <H3Course><b>Avec</b> dossier &ldquo;src&rdquo; (ma préférence)</H3Course>
-        <Link href="/next-js/exemple-src.png" target="_blank"><Image className={"shadow-md rounded-3xl"} src={imgExempleSrc} alt="next-structure-folder" /></Link>
+        <Link href="/next-js/exemple-src.png" target="_blank">
+            <Image className={"shadow-md rounded-3xl"} src={imgExempleSrc} alt="next-structure-folder" />
+        </Link>
 
 
         <H3Course><b>Sans</b> dossier &ldquo;src&rdquo;</H3Course>
-        <Link href="/next-js/exemple-no-src.png" target="_blank"><Image className={"shadow-md rounded-3xl"} src={imgExempleNoSrc} alt="next-structure-folder" /></Link>
+        <Link href="/next-js/exemple-no-src.png" target="_blank">
+            <Image className={"shadow-md rounded-3xl"} src={imgExempleNoSrc} alt="next-structure-folder" />
+        </Link>
 
 
 
@@ -166,7 +172,7 @@ export default function page() {
 
         <H2Course>Informations complémentaires</H2Course>
         <PCourse>Next.js met à votre disposition énormément d&apos;outils et il faut aussi importer certaines balises depuis Next.js.</PCourse>
-        <PCourse className={"my-6"}>Quelques exemples dans Next.js :</PCourse>
+        <PCourse className={"simple-my"}>Quelques exemples dans Next.js :</PCourse>
         <UlCourse>
             <LICourse>les liens ne se font pas avec des balises <SpanCourse>a</SpanCourse> mais des balises <SpanCourse>Link</SpanCourse></LICourse>
             <LICourse>les images ne se font pas avec des balises <SpanCourse>img</SpanCourse> mais des balises <SpanCourse>Image</SpanCourse></LICourse>
