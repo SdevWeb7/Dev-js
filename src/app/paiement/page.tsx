@@ -25,7 +25,7 @@ useEffect(() => {
     if (data?.user?.hasAccess) {
         router.push('/?successPaiement=true');
     }
-}, [searchParams.success, data]);
+}, [searchParams.success]);
     return <Main className={'flex flex-col items-center gap-16'}>
         <H1>Paiement</H1>
 

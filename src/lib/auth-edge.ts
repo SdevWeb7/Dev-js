@@ -23,14 +23,14 @@ export const nextAuthEdgeConfig = {
             const userHasAccess = auth?.user?.hasAccess;
             const isAdmin = auth?.user?.isAdmin;
 
-            if (isLoggedIn && isTryingToAccessAuthPath) {
-                return Response.redirect(new URL('/', request.nextUrl));
-            }
             if (!isAdmin && isTryingToAccessAdminPath) {
                 return false;
             }
             if (!isLoggedIn && (isTryingToAccessAuthenticatedPath || isTryingToAccessProtectedPath)) {
                 return Response.redirect(new URL('/auth/login?mustConnect=true', request.nextUrl));
+            }
+            if (isLoggedIn && isTryingToAccessAuthPath) {
+                return Response.redirect(new URL('/', request.nextUrl));
             }
             if (isLoggedIn && !userHasAccess && isTryingToAccessProtectedPath) {
                 return Response.redirect(new URL('/paiement', request.nextUrl));
