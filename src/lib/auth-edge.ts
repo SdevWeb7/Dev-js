@@ -9,7 +9,7 @@ export const nextAuthEdgeConfig = {
         authorized: ({ auth, request }) => {
             // runs on every request with middleware
             // const protectedPaths = ["react", "next-js"];
-            const protectedPaths = [""];
+            const protectedPaths = ["tout-est-autorisé"];
             const isTryingToAccessProtectedPath = protectedPaths.some(path =>
                 request.nextUrl.pathname.includes(path)
             );
