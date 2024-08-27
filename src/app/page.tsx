@@ -133,7 +133,7 @@ export default function Home({
             <TableCell className="text-right">0€</TableCell>
           </TableRow>
           <TableRow>
-            <TableCell>4 cours Next.js</TableCell>
+            <TableCell>6 cours Next.js</TableCell>
             <TableCell className="text-right">0€</TableCell>
           </TableRow>
         </TableBody>
