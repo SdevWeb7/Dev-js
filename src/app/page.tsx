@@ -116,6 +116,7 @@ export default function Home({
         </div>
       </div>
 
+
       <h2 className={"text-3xl mt-16"}>Notre offre</h2>
       <Table className={"max-w-2xl mx-auto border mt-8"}>
         <TableBody>
@@ -129,23 +130,23 @@ export default function Home({
           </TableRow>
           <TableRow>
             <TableCell>4 cours Javascript / React</TableCell>
-            <TableCell className="text-right">20€</TableCell>
+            <TableCell className="text-right">0€</TableCell>
           </TableRow>
           <TableRow>
             <TableCell>4 cours Next.js</TableCell>
-            <TableCell className="text-right">20€</TableCell>
+            <TableCell className="text-right">0€</TableCell>
           </TableRow>
         </TableBody>
         <TableFooter>
           <TableRow>
             <TableCell>Total</TableCell>
-            <TableCell className="text-right">40€</TableCell>
+            <TableCell className="text-right">0€</TableCell>
           </TableRow>
         </TableFooter>
       </Table>
 
       <Button asChild className={"py-6 px-4 mt-8"}>
-        <Link href={"/paiement"}>Je suis intéressé</Link>
+        <Link href={"/cours/introduction"}>Commencer le parcours</Link>
       </Button>
     </Main>
   );

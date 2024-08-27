@@ -8,11 +8,12 @@ export const nextAuthEdgeConfig = {
     callbacks: {
         authorized: ({ auth, request }) => {
             // runs on every request with middleware
-            const protectedPaths = ["react", "next-js"];
+            // const protectedPaths = ["react", "next-js"];
+            const protectedPaths = [""];
             const isTryingToAccessProtectedPath = protectedPaths.some(path =>
                 request.nextUrl.pathname.includes(path)
             );
-            const authenticatedPaths = ["profil"];
+            const authenticatedPaths = ["profil, communaute"];
             const isTryingToAccessAuthenticatedPath = authenticatedPaths.some(path =>
                 request.nextUrl.pathname.includes(path)
             );

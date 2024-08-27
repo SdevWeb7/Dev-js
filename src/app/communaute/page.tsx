@@ -12,7 +12,7 @@ export default async function Page({searchParams} : PageProps) {
 
     return <Main>
 
-        <H1 className={"mb-12"}>Profils Communauté</H1>
+        <H1 className={"mb-12"}>Communauté</H1>
 
 
         <CommunauteSearch searchKey={searchParams?.searchKey} page={parseInt(searchParams?.page || "1")} />
