@@ -19,15 +19,14 @@ export default function Page({searchParams} : SearchParamsType) {
         const updateJWT = async () => {
             if (searchParams.success) {
                 await update(true);
-                console.log('updated');
             }
         };
         updateJWT();
-    }, [searchParams.success]);
+    }, [searchParams.success, data]);
 
-        console.log(data);
     useEffect(() => {
         if (data?.user?.hasAccess) {
+            console.log('redirecting to /?successPaiement=true');
             router.push('/?successPaiement=true');
         }
     }, [data?.user?.hasAccess]);
