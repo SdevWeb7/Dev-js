@@ -3,7 +3,7 @@
 import H1 from "@/components/h1";
 import {Button} from "@/components/ui/button";
 import {createCheckoutSession} from "@/actions/auth-actions";
-import {useEffect, useTransition} from "react";
+import {useEffect, useState, useTransition} from "react";
 import {useSession} from "next-auth/react";
 import {useRouter} from "next/navigation";
 import Main from "@/components/main";
@@ -12,20 +12,27 @@ import {Table, TableBody, TableCell, TableFooter, TableRow} from "@/components/u
 type SearchParamsType = { searchParams: { [key: string]: string | string[] | undefined } };
 export default function Page({searchParams} : SearchParamsType) {
     const [isPending, startTransition] = useTransition();
-    const { update, status, data } = useSession();
+    const { update, data } = useSession();
+    const [isUpdated, setIsUpdated] = useState(false);
     const router = useRouter();
 
-useEffect(() => {
-    const updateJWT = async() => {
-        if (searchParams.success) {
-            await update(true);
+    useEffect(() => {
+        const updateJWT = async () => {
+            if (searchParams.success && !isUpdated) {
+                await update(true);
+                setIsUpdated(true);
+            }
+        };
+        updateJWT();
+    }, [searchParams.success, isUpdated, update]);
+
+    useEffect(() => {
+        if (isUpdated && data?.user?.hasAccess) {
+            router.push('/?successPaiement=true');
         }
-    };
-    updateJWT();
-    if (data?.user?.hasAccess) {
-        router.push('/?successPaiement=true');
-    }
-}, [searchParams.success]);
+    }, [isUpdated, data?.user?.hasAccess, router]);
+
+
     return <Main className={'flex flex-col items-center gap-16'}>
         <H1>Paiement</H1>
 
