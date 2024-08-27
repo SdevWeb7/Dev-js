@@ -19,7 +19,7 @@ export const nextAuthEdgeConfig = {
             const isTryingToAccessAuthPath = request.nextUrl.pathname.includes("/auth");
             const isTryingToAccessAdminPath = request.nextUrl.pathname.includes("/admin");
             const isTryingToAccessPaiementPath = request.nextUrl.pathname.includes("/paiement");
-            const isLoggedIn = Boolean(auth?.user);
+            const isLoggedIn = Boolean(auth?.user?.email);
             const userHasAccess = auth?.user?.hasAccess;
             const isAdmin = auth?.user?.isAdmin;
 

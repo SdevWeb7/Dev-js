@@ -26,7 +26,6 @@ export default function Page({searchParams} : SearchParamsType) {
 
     useEffect(() => {
         if (data?.user?.hasAccess) {
-            console.log('redirecting to /?successPaiement=true');
             router.push('/?successPaiement=true');
         }
     }, [data?.user?.hasAccess]);
