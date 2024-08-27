@@ -3,7 +3,7 @@
 import H1 from "@/components/h1";
 import {Button} from "@/components/ui/button";
 import {createCheckoutSession} from "@/actions/auth-actions";
-import {useEffect, useState, useTransition} from "react";
+import {useEffect, useTransition} from "react";
 import {useSession} from "next-auth/react";
 import {useRouter} from "next/navigation";
 import Main from "@/components/main";
@@ -13,24 +13,24 @@ type SearchParamsType = { searchParams: { [key: string]: string | string[] | und
 export default function Page({searchParams} : SearchParamsType) {
     const [isPending, startTransition] = useTransition();
     const { update, data } = useSession();
-    const [isUpdated, setIsUpdated] = useState(false);
     const router = useRouter();
 
     useEffect(() => {
         const updateJWT = async () => {
-            if (searchParams.success && !isUpdated) {
+            if (searchParams.success) {
                 await update(true);
-                setIsUpdated(true);
+                console.log('updated');
             }
         };
         updateJWT();
-    }, [searchParams.success, isUpdated, update]);
+    }, [searchParams.success]);
 
+        console.log(data);
     useEffect(() => {
-        if (isUpdated && data?.user?.hasAccess) {
+        if (data?.user?.hasAccess) {
             router.push('/?successPaiement=true');
         }
-    }, [isUpdated, data?.user?.hasAccess, router]);
+    }, [data?.user?.hasAccess]);
 
 
     return <Main className={'flex flex-col items-center gap-16'}>
