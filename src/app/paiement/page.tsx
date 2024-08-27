@@ -3,7 +3,7 @@
 import H1 from "@/components/h1";
 import {Button} from "@/components/ui/button";
 import {createCheckoutSession} from "@/actions/auth-actions";
-import {useEffect, useTransition} from "react";
+import {useEffect, useState, useTransition} from "react";
 import {useSession} from "next-auth/react";
 import {useRouter} from "next/navigation";
 import Main from "@/components/main";
@@ -14,11 +14,16 @@ export default function Page({searchParams} : SearchParamsType) {
     const [isPending, startTransition] = useTransition();
     const { update, data } = useSession();
     const router = useRouter();
+    const [maxCall, setMaxCall] = useState(0);
 
     useEffect(() => {
         const updateJWT = async () => {
-            if (searchParams.success) {
+            if (searchParams.success && maxCall < 10) {
                 await update(true);
+                setMaxCall(v => v + 1)
+            }
+            if (maxCall >= 10) {
+                router.push('/paiement?errorPaiement=true');
             }
         };
         updateJWT();
@@ -77,6 +82,8 @@ export default function Page({searchParams} : SearchParamsType) {
 
 
         {searchParams.success && <p className={'text-green-700'}>Le paiement a bien été effectué.</p>}
+
+        {searchParams.errorPaiement && <p className={'text-red-700'}>Il y a eu un problème dans le paiement.</p>}
 
         {searchParams.cancelled &&
            <p className={'text-red-700'}>Le paiement a échoué. Vous pouvez retenter ou nous contacter.</p>}
