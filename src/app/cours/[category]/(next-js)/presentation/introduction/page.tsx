@@ -1,5 +1,4 @@
 import H1Course from "@/components/cours/h1-course";
-import Link from "next/link";
 import PCourse from "@/components/cours/p-course";
 import UlCourse from "@/components/cours/ul-course";
 import LICourse from "@/components/cours/li-course";

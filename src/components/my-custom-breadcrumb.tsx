@@ -33,7 +33,7 @@ export default function MyCustomBreadcrumb() {
                     <Link
                         className={"font-bold"}
                         href={`/cours/${params[1]}/${params[2]}/introduction`}>
-                        {params[2].charAt(0).toUpperCase()+params[2].replace('-', ' ').slice(1)}
+                        {params[2].charAt(0).toUpperCase()+params[2].replace(/-/g, ' ').slice(1)}
                     </Link>
                 </BreadcrumbLink>
             </BreadcrumbItem>

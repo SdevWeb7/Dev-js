@@ -136,7 +136,7 @@ export default function Page() {
     <PCourse>La génération de pages statiques (Static Page Generation) consiste à créer des pages HTML prêtes à l&apos;emploi lors du build d&apos;une application, plutôt qu&apos;à la demande. Chaque page est pré-rendue et stockée sur le serveur, ce qui permet de les servir rapidement aux utilisateurs sans besoin de traitement supplémentaire côté serveur. Cette méthode améliore la performance et la sécurité, et est idéale pour les sites avec un contenu qui ne change pas fréquemment, comme les blogs ou les sites de documentation.</PCourse>
 
     <PCourse className={'simple-my'}>Next.js, le <SpanCourse>Server Side Rendering</SpanCourse> correspond aux <SpanCourse>Server Component</SpanCourse> et le <SpanCourse>Client Side Rendering</SpanCourse> aux <SpanCourse>Clients Components</SpanCourse>. Il est préférable d&apos;avoir le moins de <SpanCourse>Client Component</SpanCourse> possible, mais cela est normal d&apos;en avoir dans une application <SpanCourse>Next.js</SpanCourse></PCourse>
-        <PCourse>Afin de générer des pages statiques (Static Site Generation), il faudra ajouter une ligne dans <SpanCourse>next.config.mjs</SpanCourse> avant de <SpanCourse>build</SpanCourse> le projet, cependant beaucoup de fonctionnalités comme les <SpanCourse>Servers Actions</SpanCourse> ne seront pas disponible.</PCourse>
+        <PCourse>Afin de générer des pages statiques (Static Site Generation), il faudra ajouter une ligne dans <SpanCourse>next.config.mjs</SpanCourse> (output: &apos;export&apos;) avant de <SpanCourse>build</SpanCourse> le projet, cependant beaucoup de fonctionnalités comme les <SpanCourse>Servers Actions</SpanCourse> ne seront pas disponible.</PCourse>
 
 
 
