@@ -1,6 +1,13 @@
+import LayoutCourseCustom from "@/components/cours/layout-course-custom";
+import H1Course from "@/components/cours/h1-course";
+
 export default function page() {
 
-    return <>
-        pense-bêtes
-    </>
+    return <LayoutCourseCustom>
+
+        <H1Course>Javascript - Les bases</H1Course>
+
+
+
+    </LayoutCourseCustom>
 }

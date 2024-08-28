@@ -5,7 +5,7 @@ export default function page() {
 
     return <LayoutCourseCustom>
 
-        <H1Course>TailwindCSS et Shadcn ui</H1Course>
+        <H1Course>Servers Actions et Zod</H1Course>
 
 
 

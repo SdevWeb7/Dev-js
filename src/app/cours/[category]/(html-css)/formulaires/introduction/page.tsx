@@ -1,8 +1,13 @@
+import LayoutCourseCustom from "@/components/cours/layout-course-custom";
+import H1Course from "@/components/cours/h1-course";
+
+export default function page() {
+
+    return <LayoutCourseCustom>
+
+        <H1Course>HTML - Les formulaires</H1Course>
 
 
-export default function Page() {
 
-    return <>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem delectus dignissimos expedita illo in, ipsam, itaque molestias necessitatibus perferendis quas, repudiandae sunt ut voluptatum. Accusantium amet aut cum nihil porro?
-    </>
+    </LayoutCourseCustom>
 }
