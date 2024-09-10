@@ -3,12 +3,12 @@
 
 
 Stack technique :
-	- Prisma
-	- Zod
-	- Servers Actions
-	- Next Auth
-	- TailwindCSS
-	- Shadcn-ui
-	- Stripe
+- Prisma
+- Zod
+- Servers Actions
+- Next Auth
+- TailwindCSS
+- Shadcn-ui
+- Stripe
 	
 
