@@ -1,9 +1,10 @@
 
 
-============ WebStanSchool README ============
+============ Dev-js ============
+
+Fait en Next.js + des Servers Actions avec l'aide de Prisma, TailwindCSS, Shadcn-ui, et Zod pour les validations !
 
 
-- Problème avec le toaster (s'affiche 2 fois)
 
 
 Polices intéressantes : 
