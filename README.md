@@ -3,6 +3,8 @@
 
 
 Stack technique :
+- Next.js
+- Typescript
 - Prisma
 - Zod
 - Servers Actions
