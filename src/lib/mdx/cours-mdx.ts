@@ -24,7 +24,7 @@ export type Course = z.infer<typeof CourseDatasSchemas> & {
     content: string;
 };
 
-export const getCoursesListByCategory = async (category: string)  => {
+export const getCoursesListByCategory = async (category: string) : Promise<CourseDatas[]> => {
     const files = await fs.readdir(path.join(coursesDirectory, category));
 
     try {
@@ -42,8 +42,10 @@ export const getCoursesListByCategory = async (category: string)  => {
                     return null;
                 }
             }
+            return null;
         }));
-        return courses.filter(Boolean);
+        return courses.filter((course): course is CourseDatas => Boolean(course));
+
     } catch (e) {
         console.log(e);
         return [];
