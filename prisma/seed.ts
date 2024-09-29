@@ -6,7 +6,7 @@
 // const courses = [
 //     {
 //         type: "cours",
-//         category: "introduction",
+//         category: "[category]",
 //         title: "git",
 //         description: "Apprendre le versioning",
 //         logoImgSrc: "/git_image.png",
@@ -15,7 +15,7 @@
 //     },
 //     {
 //         type: "cours",
-//         category: "introduction",
+//         category: "[category]",
 //         title: "http",
 //         description: "Comprendre les échanges client/server",
 //         logoImgSrc: "/git_image.png",
@@ -24,7 +24,7 @@
 //     },
 //     {
 //         type: "cours",
-//         category: "introduction",
+//         category: "[category]",
 //         title: "ide",
 //         description: "Paramétrer et utiliser un IDE",
 //         logoImgSrc: "/git_image.png",
@@ -33,7 +33,7 @@
 //     },
 //     {
 //         type: "cours",
-//         category: "introduction",
+//         category: "[category]",
 //         title: "bdd",
 //         description: "Apprendre le fonctionemment d'une base de données",
 //         logoImgSrc: "/git_image.png",
@@ -43,7 +43,7 @@
 //     {
 //         type: "cours",
 //         category: "html-css",
-//         title: "introduction",
+//         title: "[category]",
 //         description: "Apprendre le versioning",
 //         logoImgSrc: "/git_image.png",
 //         duration: 5,
@@ -52,7 +52,7 @@
 //     {
 //         type: "cours",
 //         category: "html-css",
-//         title: "introduction",
+//         title: "[category]",
 //         description: "Découverte du HTML",
 //         logoImgSrc: "/git_image.png",
 //         duration: 5,
@@ -88,7 +88,7 @@
 //     {
 //         type: "cours",
 //         category: "javascript-react",
-//         title: "introduction",
+//         title: "[category]",
 //         description: "Les bases du Javascript",
 //         logoImgSrc: "/git_image.png",
 //         duration: 5,
@@ -115,7 +115,7 @@
 //     {
 //         type: "cours",
 //         category: "next-js",
-//         title: "introduction",
+//         title: "[category]",
 //         description: "Les bases de Next.js",
 //         logoImgSrc: "/git_image.png",
 //         duration: 5,
@@ -150,7 +150,7 @@
 //     },
 //     {
 //         type: "exercice",
-//         category: "introduction",
+//         category: "[category]",
 //         title: "git",
 //         description: "Apprendre le versioning",
 //         logoImgSrc: "/git_image.png",
@@ -159,7 +159,7 @@
 //     },
 //     {
 //         type: "exercice",
-//         category: "introduction",
+//         category: "[category]",
 //         title: "http",
 //         description: "Comprendre les échanges client/server",
 //         logoImgSrc: "/git_image.png",
@@ -168,7 +168,7 @@
 //     },
 //     {
 //         type: "exercice",
-//         category: "introduction",
+//         category: "[category]",
 //         title: "ide",
 //         description: "Paramétrer et utiliser un IDE",
 //         logoImgSrc: "/git_image.png",
@@ -177,7 +177,7 @@
 //     },
 //     {
 //         type: "exercice",
-//         category: "introduction",
+//         category: "[category]",
 //         title: "bdd",
 //         description: "Apprendre le fonctionemment d'une base de données",
 //         logoImgSrc: "/git_image.png",
@@ -187,7 +187,7 @@
 //     {
 //         type: "exercice",
 //         category: "html-css",
-//         title: "introduction",
+//         title: "[category]",
 //         description: "Apprendre le versioning",
 //         logoImgSrc: "/git_image.png",
 //         duration: 5,
@@ -196,7 +196,7 @@
 //     {
 //         type: "exercice",
 //         category: "html-css",
-//         title: "introduction",
+//         title: "[category]",
 //         description: "Découverte du HTML",
 //         logoImgSrc: "/git_image.png",
 //         duration: 5,
@@ -232,7 +232,7 @@
 //     {
 //         type: "exercice",
 //         category: "javascript-react",
-//         title: "introduction",
+//         title: "[category]",
 //         description: "Les bases du Javascript",
 //         logoImgSrc: "/git_image.png",
 //         duration: 5,
@@ -259,7 +259,7 @@
 //     {
 //         type: "exercice",
 //         category: "next-js",
-//         title: "introduction",
+//         title: "[category]",
 //         description: "Les bases de Next.js",
 //         logoImgSrc: "/git_image.png",
 //         duration: 5,

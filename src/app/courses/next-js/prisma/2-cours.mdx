@@ -1,0 +1,186 @@
+---
+category: next-js
+slug: prisma
+type: cours
+fileName: 2-cours.mdx
+title: Prisma
+description: Les échanges avec une base de données
+logoImgSrc: /next-js/prisma.jpg
+duration: 1 heure
+published: true
+---
+
+
+Nous n'allons nous concentrer ici sur les Server Components. Nous verrons ensuite dans le cours suivant comment utiliser les Server Actions depuis un Client Component.
+
+Nous ne verrons pas l'ancienne méthode (Routes API + Fetch) mais cela est encore possible très simplement (voir cours les bases ou la documentation officielle).
+
+
+## Installer Prisma
+Dans un nouveau projet Next.js, installer Prisma :
+```bash
+npm install prisma --save-dev
+```
+
+
+Ensuite la commande suivante va créer un fichier .env avec une variable DATABASE_URL à la racine du projet et un dossier prisma dans lequel il y aura un fichier schema.prisma. C'est dans ce fichier que nous allons décrire à quoi vont ressembler les données dans notre base de données :
+```bash
+npx prisma init
+```
+
+
+## Le fichier schema.prisma
+C'est ici que nous allons décrire la forme des données, le SGBD utilisé et l'adresse de notre base de données (il y a aussi le client prisma qui simplifie nos requêtes, mais nous n'avons rien à changer ici).
+
+Pour plus de simplicité, nous allons utiliser Sqlite, cela nous permet de disposer d'une base de données juste en créant un fichier finissant par .db (de plus en renseignant dans la variable DATABASE_URL le chemin, Prisma le crée automatiquement).
+
+Voici un exemple de fichier schema.prisma avec une relation OneToMany pour que vous ayez une idée du fonctionnement :
+
+[![prisma schema](/next-js/schema-prisma.jpg)](/next-js/schema-prisma.jpg)
+
+
+Assurez vous avant d'avoir cette ligne dans le fichier .env pour que prisma creer le fichier prisma.db dans le dossier prisma au moment de la synchronisation :
+```dotenv
+DATABASE_URL=“file:./prisma/prisma.db”
+```
+
+
+Une fois que notre schéma est prêt, il faut maintenant synchroniser ce schéma avec la base de données. Ceci est appelé une migration.
+```bash
+npx prisma migrate dev ## Crée la migration et gardera un historique des migrations
+ou
+npx prisma db push ## Crée la migration, mais peut écraser les données
+```
+
+
+Si tout s'est bien passé, vous avez maintenant une base de données dont les champs sont identiques à votre schéma.
+
+Prisma va aussi générer le Prisma Client automatiquement. C'est lui qui va faciliter nos requêtes par la suite (voir documentation pour plus d'infos sur le prisma client).
+
+
+
+## Prisma et Next.js (Singleton)
+En Next.js, en mode développement, nous devons faire une dernière petite configuration. En effet, le Prisma Client est instancié à chaque requête et ce n'est pas ce que nous voulons, la documentation officielle recommande d'utiliser le principe de SINGLETON (c'est le fait d'utiliser toujours la meme instance d'une classe pour toute l'application).
+
+Pour cela dans un dossier lib, nous devons créer le fichier db.ts dans lequel nous allons ajouter le code qui suit et c'est à partir de ce fichier que nous appellerons ensuite prisma :
+```typescript
+import { PrismaClient } from '@prisma/client'
+
+const prismaClientSingleton = () => {
+   return new PrismaClient()
+}
+
+declare const globalThis: {
+   prismaGlobal: ReturnType<typeof prismaClientSingleton>
+} & typeof global;
+
+const prisma = globalThis.prismaGlobal ?? prismaClientSingleton()
+export default prisma
+
+if (process.env.NODE_ENV !== 'production') globalThis.prismaGlobal = prisma
+```
+Ne vous inquiétez pas, vous n'aurez pas à écrire ce fichier, la documentation officielle le fournit.
+
+
+
+## Données de test
+Encore un petit plus de Prisma, il vient avec un outil de gestion de base de données, pour l'ouvrir :
+```bash
+npx prisma studio
+```
+
+
+
+Il est aussi possible de seed la base de données avec des données de test :
+```bash
+npx prisma db seed
+```
+Mais pour cela, il faut créer un fichier seeds.ts dans le dossier prisma et y ajouter les données à insérer, exemple de fichier seed.ts en ayant avant tout que nous avons créé en haut du fichier une variable datas à laquelle nous avons affecté nos données sous la forme d'un tableau :
+```typescript
+async function main() {
+   console.log(`Start seeding ...`);
+   for (const data of datas) {
+      const result = await prisma.tableName.create({
+         data: course,
+      });
+   }
+   console.log(`Seeding finished.`);
+   }
+   main()
+      .then(async () => {
+         await prisma.$disconnect();
+      })
+      .catch(async (e) => {
+         console.error(e);
+         await prisma.$disconnect();
+         process.exit(1);
+      });
+```
+
+
+Avant de lancer le seed, il faut ajouter une ligne au fichier package.json :
+```json
+"prisma": {
+   "seed": "ts-node --compiler-options {"module":"CommonJS"} prisma/seed.ts"
+}
+```
+
+
+Puis la commande :
+```bash
+npx prisma db seed
+```
+
+
+
+## Utiliser Prisma dans nos SERVER Components
+Commençons par une requête simple :
+```typescript
+import prisma from '@/lib/db'
+
+const data = await prisma.tableName.findMany({
+   select: {
+      id: true,
+      name: true,
+   }
+})
+```
+
+
+- Nous importons prisma depuis notre lib (singleton).
+- Surtout ne pas oublier await car un appel à la base de données est asynchrone.
+- Nous utilisons la méthode findMany pour récupérer les id et name de la table tableName.
+- Chaque ligne de la base de données sera transformer en objet et tous ces objets seront réunis dans un tableau.
+
+
+
+Prisma étant un ORM intuitif, je vous laisse essayer de déchiffrer cette requête :
+```typescript
+const data = await prisma.videos.create({
+   data: {
+      name: data.name,
+      description: data.description,
+      url: data.url,
+      fromUser: {
+        connect: {email: userEmail}
+      },
+      category: {
+        connect: { id: category.id }
+      }
+   }
+})
+```
+
+
+
+Prisma fournit toutes les méthodes (create, update, delete...) ainsi que des options de filtrages avancées. Il serait compliqué de tout énumérer ici.
+
+Je vous recommande une vidéo Youtube très complète pour comprendre le mécanisme global de Prisma en 1H : Web Dev Simplified.
+
+
+
+## Types
+Vous pouvez importer un type Typescript directement depuis Prisma Client :
+```typescript
+import { tableName } from '@prisma/client'
+```

@@ -1,0 +1,314 @@
+---
+category: next-js
+slug: les-bases
+type: cours
+fileName: 2-cours.mdx
+title: Les bases de Next.js
+description: Apprendre les bases de Next.js
+logoImgSrc: /logo/next-js.jpg
+duration: 1 heure
+published: true
+---
+
+
+
+## La différence entre Params et SearchParams
+La gestion de l'URL est une partie importante du développement web.
+
+Il est important de bien comprendre la différence entre les Params et les SearchParams d'une url.
+
+Comme vu précédemment, nous pouvons creer une route dynamique en mettant entre [ ] le nom du dossier.
+
+C'est un Params.
+[![image params](/next-js/params.jpg)](/next-js/params.jpg)
+
+Ici category et slug sont des paramètres dynamiques que nous verrons comment récupérer grâce à la propriété Params.
+
+Dans cet exemple si nous accédons à l'URL /cours/html/les-bases nous aurons 2 Params : html et les-bases.
+
+Ne pas confondre avec les SearchParams qui sont les paramètres qui viennent apres le ? d'une url et sont séparés par un &.
+
+Par exemple dans l'url /cours/html/les-bases?search=hello nous avons 1 SearchParams : search dont la valeur est hello.
+
+Il est important de bien comprendre la différence entre les deux car ils sont utilisés de manière différente.
+
+Les Params sont utilisés pour créer des routes dynamiques alors que les SearchParams sont utilisés pour filtrer des données.
+
+Les Params sont injectés dans les Layout et Pages des Server Components tandis que les SearchParams UNIQUEMENT dans les Pages.
+
+Pour les récuperer dans le composant, il suffit de déstructuré l'un ou l'autre des props de la Page ou du Layout.
+
+Exemple de récupération d'un Params en Typescript avec un petit aperçu d'une requête Prisma :
+```typescript
+type CoursePageProps = {
+   params: {
+   category: string;
+   slug: string;
+   }
+};
+export default async function Page({params} : CoursePageProps) {
+    const course = await prisma.course.findFirst({
+        where: {
+            category: params.category,
+            slug: params.slug,
+        }
+    });
+}
+```
+Le type des SearchParams est un peu différent, car il peut être un tableau :
+```typescript
+type PageProps = { searchParams: { [key: string]: string | undefined } }
+```
+
+Dans un Client Component, il faudra récupérer les Params et SearchParams à l'aide des hooks useParams et useSearchParams.
+
+
+
+## Le Server Side Rendering (SSR), Client Side Rendering (CSR) et le Static Site Generation (SSG)
+Le Server-Side Rendering (SSR) est une technique où les pages web sont générées sur le serveur avant d'être envoyées au client.
+
+Contrairement au Client Side Rendering (CSR), où le navigateur du client exécute le JavaScript pour générer le contenu, avec SSR, le serveur produit une page HTML complète qui est immédiatement visible par l'utilisateur dès qu'elle est chargée.
+
+Voici comment ça fonctionne :
+
+- Requête du client : L'utilisateur demande une page web en entrant une URL.
+- Rendu sur le serveur : Le serveur traite cette requête, exécute le code nécessaire (souvent avec un framework comme Next.js pour React) pour générer une page HTML complète.
+- Réponse au client : Le serveur envoie cette page HTML au navigateur du client.
+- Affichage immédiat : Le contenu est visible instantanément, même si des scripts JavaScript supplémentaires se chargent pour rendre la page interactive.
+
+
+Les avantages du Server Side Rendering (SSR) incluent un meilleur référencement (SEO) et un temps de chargement initial plus rapide, car l'utilisateur voit du contenu sans attendre que le JavaScript soit entièrement exécuté. Cependant, cela peut entraîner une charge accrue sur le serveur et des temps de réponse plus lents si le serveur doit générer chaque page à la demande.
+
+
+La génération de pages statiques (Static Page Generation) consiste à créer des pages HTML prêtes à l'emploi lors du build d'une application, plutôt qu'à la demande. Chaque page est pré-rendue et stockée sur le serveur, ce qui permet de les servir rapidement aux utilisateurs sans besoin de traitement supplémentaire côté serveur. Cette méthode améliore la performance et la sécurité, et est idéale pour les sites avec un contenu qui ne change pas fréquemment, comme les blogs ou les sites de documentation.
+
+Next.js, le Server Side Rendering correspond aux Server Component et le Client Side Rendering aux Clients Components. Il est préférable d'avoir le moins de Client Component possible, mais cela est normal d'en avoir dans une application Next.js
+
+Afin de générer des pages statiques (Static Site Generation), il faudra ajouter une ligne dans next.config.mjs (output: 'export') avant de build le projet, cependant beaucoup de fonctionnalités comme les Servers Actions ne seront pas disponible.
+
+
+
+## L'hydratation des pages
+L'hydratation en Next.js est le processus qui rend une page statique ou pré-rendue interactive après son chargement dans le navigateur. Lorsqu'une page est servie par le serveur, elle est d'abord affichée sous forme de HTML statique.
+
+Ensuite, Next.js envoie le JavaScript nécessaire pour “hydrater” cette page, c'est-à-dire pour attacher les comportements interactifs du framework React. Ce processus permet d'avoir à la fois une bonne performance initiale et une expérience utilisateur riche et dynamique.
+
+L'une des erreurs d'hydratation les plus fréquentes est le mismatch de contenu entre le serveur et le client. Cela se produit lorsque le HTML généré sur le serveur (pendant le Server-Side Rendering ou la génération de pages statiques) ne correspond pas exactement au HTML généré par le client une fois le JavaScript chargé.
+
+Cela peut arriver si le rendu côté serveur et côté client dépend de données dynamiques ou d'états qui diffèrent entre le moment où la page est générée sur le serveur et le moment où elle est hydratée dans le navigateur. Par exemple, si un composant React génère du contenu basé sur la date ou l'heure actuelle, le résultat peut ne pas concorder entre le serveur et le client, ce qui entraîne cette erreur.
+
+Pour éviter ces erreurs, il est important de s'assurer que le rendu côté serveur et côté client est synchronisé en utilisant des données stables et prévisibles pendant le processus de rendu initial.
+
+
+
+## Note importante
+Nous avons mentionné plus haut que les Servers Components étaient rendus Côté Serveur et que les Clients Components étaient rendus Côté Client.
+
+En réalité, les Clients Component sont aussi rendus une premiere fois Côté Serveur.
+
+Une erreur d'hydratation courante survient lorsque l'on crée un hook ou un Provider (Client Component) qui utilise la variable window sans avoir préalablement sécurisé son utilisation avec une condition. Le Client Component étant d'abord rendu côté serveur, la variable window est alors undefined, ce qui peut faire crasher l'application.
+
+
+
+
+## Les fichiers “spéciaux”
+Next.js est préconfiguré pour faciliter le développement, en automatisant certaines tâches répétitives dans chaque application. Pour cela, Next.js propose des fonctionnalités spécifiques. Nous allons en lister quelques-unes ici pour vous aider à comprendre leur fonctionnement général.
+
+Pour obtenir une liste complète, rendez-vous sur le site officiel de Next.js.
+
+### le fichier “layout.tsx”
+Le fichier layout.tsx est un composant qui sert à envelopper les pages de votre application. Il est très utile pour ajouter des éléments communs à toutes les pages, comme un en-tête, un pied de page, ou un menu de navigation. Ce composant permet également de gérer l'état global de l'application, comme le thème ou l'authentification de l'utilisateur.
+
+Il récupère la propriété children pour encapsuler le contenu de la page et peut ajouter des éléments comme un menu ou un pied de page. Il peut aussi récupérer les Params, mais pas les SearchParams.
+
+Vous pouvez avoir un fichier layout par niveau de profondeur dans votre arborescence de pages, par exemple un layout pour les pages de niveau 1, un autre pour les pages de niveau 2, etc.
+```typescript
+import {PropsWithChildren} from “react”;
+
+export default function Layout({ children }: PropsWithChildren) {
+   return (
+      <div>
+         <header>
+            <h1>Mon super site</h1>
+         </header>
+         <main>{children}</main>
+         <footer>
+            <p>© 2022 Mon super site</p>
+         </footer>
+      </div>;
+   );
+}
+```
+
+
+
+### Le fichier “page.tsx”
+Le composant page.tsx est utilisé pour définir le contenu d'une page individuelle dans une application Next.js. Chaque fichier page.tsx dans un sous-répertoire du dossier app/ ou pages/ correspond automatiquement à une route spécifique. Par exemple, app/about/page.tsx définira la page accessible via /about.
+
+Ce composant peut contenir du code JSX, des composants React, et toute la logique nécessaire pour afficher la page. Il est au cœur de la structure des routes dans Next.js, permettant de créer des pages dynamiques et interactives.
+
+Il peut récupérer les Params et les SearchParams et peut appeler des Server Components ou des Client Components.
+
+Dans l'idéal, on le gardera en tant que Server Component afin de récupérer les données depuis la base de données pour afficher la page plus rapidement et éviter les erreurs d'hydratation.
+```typescript
+import Main from “@/components/main”;
+import H1 from “@/components/h1”;
+import ProfilPageWrapper from “@/components/profil/profil-page-wrapper”;
+import ProfilCard from “@/components/profil/profil-card”;
+
+export default async function Page() {
+   return <Main>
+      <H1>Profil</H1>
+      <ProfilPageWrapper>
+         <ProfilCard />
+      </ProfilPageWrapper>
+   </Main>
+}
+```
+
+
+
+### Le fichier “route.ts”
+En Next.js, pour créer une route API, il suffit de créer un fichier “route.ts” et de le mettre dans le dossier api (dans le dossier app). Ce fichier sera accessible via l'URL /api/route.
+
+Vous pouvez avoir plusieurs routes cela fonctionne comme les pages, mais elles renvoient en général du JSON.
+
+Le nom de la fonction, ici GET, correspond à la méthode. Vous pouvez donc avoir autant de fonction que de méthode par fichier route.ts
+```typescript
+import { type NextRequest } from 'next/server';
+
+export async function GET(request: NextRequest) {
+   return new Response.json({message: “Hello, Next.js!”});
+}
+```
+
+
+
+### Middleware
+Un middleware intercepte toutes les requêtes et laisse passer ou non la requête.
+
+Cela est très pratique pour sécuriser une route en fonction de l'état d'authentification de l'utilisateur.
+
+Ce fichier doit s'appeler middleware.ts et se situé non pas dans le dossier app mais à la racine du projet ou le dossier src en fonction de votre choix de structure des dossiers à la création de l'application.
+
+Dans l'exemple ci-dessous le matcher correspond aux routes que doit intercepter le middleware.
+```typescript
+import { NextResponse } from 'next/server';
+import type { NextRequest } from 'next/server'
+
+export function middleware(request: NextRequest) {
+   return NextResponse.redirect(new URL('/home', request.url));
+}
+export const config = {
+   matcher: '/about/:path*',
+}
+```
+
+
+
+### Page 404 not found
+Il est possible de créer une page 404 en créant un fichier not-found.tsx à la racine du dossier app. Cette page sera affichée si une route n'est pas trouvée.
+```typescript
+export default function Custom404() {
+   return <h1>404 - Page Not Found</h1>
+}
+```
+
+
+
+### Page de chargement
+Il est possible de créer une page de chargement en créant un fichier loading.tsx à la racine du dossier app ou dans chacune des routes pour un chargement personnalisé par page.
+
+Cette page sera affichée pendant le chargement de la page. Il est aussi possible d'utiliser la balise Suspense pour ne pas bloquer la page, mais appliquer l'état de chargement à un composant en particulier. Cela s'appelle le streaming.
+```typescript
+export default function CustomLoading() {
+   return <h1>Loading...</h1>
+}
+```
+
+
+
+## Favicon et métadonnées
+Pour ajouter une favicon personnalisé dans votre application, il suffit de remplacer celle existante dans le dossier app par la vôtre.
+
+Pour les métadonnées, Next.js propose un exemple dans le layout. Vous pouvez exporter une constante metadata pour personnaliser les méta-datas de chaque page.
+
+Pour le fichier error.tsx, c'est un petit peu plus compliqué, car il ne faut pas que les erreurs soient affichées au client pour des raisons de sécurité. Je vous recommande d'aller sur le site officiel de Next.js pour en savoir plus.
+
+
+
+## Les balises “spéciales”
+### La balise Link
+La balise Link est une balise spéciale de Next.js qui permet de créer des liens entre les différentes pages de votre application.
+
+Elle est très utile pour la navigation et le routage, car elle permet de charger les pages de manière asynchrone, sans recharger toute la page.
+
+Cela améliore la performance et l'expérience utilisateur, en évitant les temps de chargement inutiles.
+
+Voici un exemple d'utilisation de la balise Link :
+```typescript
+import Link from 'next/link';
+
+export default function Header() {
+   return (
+      <header>
+         <nav>
+            <Link href=“/contact”>Contact</Link>
+        </nav>
+      </header>
+   );
+}
+```
+
+
+
+
+### La balise Image
+La balise Image est une balise spéciale de Next.js qui permet de charger des images de manière optimisée.
+
+Elle prend en charge le chargement progressif, la mise en cache, la conversion automatique des formats, et la génération de tailles d'image adaptées à l'écran. Cela permet d'améliorer les performances de votre application et de réduire la consommation de bande passante. Il faudra obligatoirement renseigner les attributs src, width, height et alt.
+
+Pour utiliser des images externes, nous devrons paramétrer le fichier next.config.mjs pour autoriser les images externes.
+```json
+module.exports = {
+    images: {
+        remotePatterns: [
+        {
+            hostname: “dummyimage.com”,
+            protocol: “https”,
+         }
+      ]
+    }
+}
+```
+
+
+Voici un exemple d'utilisation de la balise Image :
+```typescript
+import Image from 'next/image';
+
+export default function Avatar() {
+   return (
+      <Image
+         src=“/avatar.jpg”
+         alt=“Picture of the author”
+         width={500}
+         height={500} />
+    );
+}
+```
+
+
+
+Pour les images provenant de notre application, nous pouvons les importer comme ceci :
+```typescript
+import Image from 'next/image';
+import avatar from '@/images/avatar.jpg';
+
+export default function Avatar() {
+   return <Image
+      src={avatar}
+      alt=“Picture of the author” />
+}
+```
+Les attributs width et height ne sont alors pas obligatoire.

@@ -1,0 +1,121 @@
+---
+category: introduction
+slug: git-le-versioning
+type: ressources
+fileName: 4-ressources.mdx
+title: Git le versioning
+description: Comprendre le versioning avec Git
+logoImgSrc: /logo/git_image.png
+duration: 1 heure
+published: true
+---
+
+
+
+## Ressources
+
+- [Git - Télécharger.](https://git-scm.com/)
+- [GitHub - Le site officiel de GitHub.](https://github.com/)
+- [La playlist de Grafikart sur Git.](https://www.youtube.com/watch?v=rP3T0Ee6pLU&list=PLjwdMgw5TTLXuY5i7RW0QqGdW0NZntqiP)
+
+
+
+
+## Pense-bête
+
+### Récupérer un dépôt
+```bash
+git clone url_du_depot
+```
+
+### Créer un dépôt
+```bash
+git init
+```
+
+
+### Ajouter un fichier
+```bash
+add nom_du_fichier
+```
+
+
+### Ajouter tous les fichiers
+```bash
+git add .
+```
+
+
+### Valider un fichier
+```bash
+git commit -m “Message”
+```
+
+
+### Envoyer sur un dépôt
+```bash
+git push origin main
+```
+
+### Récupérer les modifications
+```bash
+git fetch
+git merge origin/master
+```
+
+
+
+### Récupérer les modifications (fetch+merge)
+```bash
+git pull
+```
+
+
+### Créer une branche
+```bash
+git branch nom_de_la_branche
+```
+
+
+### Changer de branche
+```bash
+git checkout nom_de_la_branche
+```
+
+
+### Fusionner une branche
+```bash
+git merge nom_de_la_branche
+```
+
+
+### Supprimer une branche
+```bash
+git branch -d nom_de_la_branche
+```
+
+
+### Voir les modifications
+```bash
+git status
+```
+
+
+### Voir l'historique
+```bash
+git log
+```
+
+
+### Revenir en arrière
+```bash
+git checkout -- nom_du_fichier
+```
+
+
+### Gérer son authentification Git
+```bash
+git config --global user.name “PseudoGithub”
+git config --global user.email “EmailGithub”
+git config --global credential.username “new_username”
+```

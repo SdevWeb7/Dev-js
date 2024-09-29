@@ -1,0 +1,76 @@
+---
+category: introduction
+slug: les-bases-de-donnees
+type: ressources
+fileName: 4-ressources.mdx
+title: Les bases de données
+description: Comprendre l'intérêt des bases de données
+logoImgSrc: /logo/bdd-image.jpg
+duration: 1 heure
+published: true
+---
+
+
+
+## Ressources
+
+[SQL.sh - SQL.sh permet d'apprendre le langage SQL.WAMP](https://sql.sh/)
+
+[Site internet pour télécharger WAMP](https://wampserver.aviatechno.net/).
+
+
+
+
+## Pense-bête
+
+### Structure d'une requête SELECT avec JOINTURE
+```sql
+SELECT u.email, u.firstname, r.name as role_name
+FROM user as u
+JOIN role as r ON u.role_id = r.id
+WHERE u.id = 1
+ORDER BY u.firstname ASC;
+```
+
+Cette requête récupère :
+
+- email et firstname de la table user que nous avons renommé u
+- name que nous avons renommé role_name de la table role que nous avons renommé r.
+- Où id est égal a 1
+
+Nous les trions ensuite par u.firstname (user.firstname) par ordre croissant (alphabétique, utiliser DESC pour décroissant).
+
+Cela est rendu possible grâce à une jointure.
+
+
+
+
+### Structure d'une requête INSERT
+```sql
+INSERT INTO user (email, firstname, role_id)
+VALUES (“test@test.fr”, “John”, 1), (“test2@.test.fr”, “Doe”, 2)
+```
+Cette requête insère deux utilisateurs dans la table user.
+
+Les champs doivent être remplis dans le bon ordre.
+
+
+
+### Structure d'une requête UPDATE
+```sql
+UPDATE user
+SET email = “”, firstname = “Jane”
+WHERE id = 1
+```
+Cette requête met à jour l'utilisateur ayant un id égal à 1.
+
+Seuls les champs email et firstname sont mis à jour.
+
+
+
+### Structure d'une requête DELETE
+```sql
+DELETE FROM user
+WHERE id = 1
+```
+Cette requête supprime l'utilisateur ayant un id égal à 1.

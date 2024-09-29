@@ -1,0 +1,59 @@
+---
+category: next-js
+slug: presentation
+type: ressources
+fileName: 4-ressources.mdx
+title: Présentation de Next.js
+description: Vue d'ensemble de Next.js
+logoImgSrc: /logo/next-js.jpg
+duration: 1 heure
+published: true
+---
+
+
+
+## Ressources
+
+- [Next.js - Le site officiel.](https://nextjs.org/)
+
+- [Vercel - Le site officiel.](https://vercel.com/)
+
+- [Tailwind CSS - Le site officiel.](https://tailwindcss.com/)
+
+
+
+
+## Pense-bête
+
+Créer un projet Next.js :
+```bash
+npx create-next-app nomduprojet
+```
+
+Ouvrir le dossier dans un IDE et taper :
+```bash
+npm install
+npm run dev
+```
+
+
+### Caractéristiques des Server Components
+- tous les composants sont Server Component par défaut
+- ils sont ASYNCHRONE
+- ne peuvent pas avoir de state
+- le code est éxécuté coté serveur (Node.js) pour renvoyer du html au client
+- possibilité de contacter une base de données
+- la variable window est undefined
+
+
+
+### Caractéristiques des Clients Components
+- ils sont SYNCHRONE
+- peuvent avoir un/des state(s)
+- les données sont chargées et éxécutés côté client(navigateur)
+- ne peuvent pas contacter de base de données à moins de fetch
+- la variable window est définie
+
+
+
+### Penser à la propriété CHILDREN

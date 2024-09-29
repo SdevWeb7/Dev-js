@@ -1,0 +1,146 @@
+---
+category: next-js
+slug: presentation
+type: cours
+fileName: 2-cours.mdx
+title: Présentation de Next.js
+description: Vue d'ensemble de Next.js
+logoImgSrc: /logo/next-js.jpg
+duration: 1 heure
+published: true
+---
+
+
+Next.js est un framework très complet qui propose de nombreuses fonctionnalités. Nous ne pouvons donc pas voir toutes les fonctionnalités dans le premier cours. Nous commencerons par le fonctionnement de base pour approfondir par la suite.
+
+
+## Les Servers/Clients components
+Comme vu dans le cours précédent Javascript / React :
+
+- nous ne pouvions pas contacter de base de données donc les données étaient non persistantes (à moins d'utiliser le LocalStorage)
+- nous envoyions un gros bundle javascript et le code était éxécuté coté client (dans le navigateur)
+- nous devions donc créer une API séparée (serveur) ou un service tiers afin de persister des données
+
+Next.js a révolutionné une première fois le monde du développement web en introduisant les Servers Components et les Clients Components (qui est en train d'être intégré nativement dans React.js).
+
+Première fois, car nous verrons par la suite les Servers Actions qui vont révolutionner une seconde fois le monde du développement web.
+
+
+Les Servers Components sont des composants qui sont éxécutés côté serveur (Node.js) alors que les Clients Components sont des composants qui sont éxécutés côté client (navigateur).
+
+Les avantages sont nombreux, mais voici quelques exemples :
+
+- le javascript envoyé au client est beaucoup moins lours, donc bon pour les performances et la sécurité
+- les données sont persistantes, donc plus besoin de créer une API séparée
+- les données sont chargées côté serveur, donc le temps de chargement est plus rapide ainsi que le SEO
+
+
+
+## Les Server Components
+- tous les composants sont Server Component par défaut
+- sont ASYNCHRONE
+- ne peuvent pas avoir de "state"
+- le code est éxécuté coté serveur (Node.js) pour renvoyer du html au client
+- possibilité de contacter une base de données
+- la variable window est undefined
+
+
+## Les Clients Components
+- sont SYNCHRONE
+- peuvent avoir un/des state(s)
+- les données sont chargées et éxécutés côté client(navigateur)
+- ne peuvent pas contacter de base de données à moins de fetch
+- la variable window est définie
+
+
+
+## Hiérarchie des composants dans Next.js
+Première chose importante tout est par défaut Server Component.
+
+Pour rendre un composant Client Component, il suffit d'ajouter “use client”; tout en haut d'un composant.
+
+Tous les composants ENFANTS d'un Client Component est par défaut un Client Component.
+
+Il est possible d'avoir un Server Component ENFANT d'un Client Component en le passant par la prop children cela est appelé la composition et peut-être très utile afin d'éviter de rendre toute notre application Client Component si par exemple, nous devons l'entourer d'un Provider.
+
+La directive “use server”; est utilisée seulement pour les Server Actions que nous verrons très vite.
+
+
+
+## Routing
+Une autre fonctionnalité très pratique de Next.js est la gestion simple et efficace du routing en fonction de la structure des dossiers.
+
+Avantages :
+
+- Next.js facilite la gestion des Params et SearchParams de l'URL ainsi que d'autres fonctionnalités
+- Moins de fichiers ce qui diminue la possibilité d'erreurs
+- le code est plus lisible et plus facile à maintenir
+- la structure des dossiers reflète les chemins (routes) donc nous pouvons rapidement avoir une vue d'ensemble de l'application
+
+
+
+## Créer une application
+Pour créer une application Next.js vous met à disposition une commande très pratique :
+```bash
+npx create-next-app@latest
+```
+Si vous tapez cette commande dans votre terminal, Next.js vous posera quelques questions.
+
+[![Next starting](/next-js/next-starting.jpg)](/next-js/next-starting.jpg)
+
+Next.js vous propose :
+
+- De choisir le nom de votre projet (doit être en minuscule sans caractères spéciaux)
+- d'utiliser Typescript ou non mais il est fortement recommandé de l'utiliser
+- d'utiliser ESLint ou non mais il est fortement recommandé de l'utiliser
+- d'utiliser TailwindCSS (conseillé aussi)
+- d'utiliser ou non le src directory (j'utilise le dossier src)
+- d'utiliser ou non APP Router mais comme tout le reste, cela est très pratique
+- et pour finir un alias qui va vous permet d'importer vos fichiers beaucoup plus simplement : “@/” correspondra soit à la racine du projet, soit au dossier src en fonction de votre choix précédent.
+
+
+
+## Structure des dossiers
+Après avoir répondu à toutes les questions Next.js créer un nouveau projet.
+
+Il faudra ensuite ouvrir le dossier dans votre éditeur de code préféré et taper npm install dans le terminal.
+
+Ensuite, en fonction du choix ou non d'utiliser le dossier src, vous verrez une ou l'autre structure de dossier comme celle-ci :
+
+Avec dossier “src” (ma préférence)
+[![Next starting](/next-js/exemple-src.png)](/next-js/exemple-src.png)
+
+Sans dossier “src”
+[![Next starting](/next-js/exemple-src.png)](/next-js/exemple-src.png)
+
+
+
+## Explication des fichiers “spéciaux”
+- layout.tsx : ce fichier à la racine du dossier app englobe toutes vos autres pages. Vous pouvez en avoir un dans chaque dossier de page.
+- page.tsx : c'est ce fichier et non son dossier qui créer la route (doit forcément s'appeler page et retourner du JSX)
+- route.tsx : appeler un fichier route.ts en fait une route API (nous verrons ca le moment venu)
+- loading.tsx : permet de creer un loader personnalisé par page
+- not-found.tsx : permet de créer une page 404 personnalisée
+- error.tsx : permet d'englober la page d'un Error Boundary afin de gérer les potentielles erreurs
+- middleware.tsx : à mettre non pas dans le dossier app mais dans le dossier src ou à la racine de l'application. Il intercepte les requêtes (comme un péage). Très pratique pour l'authentification par exemple
+- components : c'est ici que vous allez mettre vos composants réutilisables
+- lib : c'est ici que vous allez mettre vos fonctions utilitaires
+- public : c'est ici que vous allez mettre vos fichiers statiques (images, vidéos, etc.)
+- .env : c'est dans de fichier que les informations sensibles seront stockées (exemple des clefs)
+- tailwind.config.js : c'est ici que vous allez configurer TailwindCSS
+- next.config.js : c'est ici que vous allez configurer votre application Next.js (comme les noms de domaine autorisés pour les images)
+- package.json : liste toutes vos dépendances (paquet node.js)
+
+
+
+## Nettoyer la structure des dossiers
+De base Next.js vous creer une “template” de base afin que vous puissiez comprendre comment fonctionne le framework. Vous pouvez donc supprimer tout ce qui ne vous sert pas dans le fichier CSS (attention à ne pas enlever les imports tailwind si vous voulez l'utiliser) et dans le fichier “page.js”.
+
+
+## Informations complémentaires
+Next.js met à votre disposition énormément d'outils et il faut aussi importer certaines balises depuis Next.js.
+
+Quelques exemples dans Next.js :
+
+- les liens ne se font pas avec des balises a mais des balises Link
+- les images ne se font pas avec des balises img mais des balises Image

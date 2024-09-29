@@ -14,8 +14,6 @@ import nextjsImage from "@/../public/next-js.jpg";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Main from "@/components/main";
-import { useToast } from "@/components/ui/use-toast";
-import { useEffect } from "react";
 import {
   Table,
   TableBody,
@@ -23,44 +21,9 @@ import {
   TableFooter,
   TableRow,
 } from "@/components/ui/table";
-import SpanCourse from "@/components/cours/span-course";
 
-export default function Home({
-  searchParams,
-}: {
-  searchParams: { [key: string]: string | string[] | undefined };
-}) {
-  const { toast } = useToast();
+export default function Home() {
 
-  useEffect(() => {
-    if (searchParams.successPaiement) {
-      toast({
-        description:
-          "Paiement effectué avec succès. Vous pouvez maintenant accéder à tous nos cours.",
-      });
-    } else if (searchParams.successLogin) {
-      toast({
-        description: "Vous êtes bien connecté.",
-      });
-    } else if (searchParams.successSignUp) {
-      toast({
-        description: "Vous êtes bien inscrit.",
-      });
-    } else if (searchParams.successLogout) {
-      toast({
-        description: "Vous êtes bien déconnecté.",
-      });
-    }
-    searchParams.successPaiement = undefined;
-    searchParams.successLogin = undefined;
-    searchParams.successLogout = undefined;
-    searchParams.successSignUp = undefined;
-  }, [
-    searchParams.successSignUp,
-    searchParams.successLogin,
-    searchParams.successLogout,
-    searchParams.successPaiement,
-  ]);
 
   return (
     <Main className={"flex flex-col items-center justify-center min-h-[80vh]"}>
@@ -69,9 +32,7 @@ export default function Home({
       <div className={"flex flex-wrap justify-center items-center gap-28 mt-8"}>
         <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight sm:text-7xl min750:leading-tight">
           <span className={"text-my-primary"}>Dev</span>.js,<br/>
-            les bases du<br/><SpanCourse>
-            développement web
-          </SpanCourse>
+            les bases du<br/>développement web
         </h1>
 
         <div>
@@ -146,7 +107,7 @@ export default function Home({
       </Table>
 
       <Button asChild className={"py-6 px-4 mt-8"}>
-        <Link href={"/cours/introduction"}>Commencer le parcours</Link>
+        <Link href={"/introduction"}>Commencer le parcours</Link>
       </Button>
     </Main>
   );

@@ -1,0 +1,36 @@
+---
+category: next-js
+slug: prisma
+type: introduction
+fileName: 1-introduction.mdx
+title: Prisma
+description: Les échanges avec une base de données
+logoImgSrc: /next-js/prisma.jpg
+duration: 1 heure
+published: true
+---
+
+
+Les échanges avec la base de données peuvent être un petit peu complexes.
+
+Nous ne pouvons contacter une base de données que lorsque nous sommes côté server, donc il y a tout d'abords les échanges client/server.
+
+La seconde étape concerne la/les requête(s) SQL pour appliquer les modifications dans la base de données.
+
+Puis enfin les validations. Les validations sont extrêmement importantes, car elles réduisent considérablement les potentiels bugs et failles de sécurité.
+
+Habituellement pour connecter une base de données, nous devions créer un BACKEND et ouvrir un serveur de base de données.
+
+Notre BACKEND créait des endpoints API pour effectuer nos requêtes SQL et notre FRONTEND récupérait les données en effectuant une Requête HTTP.
+
+Depuis la version 13 de Next.js et l'arrivée des Server/Client Components nous n'avons plus q'un serveur et des composants qui peuvent être Client ou Server.
+
+Dans les Server Components asynchrone, nous pourrons contacter notre base de données directement.
+
+Il est possible avec Next.js de créer très simplement un endpoint API et de fetch depuis un Client Component mais il existe maintenant les Server Actions (voir prochain cours) qui vont encore simplifier le développement.
+
+Pour les requêtes SQL, Prisma est un ORM. Il nous permet d'effectuer nos requêtes sous la forme d'objets Javascript. Il intègre certaines bases de sécurité et s'adapte parfaitement à un bon nombre d'SGBD (Mysql, Sqlite, Postgres...).
+
+Enfin viennent les validations (que nous verrons dans le cours Server Actions). ZOD nous permet de créer des schémas de données. Nous pourrons ensuite en appelant une simple fonction, savoir si les données reçues correspondent à ce schéma.
+
+### A noter : Il est plus que conseillé d'utiliser TypeScript et ZOD fonctionne avec Typescript, cependant vous pouvez utiliser Yup si jamais vous ne voulez pas utiliser Typescript.

@@ -1,49 +1,28 @@
-"use client";
-
 import { Card, CardContent } from "@/components/ui/card";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
+import {Course, getCoursesListByCategoryAndSlug} from "@/lib/mdx/cours-mdx";
 
-const listeCategories = [
-  {
-    value: "introduction",
-    label: "Introduction",
-  },
-  {
-    value: "cours",
-    label: "Cours",
-  },
-  {
-    value: "exercices",
-    label: "Exercices",
-  },
-  {
-    value: "pense-betes",
-    label: "Pense-Bêtes",
-  },
-  {
-    value: "ressources-utiles",
-    label: "Ressources utiles",
-  },
-];
-export default function CourseSectionNavigation() {
-  const pathname = usePathname();
-  const params = pathname.split("/").filter(Boolean);
+
+type CourseSectionNavigationProps = {
+    course: Course;
+}
+export default async function CourseSectionNavigation({course}: CourseSectionNavigationProps) {
+    const listCoursesByCategoryAndSlug = await getCoursesListByCategoryAndSlug(course.category, course.slug);
 
   return (
       <Card className={"border-none shadow-none"}>
         <CardContent className="flex flex-col gap-2 justify-center pt-6 lg:sticky lg:top-24">
-          {listeCategories.map((categorie, index) => (
-            <Link
-              key={index}
-              href={`/cours/${params[1]}/${params[2]}/${categorie.value}`}
-              className={cn("rounded-md text-center p-2", {
-                "bg-primary text-white": params[3] === categorie.value,
-              })}
-            >
-              {categorie.label}
-            </Link>
+          {listCoursesByCategoryAndSlug.map((fileName, index) => (
+              <Link
+                  key={index}
+                  href={`/${course.category}/${course.slug}/${fileName.split('.')[0].split('-')[1]}`}
+                  className={cn("rounded-md text-center p-2 capitalize", {
+                      "bg-primary text-white": course.type === fileName.split('.')[0].split('-')[1],
+                  })}
+              >
+                  {fileName.split('.')[0].split('-')[1]}
+              </Link>
           ))}
         </CardContent>
       </Card>

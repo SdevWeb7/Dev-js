@@ -1,0 +1,80 @@
+---
+category: introduction
+slug: vs-code
+type: exercices
+fileName: 3-exercices.mdx
+title: Microsoft Visual Studio Code
+description: Editeur de code open source
+logoImgSrc: /logo/vs-code.jpg
+duration: 1 heure
+published: true
+---
+
+
+- Ouvrez VS Code et explorez les différentes sections. Essayez de trouver les différentes fonctionnalités proposées par VS Code comme l'explorateur de fichier, le terminal intégré et la console.
+
+Installez les extensions suivantes :
+
+- Prettier
+- Live Server
+- Une fois installée, configurez l'extension Prettier pour qu'elle formate automatiquement votre code, ensuite lancez un projet HTML simple pour voir comment fonctionne Live Server.
+
+
+- Après vous êtes amusé à découvrir VS Code, placez-vous dans la barre de recherche en haut de l'écran et tapez > pour sélectionner Open User Settings (JSON). Ce fichier JSON contient toutes vos configurations de VS Code. Vous pouvez y ajouter des extensions, changer les couleurs, etc. Vous pouvez également exporter votre configuration en JSON et l'importer dans un autre projet.
+
+
+
+- Comprendre le fichier JSON
+
+Ci-dessous un exemple de fichier JSON et des explications de chaque propriété qui peut être utilisée.
+
+```json
+{
+    “editor.defaultFormatter”: “esbenp.prettier-vscode”,
+}
+```
+Définit “Prettier” comme formateur par défaut pour tous les fichiers. L'identifiant “esbenp.prettier-vscode” correspond à l'extension “Prettier” installée dans l'exercice 1.
+
+```json
+{
+    “editor.formatOnSave”: true,
+}
+```
+Active le formatage automatique du code à chaque fois que le fichier est sauvegardé.
+
+
+```json
+{
+    “editor.detectIndentation”: true,
+}
+```
+Permet à l'éditeur de détecter automatiquement le type d'indentation (espaces ou tabulations).
+
+
+```json
+{
+    “editor.rulers”: [80],
+}
+```
+Affiche une ligne de 80 caractères sur la gauche de l'éditeur afin de respecter les conventions de longueur de ligne dans le code.
+
+
+
+```json
+{
+    “[javascript]” : {
+        “editor.defaultFormatter”: “esbenp.prettier-vscode”,
+        “editor.suggestSelection”: “recentlyUsed”,
+        “editor.suggest.showKeywords”: false
+    }
+}
+```
+
+- editor.defaultFormatter utilise “Prettier” comme formateur par défault spécifiquement pour les fichiers javascript.
+
+- editor.suggestSelection pré sélectionne les suggestions dans l'auto-complétion (par exemple, lorsque vous tapez “const” dans un fichier javascript).
+
+- editor.suggest.showKeywords désactive la suggestion des mots-clés JavaScript dans les suggestions automatiques.
+
+
+- voir le cours sur GIT et GitHub

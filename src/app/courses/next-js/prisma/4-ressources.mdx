@@ -1,0 +1,61 @@
+---
+category: next-js
+slug: prisma
+type: ressources
+fileName: 4-ressources.mdx
+title: Prisma
+description: Les échanges avec une base de données
+logoImgSrc: /next-js/prisma.jpg
+duration: 1 heure
+published: true
+---
+
+
+## Resources
+
+[Site officiel de Prisma](https://www.prisma.io/)
+
+[Tuto Youtube - ByteGrad](https://www.youtube.com/watch?v=Sdd1ScMHzrI)
+
+[Tuto Youtube - Web Dev Simplified](https://www.youtube.com/watch?v=RebA5J-rlwg&t=3178s)
+
+[Neon.tech - 1 Database Postgresql gratuite](https://neon.tech/)
+
+[New - Database Blob (image)- Vercel.com](https://vercel.com/sdevwebs-projects/~/stores)
+
+
+
+
+## Pense-bête
+
+Les requêtes SQL sont asynchrone.
+
+Penser au SINGLETON et à la variable DATABASE_URL du .env.
+
+Effectuer les migrations après un changement dans le schéma.
+
+
+
+Les Commandes :
+```bash
+npm install prisma --save-dev
+npx prisma init
+npx prisma migrate dev
+npx prisma db push
+npx prisma studio
+```
+
+
+La ligne dans le fichier package.json pour les seeds :
+```json
+"prisma": {
+    "seed": "ts-node --compiler-options {"module":"CommonJS"} prisma/seed.ts"
+}
+```
+
+
+
+Pour la production, il faut aussi ajouter une ligne sous la clé script du fichier package.json pour générer le Prisma Client après le build :
+```json
+"postinstall": "prisma generate"
+```

@@ -78,3 +78,13 @@
     @apply mb-12;
   }
 }
+
+
+.prose code .highlighted {
+  background-color: hsl(235, 67%, 31%);
+  margin: 0 -10px;
+  padding: 0 10px;
+  transition: background-color 0.5s;
+  width: calc(100%);
+  display: inline-block;
+}

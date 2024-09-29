@@ -1,0 +1,105 @@
+---
+category: introduction
+slug: les-bases-de-donnees
+type: cours
+fileName: 2-cours.mdx
+title: Les bases de données
+description: Comprendre l'intérêt des bases de données
+logoImgSrc: /logo/bdd-image.jpg
+duration: 1 heure
+published: true
+---
+
+
+## SGBD (Système de Gestion Base de Données)
+Un système de gestion de base de données (SGBD) est le logiciel qui permet à un ordinateur de stocker, récupérer, ajouter, supprimer et modifier des données.
+
+Un SGBD gère tous les aspects primaires d'une base de données, y compris la gestion de la manipulation des données, comme l'authentification des utilisateurs, ainsi que l'insertion ou l'extraction des données.
+
+Un SGBD définit ce qu'on appelle le schéma de données ou la structure dans laquelle les données sont stockées.
+
+Les plus courantes sont : Mysql, MongoDB, Sqlite, Postgresql mais il en existe d'autres.
+
+Il faudra de plus ouvrir un serveur afin d'effectuer nos requêtes SQL pour cela un outil très utilisé est WAMP ou ses variants suivant le système d'exploitation (Windows, Mac, Linux...).
+
+
+
+## SQL (Structured Query Language)
+Bien que des nuances peuvent être présente suivant le SGBD utilisé, le langage de base pour effectuer nos requêtes est appelé le SQL.
+
+SQL est un langage de programmation utilisé pour gérer et manipuler des bases de données relationnelles. SQL est un langage standardisé qui permet de communiquer avec les bases de données relationnelles.
+
+Il est utilisé pour effectuer des tâches telles que la récupération de données, l'insertion de données, la mise à jour de données et la suppression de données dans une base de données.
+
+Voici un exemple de requête SQL :
+
+```sql
+SELECT * FROM users;
+```
+
+### Les types de données:
+- Text : Chaine de caractères
+- Number : Un nombre
+- Date ou DateTime : Date avec ou sans les heures, minutes et seconds
+- Booléen : True ou False
+
+Il existe d'autres types de données, mais ceux-ci sont les plus courants.
+
+
+
+## La structure des données
+Une base de données est composée de tables.
+
+Chaque table est composée de colonnes et de lignes.
+
+Les colonnes représentent les attributs de la table, tandis que les lignes représentent les enregistrements de la table.
+
+Les colonnes sont également appelées champs, tandis que les lignes sont également appelées enregistrements.
+
+
+
+## Les requêtes SQL
+Les requêtes SQL sont utilisées pour récupérer, ajouter, modifier ou supprimer des données dans une base de données.
+
+### Il existe plusieurs types de requêtes SQL, les plus courantes sont :
+
+- SELECT : Récupérer des données
+- INSERT : Ajouter des données
+- UPDATE : Mettre à jour des données
+- DELETE : Supprimer des données
+
+La requête SELECT est la plus compliquée à prendre en main surtout en cas de relations entre différentes tables.
+
+
+
+## Les relations entre les tables
+Les bases de données relationnelles permettent de créer des relations entre les tables.
+
+Il existe plusieurs types de relations, les plus courantes sont :
+
+- One-to-One : Une ligne d'une table est associée à une seule ligne d'une autre table.
+- One-to-Many : Une ligne d'une table est associée à plusieurs lignes d'une autre table.
+- Many-to-Many : Plusieurs lignes d'une table sont associées à plusieurs lignes d'une autre table.
+- Les clés primaires et étrangères sont utilisées pour créer des relations entre les tables.
+
+Dans une relation One-to-Many, la clé primaire de la table parente (One) est utilisée comme clé étrangère dans la table enfant (Many).
+
+Dans une relation Many-to-Many, une table de jointure est utilisée pour relier les deux tables et stocker les clés.
+
+
+
+
+## MCD, MLD et MPD
+Le Modèle Conceptuel de Données (MCD) est un schéma conceptuel qui représente les entités et les relations entre les entités d'une base de données.
+
+Le Modèle Logique de Données (MLD) est un schéma logique qui représente les tables, les colonnes et les clés d'une base de données.
+
+Le Modèle Physique de Données (MPD) est un schéma physique qui représente la structure de stockage des données dans une base de données.
+
+[![!image base de données](/bdd/MCD.jpg)](/bdd/MCD.jpg)
+
+
+Vue d'une table, ses champs (colonnes) et enregistrements (lignes).
+[![!image base de données](/bdd/exemple-database.jpg)](/bdd/exemple-database.jpg)
+
+## Rendez vous partie exercice pour la pratique!
