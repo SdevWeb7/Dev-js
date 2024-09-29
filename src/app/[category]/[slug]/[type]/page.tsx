@@ -44,7 +44,7 @@ export default async function Page({params}: CourseProps) {
     const course = await getCourseByCategorySlugAndType(params.category, params.slug, params.type);
 
     if (!course) {
-        return notFound();
+        return <div>Loading...</div>;
     }
 
 
