@@ -1,7 +1,7 @@
 "use server";
 
-import path from "node:path";
-import * as fs from "node:fs/promises";
+import path from "path";
+import * as fs from "fs/promises";
 import {z} from "zod";
 import matter from "gray-matter";
 
@@ -87,7 +87,6 @@ export const getCourseByCategorySlugAndType = async (category: string, slug: str
     try{
         const fullPath = path.join(coursesDirectory, category, slug, suffix + type + '.mdx');
         const fileContent = await fs.readFile(fullPath, 'utf-8');
-        console.log(fullPath);
         const frontMatter = matter(fileContent);
 
         const safeData = CourseDatasSchemas.safeParse(frontMatter.data);
