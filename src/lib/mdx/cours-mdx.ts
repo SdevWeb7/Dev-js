@@ -68,7 +68,7 @@ export const getCoursesListByCategoryAndSlug = async (category: string, slug: st
 
 }
 
-export const getCourseByCategorySlugAndType = async (category: string, slug: string, type: string) : Promise<Course | {}> => {
+export const getCourseByCategorySlugAndType = async (category: string, slug: string, type: string) : Promise<Course> => {
     let suffix = "";
     switch (type) {
         case "introduction":
