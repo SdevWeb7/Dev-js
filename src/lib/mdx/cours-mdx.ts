@@ -93,10 +93,21 @@ export const getCourseByCategorySlugAndType = async (category: string, slug: str
 
         if (safeData.success && (process.env.NODE_ENV === 'development' || safeData.data.published )) {
             return {...safeData.data, content: frontMatter.content};
-        } else return ({});
+        } else throw new Error(safeData.error?.message);
     }catch(e) {
         console.log(e)
-        return {};
+        return {
+            category: "",
+            slug: "",
+            title: "",
+            type: "",
+            fileName: "",
+            description: "",
+            logoImgSrc: "",
+            duration: "",
+            published: false,
+            content: ""
+        };
     }
 }
 
