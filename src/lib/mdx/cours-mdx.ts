@@ -99,3 +99,45 @@ export const getCourseByCategorySlugAndType = async (category: string, slug: str
         return null;
     }
 }
+
+type CourseParams = {
+    category: string;  // La catégorie du cours, ex: 'html-css'
+    slug: string;      // Le slug du cours, ex: 'cours-de-base'
+    type: string;      // Le type de cours, ex: 'introduction', 'cours', etc.
+};
+export const getAllCourses = async (): Promise<CourseParams[]> => {
+    const courseParams: CourseParams[] = [];
+
+    // Récupère toutes les catégories
+    const categories = await fs.readdir(coursesDirectory);
+
+    // Parcourt chaque catégorie
+    for (const category of categories) {
+        const categoryPath = path.join(coursesDirectory, category);
+
+        const slugs = await fs.readdir(categoryPath);
+
+        // Pour chaque slug (chaque cours)
+        for (const slug of slugs) {
+            const slugPath = path.join(categoryPath, slug);
+
+            const types = ['1-introduction', '2-cours', '3-exercices', '4-ressources']; // Types de contenu
+            for (const type of types) {
+                // Vérifie si le fichier MDX existe pour ce type
+                const mdxFilePath = path.join(slugPath, `${type}.mdx`);
+                try {
+                    await fs.access(mdxFilePath); // Vérifie si le fichier existe
+                    courseParams.push({
+                        category,
+                        slug,
+                        type,
+                    });
+                } catch (error) {
+                    // Le fichier n'existe pas pour ce type, donc on l'ignore
+                }
+            }
+        }
+    }
+
+    return courseParams;
+};

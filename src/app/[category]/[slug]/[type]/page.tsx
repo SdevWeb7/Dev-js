@@ -1,9 +1,20 @@
-import {getCourseByCategorySlugAndType} from "@/lib/mdx/cours-mdx";
+import {getAllCourses, getCourseByCategorySlugAndType, getCoursesListByCategory} from "@/lib/mdx/cours-mdx";
 import Main from "@/components/main";
 import CourseSectionNavigation from "@/components/course-section-navigation";
 import MyCustomBreadcrumb from "@/components/my-custom-breadcrumb";
 import MdxRemote from "@/lib/mdx/mdx-remote";
 import {Metadata} from "next";
+
+
+export async function generateStaticParams() {
+    const allCourses = await getAllCourses(); // Une fonction que tu crées pour récupérer tous les cours
+
+    return allCourses.map(course => ({
+        category: course.category,
+        slug: course.slug,
+        type: course.type,
+    }));
+}
 
 
 type MetadataProps = {
