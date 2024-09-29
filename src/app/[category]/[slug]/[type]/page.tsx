@@ -1,12 +1,10 @@
 import {getCourseByCategorySlugAndType} from "@/lib/mdx/cours-mdx";
-import {notFound} from "next/navigation";
 import Main from "@/components/main";
 import CourseSectionNavigation from "@/components/course-section-navigation";
 import MyCustomBreadcrumb from "@/components/my-custom-breadcrumb";
 import MdxRemote from "@/lib/mdx/mdx-remote";
 import {Metadata} from "next";
 
-export const dynamic = "force-static";
 
 type MetadataProps = {
     params: {
