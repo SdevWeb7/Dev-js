@@ -68,7 +68,7 @@ export const getCoursesListByCategoryAndSlug = async (category: string, slug: st
 
 }
 
-export const getCourseByCategorySlugAndType = async (category: string, slug: string, type: string) : Promise<Course | null> => {
+export const getCourseByCategorySlugAndType = async (category: string, slug: string, type: string) : Promise<Course | {}> => {
     let suffix = "";
     switch (type) {
         case "introduction":
@@ -93,10 +93,10 @@ export const getCourseByCategorySlugAndType = async (category: string, slug: str
 
         if (safeData.success && (process.env.NODE_ENV === 'development' || safeData.data.published )) {
             return {...safeData.data, content: frontMatter.content};
-        } else return null;
+        } else return ({});
     }catch(e) {
         console.log(e)
-        return null;
+        return {};
     }
 }
 
