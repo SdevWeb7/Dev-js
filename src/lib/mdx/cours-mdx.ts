@@ -87,6 +87,7 @@ export const getCourseByCategorySlugAndType = async (category: string, slug: str
     try{
         const fullPath = path.join(coursesDirectory, category, slug, suffix + type + '.mdx');
         const fileContent = await fs.readFile(fullPath, 'utf-8');
+        console.log(fullPath);
         const frontMatter = matter(fileContent);
 
         const safeData = CourseDatasSchemas.safeParse(frontMatter.data);
