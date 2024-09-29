@@ -24,28 +24,26 @@ export type Course = z.infer<typeof CourseDatasSchemas> & {
     content: string;
 };
 
-export const getCoursesListByCategory = async (category: string) : Promise<CourseDatas[]> => {
+export const getCoursesListByCategory = async (category: string)  => {
     const files = await fs.readdir(path.join(coursesDirectory, category));
 
-    const courses: CourseDatas[] = [];
-
     try {
-        for await (const courseName of files) {
+        const courses = await Promise.all(files.map(async (courseName) => {
             const isFolder = await fs.lstat(path.join(coursesDirectory, category, courseName));
             if (isFolder.isDirectory()) {
                 const course = await fs.readFile(path.join(coursesDirectory, category, courseName, '1-introduction.mdx'), 'utf-8');
                 const frontMatter = matter(course);
-
                 const safeData = CourseDatasSchemas.safeParse(frontMatter.data);
-                if (safeData.success && (process.env.NODE_ENV === 'development' || safeData.data.published )) {
-                    courses.push({
-                        ...safeData.data
-                    });
-                } else console.error(safeData.error);
-            };
-        };
 
-        return courses;
+                if (safeData.success && (process.env.NODE_ENV === 'development' || safeData.data.published)) {
+                    return safeData.data;
+                } else {
+                    console.error(safeData.error);
+                    return null;
+                }
+            }
+        }));
+        return courses.filter(Boolean);
     } catch (e) {
         console.log(e);
         return [];
