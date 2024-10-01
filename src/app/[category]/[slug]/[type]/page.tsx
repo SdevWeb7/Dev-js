@@ -1,4 +1,4 @@
-import {getAllCourses, getCourseByCategorySlugAndType, getCoursesListByCategory} from "@/lib/mdx/cours-mdx";
+import {getAllCourses, getCourseByCategorySlugAndType} from "@/lib/mdx/cours-mdx";
 import Main from "@/components/main";
 import CourseSectionNavigation from "@/components/course-section-navigation";
 import MyCustomBreadcrumb from "@/components/my-custom-breadcrumb";

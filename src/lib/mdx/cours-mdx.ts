@@ -68,7 +68,7 @@ export const getCoursesListByCategoryAndSlug = async (category: string, slug: st
 
 }
 
-export const getCourseByCategorySlugAndType = async (category: string, slug: string, type: string) : Promise<Course> => {
+export const getCourseByCategorySlugAndType = async (category: string, slug: string, type: string) : Promise<Course | null> => {
     let suffix = "";
     switch (type) {
         case "introduction":
@@ -93,21 +93,13 @@ export const getCourseByCategorySlugAndType = async (category: string, slug: str
 
         if (safeData.success && (process.env.NODE_ENV === 'development' || safeData.data.published )) {
             return {...safeData.data, content: frontMatter.content};
-        } else throw new Error(safeData.error?.message);
-    }catch(e) {
+        } else {
+            console.error(safeData.error);
+            return null;
+        }
+    } catch(e) {
         console.log(e)
-        return {
-            category: "",
-            slug: "",
-            title: "",
-            type: "",
-            fileName: "",
-            description: "",
-            logoImgSrc: "",
-            duration: "",
-            published: false,
-            content: ""
-        };
+        return null;
     }
 }
 
@@ -144,6 +136,7 @@ export const getAllCourses = async (): Promise<CourseParams[]> => {
                         type,
                     });
                 } catch (error) {
+                    console.log(error);
                     // Le fichier n'existe pas pour ce type, donc on l'ignore
                 }
             }
