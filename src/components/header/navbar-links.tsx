@@ -11,7 +11,6 @@ type NavbarLinksProps = {
 export default function NavbarLinks({hrefs} : NavbarLinksProps) {
     const pathname = usePathname();
 
-
     return <>
         {hrefs.map((route) => (
             <div key={route.href} className={"relative"}>
@@ -19,7 +18,7 @@ export default function NavbarLinks({hrefs} : NavbarLinksProps) {
                         variant: 'link'
                     })} href={route.href}>{route.title}</Link>
 
-                {pathname.includes(route.href) && (
+                {pathname.split("/")[1].includes(route.href) && (
                     <motion.div
                         layoutId={'header-active-link'}
                         className={'bg-my-primary h-2 w-full absolute -bottom-5 rounded-full'}/>)}
