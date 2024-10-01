@@ -16,7 +16,7 @@ import {Metadata} from "next";
 //     }));
 // }
 
-// export const dynamic = "force-static";
+export const dynamic = "force-static";
 
 // type MetadataProps = {
 //     params: {
