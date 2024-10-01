@@ -3,7 +3,7 @@ import notFound from "@/app/not-found";
 import {ImageResponse} from "next/og";
 import {Course} from "@/lib/mdx/cours-mdx";
 
-const url = process.env.VERCEL_URL ? `https://dev-js7.vercel.app` : "http://localhost:3000";
+const url = process.env.NODE_ENV !== 'development' ? `https://dev-js7.vercel.app` : "http://localhost:3000";
 export const alt = "Dev.js open graph image";
 export const size = {
     width: 1200,

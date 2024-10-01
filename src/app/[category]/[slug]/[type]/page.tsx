@@ -59,7 +59,7 @@ export default async function Page({params}: CourseProps) {
 
     return <Main>
 
-        <MyCustomBreadcrumb params={params} course={course} />
+        <MyCustomBreadcrumb course={course} />
 
 
 
@@ -73,7 +73,8 @@ export default async function Page({params}: CourseProps) {
             <article className={'flex-1 w-full lg:border-l-2 lg:pl-12 mt-8 lg:mt-0 break-words'}>
                 <div className={'prose mx-auto'}>
                     <MdxRemote>
-                        {course.content}
+                        {/*{course.content}*/}
+                        Prochainement
                     </MdxRemote>
                 </div>
             </article>
