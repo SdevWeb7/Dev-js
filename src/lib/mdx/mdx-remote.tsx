@@ -12,7 +12,7 @@ export default function MdxRemote({children}: {children: string}) {
             components={MDX_COMPONENTS}
             options={{
                 mdxOptions: {
-                    rehypePlugins: rehypePlugin
+                    // rehypePlugins: rehypePlugin
                 }
             }} />
 
