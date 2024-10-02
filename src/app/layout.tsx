@@ -5,6 +5,7 @@ import Header from "@/components/header/header";
 import {cn} from "@/lib/utils";
 import Footer from "@/components/footer/footer";
 import {Toaster} from "@/components/ui/toaster";
+import ErrorBoundary from "@/app/error-boundary";
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -25,8 +26,11 @@ export default function RootLayout({
 
             <Header />
 
+            <ErrorBoundary>
+
             {children}
 
+            </ErrorBoundary>
           <Footer />
 
       <Toaster />
