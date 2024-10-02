@@ -1,5 +1,3 @@
-"use client";
-
 import {ComponentPropsWithoutRef, useRef} from "react";
 import {cn} from "@/lib/utils";
 import {CodeIcon} from "@radix-ui/react-icons";
@@ -20,10 +18,7 @@ export default function MdxPre({children, className, ...props}: MdxPreProps) {
 
             <Button
                 variant={"link"}
-                className={'gap-4'}
-                onClick={() => {
-                    if (window) navigator.clipboard.writeText(preRef.current?.innerText || '');
-                }}>
+                className={'gap-4'}>
                 Copier le code
             <ClipboardCopy
                 className={"w-6 h-6 cursor-pointer"} />
