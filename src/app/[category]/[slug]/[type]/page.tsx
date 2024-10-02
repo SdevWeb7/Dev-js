@@ -6,40 +6,40 @@ import MdxRemote from "@/lib/mdx/mdx-remote";
 import {Metadata} from "next";
 
 
-// export async function generateStaticParams() {
-//     const allCourses = await getAllCourses(); // Une fonction que tu crées pour récupérer tous les cours
-//
-//     return allCourses.map(course => ({
-//         category: course.category,
-//         slug: course.slug,
-//         type: course.type,
-//     }));
-// }
+export async function generateStaticParams() {
+    const allCourses = await getAllCourses(); // Une fonction que tu crées pour récupérer tous les cours
+
+    return allCourses.map(course => ({
+        category: course.category,
+        slug: course.slug,
+        type: course.type,
+    }));
+}
 
 export const dynamic = "force-dynamic";
 
-// type MetadataProps = {
-//     params: {
-//         category: string;
-//         slug: string;
-//         type: string;
-//     }
-// }
-// export const generateMetadata = async ({params}: MetadataProps) : Promise<Metadata> => {
-//     const course = await getCourseByCategorySlugAndType(params.category, params.slug, params.type);
-//
-//     if (!course) {
-//         return {
-//             title: 'Not found',
-//             description: 'Not found'
-//         };
-//     }
-//     return {
-//         title: course.title,
-//         description: course.description,
-//         category: course.category,
-//     };
-// }
+type MetadataProps = {
+    params: {
+        category: string;
+        slug: string;
+        type: string;
+    }
+}
+export const generateMetadata = async ({params}: MetadataProps) : Promise<Metadata> => {
+    const course = await getCourseByCategorySlugAndType(params.category, params.slug, params.type);
+
+    if (!course) {
+        return {
+            title: 'Not found',
+            description: 'Not found'
+        };
+    }
+    return {
+        title: course.title,
+        description: course.description,
+        category: course.category,
+    };
+}
 
 type CourseProps = {
     params: {
@@ -53,6 +53,7 @@ export default async function Page({params}: CourseProps) {
 
     const course = await getCourseByCategorySlugAndType(params.category, params.slug, params.type);
 
+    console.log(course);
     if (!course) {
         return <div>Loading...</div>;
     }

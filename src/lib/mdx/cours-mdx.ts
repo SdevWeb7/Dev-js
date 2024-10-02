@@ -1,7 +1,7 @@
 "use server";
 
-import path from "path";
-import * as fs from "fs/promises";
+import path from "node:path";
+import * as fs from "node:fs/promises";
 import {z} from "zod";
 import matter from "gray-matter";
 
