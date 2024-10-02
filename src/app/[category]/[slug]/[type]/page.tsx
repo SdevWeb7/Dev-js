@@ -53,7 +53,6 @@ export default async function Page({params}: CourseProps) {
 
     const course = await getCourseByCategorySlugAndType(params.category, params.slug, params.type);
 
-    console.log(course);
     if (!course) {
         return <div>Loading...</div>;
     }
