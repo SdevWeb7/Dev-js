@@ -74,9 +74,9 @@ export default async function Page({params}: CourseProps) {
 
             <article className={'flex-1 w-full lg:border-l-2 lg:pl-12 mt-8 lg:mt-0 break-words'}>
                 <div className={'prose mx-auto'}>
-                    {/*<MdxRemote>*/}
+                    <MdxRemote>
                         {course.content}
-                    {/*</MdxRemote>*/}
+                    </MdxRemote>
                 </div>
             </article>
 
