@@ -1,4 +1,4 @@
-import {ComponentPropsWithoutRef, useRef} from "react";
+import {ComponentPropsWithoutRef} from "react";
 import {cn} from "@/lib/utils";
 import {CodeIcon} from "@radix-ui/react-icons";
 import {ClipboardCopy} from "lucide-react";
@@ -9,7 +9,6 @@ export type MdxPreProps = ComponentPropsWithoutRef<"pre"> & {
     language?: string;
 };
 export default function MdxPre({children, className, ...props}: MdxPreProps) {
-    const preRef = useRef<HTMLPreElement>(null);
 
     return <div className={'my-8 rounded-t-lg bg-gray-300'}>
 
@@ -26,7 +25,6 @@ export default function MdxPre({children, className, ...props}: MdxPreProps) {
         </div>
 
         <pre
-            ref={preRef}
             className={cn("relative mt-0 overflow-auto lg:text-base", className)}
             style={{marginTop: 0, marginBottom: 0}}
             {...props}>
